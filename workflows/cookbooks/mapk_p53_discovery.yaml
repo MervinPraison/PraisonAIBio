@@ -1,4 +1,7 @@
 # MAPK/p53 discovery cookbook
+framework: praisonai
+process: workflow
+
 config:
   llm: gpt-4o-mini
 
@@ -15,15 +18,9 @@ agents:
     toolsets:
       - biomodels-readonly
 
-tasks:
-  search:
-    description: Search BioModels for MAPK and p53 curated models.
-    expected_output: Ranked shortlist with model IDs.
-    agent: scout
+steps:
+  - agent: scout
+    action: Search BioModels for MAPK and p53 curated models. Return a ranked shortlist with model IDs.
 
-  trust:
-    description: Produce trust scorecards for top 3 models.
-    expected_output: Trust scores and publication links.
-    agent: reviewer
-
-process: sequential
+  - agent: reviewer
+    action: Produce trust scorecards for the top 3 models from the shortlist with publication links.

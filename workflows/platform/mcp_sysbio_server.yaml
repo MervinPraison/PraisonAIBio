@@ -1,17 +1,16 @@
 # MCP client workflow — sysbio server
 framework: praisonai
+process: workflow
+
+config:
+  llm: gpt-4o-mini
 
 agents:
   sysbio_client:
     role: SysBio MCP Client
     instructions: Use MCP sysbio tools for BioModels tasks.
-    llm: gpt-4o-mini
     # Wire MCP via: praisonai mcp add --command python --args mcp/sysbio-server/server.py
 
-tasks:
-  mcp_search:
-    description: Search glycolysis models via MCP-connected tools.
-    expected_output: Model IDs from search.
-    agent: sysbio_client
-
-process: sequential
+steps:
+  - agent: sysbio_client
+    action: Search BioModels for glycolysis models and return top model IDs.

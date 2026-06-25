@@ -168,6 +168,12 @@ PLAN_PATHS: dict[str, list[str]] = {
     "examples": [
         "examples/README.md",
         "examples/small/01_search.py",
+        "examples/small/02_model_info.py",
+        "examples/small/03_trust_score.py",
+        "examples/small/04_validate_sbml.py",
+        "examples/big/01_find_models.py",
+        "examples/big/02_summarise_model.py",
+        "examples/big/03_discovery_study.py",
         "examples/big/04_glycolysis_demo.py",
     ],
     "docs_hub": [

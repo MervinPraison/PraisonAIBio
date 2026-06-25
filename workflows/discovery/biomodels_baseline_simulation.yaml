@@ -1,3 +1,6 @@
+framework: praisonai
+process: workflow
+
 config:
   llm: gpt-4o-mini
 
@@ -8,10 +11,6 @@ agents:
     toolsets:
       - simulation
 
-tasks:
-  baseline_sim:
-    description: Simulate the selected model and summarise dynamics.
-    expected_output: Time-course summary and optional plot.
-    agent: simulation_engineer
-
-process: sequential
+steps:
+  - agent: simulation_engineer
+    action: Simulate BIOMD0000000206 for 50 time units and summarise the time-course dynamics.

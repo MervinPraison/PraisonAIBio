@@ -24,8 +24,12 @@ def load_model(model_id: str | None = None, sbml_path: str | None = None) -> Any
     if sbml_path:
         return basico_load(Path(sbml_path))
     if model_id:
-        from basico.biomodels import load_biomodel
-        return load_biomodel(model_id)
+        from praisonai_bio.tools._helpers import get_client, normalise_model_id
+
+        client = get_client()
+        sbml_bytes = client.download_sbml(normalise_model_id(model_id))
+        path = write_temp_sbml(sbml_bytes)
+        return basico_load(Path(path))
     raise ValueError("Provide model_id or sbml_path")
 
 
@@ -38,19 +42,20 @@ def run_timecourse(
     ok, msg = check_basico_available()
     if not ok:
         raise ImportError(msg)
-    from basico import run_timecourse as basico_run
+    from basico import run_time_course
 
-    return basico_run(model, duration=duration, step=step, use_reactions=use_reactions)
+    step_number = max(int(duration / step), 1)
+    return run_time_course(model=model, duration=duration, step_number=step_number)
 
 
 def run_steady_state(model: Any) -> dict[str, Any]:
     ok, msg = check_basico_available()
     if not ok:
         raise ImportError(msg)
-    from basico import get_steady_state_concentrations
+    from basico import run_steadystate
 
-    conc = get_steady_state_concentrations(model)
-    return {"steady_state": conc.to_dict() if hasattr(conc, "to_dict") else str(conc)}
+    status = run_steadystate(model=model)
+    return {"steady_state_status": status, "ok": status == 1}
 
 
 def save_sbml(model: Any, path: str) -> str:

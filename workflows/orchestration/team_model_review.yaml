@@ -1,3 +1,6 @@
+framework: praisonai
+process: workflow
+
 config:
   llm: gpt-4o-mini
 
@@ -17,20 +20,12 @@ agents:
     instructions: Export reproducibility bundle.
     toolsets: [repro]
 
-tasks:
-  model:
-    description: Summarise BIOMD0000000206 structure.
-    expected_output: SBML summary.
-    agent: modeller
+steps:
+  - agent: modeller
+    action: Summarise BIOMD0000000206 structure — species, reactions, compartments.
 
-  review:
-    description: Trust scorecard and assumption flags.
-    expected_output: Review checklist.
-    agent: reviewer
+  - agent: reviewer
+    action: Trust scorecard and assumption flags for BIOMD0000000206.
 
-  report:
-    description: Export repro bundle metadata.
-    expected_output: Bundle path or export JSON.
-    agent: reporter
-
-process: sequential
+  - agent: reporter
+    action: Export repro bundle for BIOMD0000000206 to /tmp/glycolysis_repro.
