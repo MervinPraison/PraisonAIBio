@@ -146,6 +146,7 @@ PLAN_PATHS: dict[str, list[str]] = {
         "scripts/generate_catalog.py",
         "scripts/download_demo_sbml.py",
         "scripts/validate_repo.py",
+        "scripts/capture_example_outputs.sh",
     ],
     "tests": [
         "tests/unit/test_biomodels_adapter.py",
@@ -185,6 +186,7 @@ PLAN_PATHS: dict[str, list[str]] = {
         "docs/tools-at-a-glance.md",
         "docs/tools-reference.md",
         "docs/examples.md",
+        "docs/examples/index.md",
         "docs/toolsets.md",
         "docs/recipes.md",
         "docs/skills.md",

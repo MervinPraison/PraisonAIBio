@@ -54,7 +54,7 @@ praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml
 | Copy-paste tasks | [Quick tasks](quick-tasks.md) |
 | Understand workflows | [For researchers](for-researchers.md) |
 | See all tools | [Tools](tools-at-a-glance.md) · [Reference](tools-reference.md) |
-| Run examples | [Examples](examples.md) |
+| Run examples | [Examples](examples/index.md) |
 
 ---
 

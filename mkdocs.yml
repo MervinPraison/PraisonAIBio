@@ -57,7 +57,16 @@ nav:
       - For researchers: for-researchers.md
       - FAQ: faq.md
   - Guides:
-      - Examples: examples.md
+      - Examples:
+          - Overview: examples/index.md
+          - Small — Search: examples/small/01-search.md
+          - Small — Model info: examples/small/02-model-info.md
+          - Small — Trust score: examples/small/03-trust-score.md
+          - Small — Validate SBML: examples/small/04-validate-sbml.md
+          - Agent — Find models: examples/big/01-find-models.md
+          - Agent — Summarise: examples/big/02-summarise-model.md
+          - Agent — Discovery: examples/big/03-discovery-study.md
+          - Agent — Glycolysis: examples/big/04-glycolysis-demo.md
       - Workflows: concepts/workflows.md
       - Toolsets: toolsets.md
       - Tools: tools-at-a-glance.md
