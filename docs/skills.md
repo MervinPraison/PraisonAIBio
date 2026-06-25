@@ -1,6 +1,6 @@
 # Skills
 
-Optional **Cursor / agent skills** under `skills/` — focused instructions for common BioModels tasks.
+**Cursor / agent instruction packs** for BioModels tasks — ClawBio-style layout, lighter than full [ClawBio](https://github.com/ClawBio/ClawBio) skills (no separate Python runner required; uses PraisonAI **toolsets**).
 
 Catalog: `skills/catalog.json`
 
@@ -20,11 +20,98 @@ Each skill lives in `skills/<id>/SKILL.md`.
 
 ---
 
+## PraisonAIBio vs ClawBio skills
+
+| | **PraisonAIBio** | **ClawBio** (`~/ClawBio`) |
+|---|------------------|---------------------------|
+| Purpose | Systems biology / BioModels / SBML | Genomics, WES, RNA-seq, etc. |
+| Implementation | Markdown + PraisonAI `@tool` functions | Often `SKILL.md` + Python script + tests |
+| Registration | `skills/catalog.json` via `generate_catalog.py` | `catalog.json` + `clawbio.py` aliases |
+| Scaffold | Copy `SKILL-TEMPLATE.md` | Use `skill-builder` meta-skill |
+| Bridge | `mcp/clawbio-bridge/` (v2) | N/A |
+
+For heavy genomics pipelines, use ClawBio directly. For BioModels discovery and simulation, use PraisonAIBio skills + toolsets.
+
+---
+
+## How to add a new skill
+
+### 1. Create the folder
+
+Use a **kebab-case** id (matches directory name):
+
+```bash
+mkdir -p skills/my-skill-id
+cp skills/SKILL-TEMPLATE.md skills/my-skill-id/SKILL.md
+```
+
+### 2. Edit `SKILL.md`
+
+Required sections (see template):
+
+1. **Title** — first line `# Title` (used as display name in catalog)
+2. **When to use** — trigger scenarios for the agent
+3. **Tools** — list tools with **parameters** (agents only see parameters, not env vars)
+4. **Toolset** — which prebuilt toolset to attach (`biomodels-readonly`, `simulation`, …)
+5. **Example** — minimal `Agent` snippet loading this skill as `instructions`
+
+Optional: prerequisites (`[simulation]` extra), demo model ID.
+
+!!! tip
+    Copy an existing skill as a starting point:
+    `cp -r skills/search-models skills/my-skill-id`
+
+### 3. Regenerate the catalog
+
+```bash
+python scripts/generate_catalog.py
+```
+
+This scans `skills/*/SKILL.md` and rewrites `skills/catalog.json`.
+
+### 4. Validate
+
+```bash
+python scripts/validate_repo.py   # skills section must stay OK
+python -c "import praisonai_bio"
+praisonai-bio validate check
+```
+
+### 5. Test with an agent
+
+```python
+import praisonai_bio
+from praisonaiagents import Agent
+
+agent = Agent(
+    name="test",
+    instructions=open("skills/my-skill-id/SKILL.md").read(),
+    toolsets=["biomodels-readonly"],  # match your SKILL.md
+    llm="gpt-4o-mini",
+)
+print(agent.start("Your test prompt"))
+```
+
+### 6. Document and submit
+
+- Add a row to the table above (this page) if the skill is public
+- Open a pull request with `SKILL.md`, updated `catalog.json`, and any tests
+
+**Optional extras** (like ClawBio, but not required for PraisonAIBio):
+
+```
+skills/my-skill-id/
+├── SKILL.md           # required
+├── examples/          # optional sample prompts or output
+└── tests/             # optional pytest for helper scripts
+```
+
+---
+
 ## Use with Cursor
 
-Copy or symlink a skill into your Cursor skills folder, or reference the repo path when configuring agents.
-
-Example — point an agent at the search skill:
+1. Copy or symlink the skill folder into your Cursor skills directory, **or**
+2. Reference the repo path in chat:
 
 ```text
 Read skills/search-models/SKILL.md and search BioModels for MAPK models.
@@ -34,7 +121,7 @@ Read skills/search-models/SKILL.md and search BioModels for MAPK models.
 
 ## Use with PraisonAI agents
 
-Skills complement **toolsets**, not replace them:
+Skills supply **instructions**; toolsets supply **capabilities**:
 
 ```python
 import praisonai_bio
@@ -53,8 +140,26 @@ Always run `import praisonai_bio` first.
 
 ---
 
+## YAML workflows
+
+Point agent instructions at a skill file in `.praisonai/agents/` or inline in workflow YAML:
+
+```yaml
+agents:
+  scout:
+    role: BioModels Scout
+    instructions_file: skills/search-models/SKILL.md
+    toolsets:
+      - biomodels-readonly
+```
+
+(If your PraisonAI version uses `instructions:` instead of `instructions_file:`, paste or load the markdown content.)
+
+---
+
 ## See also
 
 - [Toolsets](toolsets.md)
+- [Tools reference](tools-reference.md)
 - [Workflows](concepts/workflows.md)
-- [Recipes](recipes.md)
+- ClawBio skill builder: `~/ClawBio/skills/skill-builder/SKILL.md`

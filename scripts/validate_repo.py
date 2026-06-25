@@ -110,6 +110,7 @@ PLAN_PATHS: dict[str, list[str]] = {
     ],
     "skills": [
         "skills/catalog.json",
+        "skills/SKILL-TEMPLATE.md",
         "skills/search-models/SKILL.md",
         "skills/simulate-model/SKILL.md",
         "skills/load-biomodel/SKILL.md",

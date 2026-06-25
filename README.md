@@ -86,10 +86,11 @@ Three agents in sequence: find → summarise → simulate **BIOMD0000000206**.
 
 - **21 tools** — search, rank, validate SBML, simulate, export repro bundles
 - **10 toolsets** — e.g. `biomodels-readonly` (safe), `sysbio-full` (everything)
+- **5 skills** — Cursor/agent instruction packs ([how to add](docs/skills.md))
 - **YAML workflows** — discovery pipelines, cookbooks, multi-agent teams
 - **MCP servers** — use tools from Cursor / Claude Desktop
 
-Details: [Tools](https://bio.praison.ai/tools-at-a-glance/) · [Toolsets](https://bio.praison.ai/toolsets/) · [Examples with sample output](https://bio.praison.ai/examples/)
+Details: [Tools](https://bio.praison.ai/tools-at-a-glance/) · [Toolsets](https://bio.praison.ai/toolsets/) · [Skills](https://bio.praison.ai/skills/) · [Examples](https://bio.praison.ai/examples/)
 
 ---
 
