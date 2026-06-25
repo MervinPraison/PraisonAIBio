@@ -1,67 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/</loc>
+         <loc>https://bio.praison.ai/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/cli/</loc>
+         <loc>https://bio.praison.ai/cli/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/development/</loc>
+         <loc>https://bio.praison.ai/custom-domain/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/examples/</loc>
+         <loc>https://bio.praison.ai/development/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/faq/</loc>
+         <loc>https://bio.praison.ai/examples/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/for-researchers/</loc>
+         <loc>https://bio.praison.ai/faq/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/get-started/</loc>
+         <loc>https://bio.praison.ai/for-researchers/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/install/</loc>
+         <loc>https://bio.praison.ai/get-started/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/quick-tasks/</loc>
+         <loc>https://bio.praison.ai/install/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/recipes/</loc>
+         <loc>https://bio.praison.ai/quick-tasks/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/tools-at-a-glance/</loc>
+         <loc>https://bio.praison.ai/recipes/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/toolsets/</loc>
+         <loc>https://bio.praison.ai/tools-at-a-glance/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/concepts/mcp/</loc>
+         <loc>https://bio.praison.ai/toolsets/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/concepts/vs-clawbio/</loc>
+         <loc>https://bio.praison.ai/concepts/mcp/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/concepts/vs-t2b/</loc>
+         <loc>https://bio.praison.ai/concepts/vs-clawbio/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://mervinpraison.github.io/PraisonAIBio/concepts/workflows/</loc>
+         <loc>https://bio.praison.ai/concepts/vs-t2b/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/concepts/workflows/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
 </urlset>
