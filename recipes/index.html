@@ -13,10 +13,10 @@
         <link rel="canonical" href="https://bio.praison.ai/recipes/">
       
       
-        <link rel="prev" href="../tools-at-a-glance/">
+        <link rel="prev" href="../tools-reference/">
       
       
-        <link rel="next" href="../cli/">
+        <link rel="next" href="../skills/">
       
       
         
@@ -766,6 +766,34 @@
                 
   
   
+  
+  
+    <li class="md-nav__item">
+      <a href="../tools-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
     
   
   
@@ -829,10 +857,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
+  <a href="#run-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run
+        Run (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recipe-path-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe path (optional)
       
     </span>
   </a>
@@ -854,6 +893,34 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
     </li>
   
 
@@ -1183,10 +1250,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#run" class="md-nav__link">
+  <a href="#run-recommended" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Run
+        Run (recommended)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#recipe-path-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Recipe path (optional)
       
     </span>
   </a>
@@ -1225,51 +1303,79 @@
 
 
 <h1 id="recipes">Recipes<a class="headerlink" href="#recipes" title="Permanent link">&para;</a></h1>
-<p>Packaged workflows under <code>recipes/bio/</code> — same automation via PraisonAI recipe commands.</p>
+<p>Packaged workflows under <code>recipes/bio/</code> — same automation as YAML workflows, with metadata for discovery.</p>
 <table>
 <thead>
 <tr>
 <th>Recipe</th>
+<th>Folder</th>
 <th>Workflow</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td><code>biomodels-discovery</code></td>
+<td><code>recipes/bio/biomodels-discovery/</code></td>
 <td>Discovery pipeline → shortlist</td>
 </tr>
 <tr>
 <td><code>biomodels-research</code></td>
+<td><code>recipes/bio/biomodels-research/</code></td>
 <td>Full research workflow</td>
 </tr>
 <tr>
 <td><code>biomodels-simulate</code></td>
+<td><code>recipes/bio/biomodels-simulate/</code></td>
 <td>Baseline simulation</td>
 </tr>
 <tr>
 <td><code>biomodels-perturb</code></td>
+<td><code>recipes/bio/biomodels-perturb/</code></td>
 <td>Perturbation study</td>
 </tr>
 <tr>
 <td><code>biomodels-report</code></td>
+<td><code>recipes/bio/biomodels-report/</code></td>
 <td>Comparison report</td>
 </tr>
 </tbody>
 </table>
+<p>Each folder contains <code>recipe.yaml</code> pointing at a workflow under <code>workflows/discovery/</code>.</p>
 <hr />
-<h2 id="run">Run<a class="headerlink" href="#run" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_discovery_pipeline.yaml
+<h2 id="run-recommended">Run (recommended)<a class="headerlink" href="#run-recommended" title="Permanent link">&para;</a></h2>
+<p>Recipes wrap existing workflows — run the workflow directly:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>PraisonAIBio
+python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;import praisonai_bio&quot;</span>
+
+<span class="c1"># Discovery shortlist</span>
+praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_discovery_pipeline.yaml
+
+<span class="c1"># Full research (7 phases)</span>
+praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_full_research_workflow.yaml
+
+<span class="c1"># Baseline simulation</span>
+praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_baseline_simulation.yaml
+
+<span class="c1"># Perturbation study</span>
+praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_perturbation_study.yaml
+
+<span class="c1"># Comparison report</span>
+praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_comparison_report.yaml
 </code></pre></div>
-<p>Or point PraisonAI at the recipe folder:</p>
-<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PRAISONAI_RECIPE_PATH</span><span class="o">=</span>recipes/bio
+<hr />
+<h2 id="recipe-path-optional">Recipe path (optional)<a class="headerlink" href="#recipe-path-optional" title="Permanent link">&para;</a></h2>
+<p>Point PraisonAI at the recipe catalog:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">PRAISONAI_RECIPE_PATH</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span><span class="nb">pwd</span><span class="k">)</span><span class="s2">/recipes/bio&quot;</span>
 </code></pre></div>
-<p>Recipe files live in each subfolder as <code>recipe.yaml</code>.</p>
+<p>Then use PraisonAI recipe commands if your wrapper version supports them; otherwise use the workflow paths above.</p>
 <hr />
 <h2 id="cookbooks">Cookbooks<a class="headerlink" href="#cookbooks" title="Permanent link">&para;</a></h2>
 <p>Ready-made demos in <code>workflows/cookbooks/</code>:</p>
 <div class="highlight"><pre><span></span><code>praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/cookbooks/glycolysis_demo.yaml
 praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/cookbooks/mapk_p53_discovery.yaml
 </code></pre></div>
+<p>Demo model: <strong>BIOMD0000000206</strong> (yeast glycolysis).</p>
+<p>See <a href="../concepts/workflows/">Workflows</a> and <a href="../for-researchers/">For researchers</a>.</p>
 
 
 

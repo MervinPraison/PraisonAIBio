@@ -13,7 +13,7 @@
         <link rel="canonical" href="https://bio.praison.ai/cli/">
       
       
-        <link rel="prev" href="../recipes/">
+        <link rel="prev" href="../skills/">
       
       
         <link rel="next" href="../concepts/mcp/">
@@ -769,6 +769,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tools-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../recipes/" class="md-nav__link">
         
   
@@ -777,6 +805,34 @@
     
   
     Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
   
 
     
@@ -883,6 +939,17 @@
     <span class="md-ellipsis">
       
         MCP servers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docs-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs site
       
     </span>
   </a>
@@ -1226,6 +1293,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#docs-site" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docs site
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -1249,8 +1327,9 @@
 <h1 id="cli">CLI<a class="headerlink" href="#cli" title="Permanent link">&para;</a></h1>
 <h2 id="praisonai-bio">praisonai-bio<a class="headerlink" href="#praisonai-bio" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;src/praisonai-bio&quot;</span>
-praisonai-bio<span class="w"> </span>init<span class="w">              </span><span class="c1"># scaffold .praisonai</span>
+praisonai-bio<span class="w"> </span>init<span class="w">              </span><span class="c1"># scaffold .praisonai/config.yaml + agents</span>
 praisonai-bio<span class="w"> </span>validate<span class="w"> </span>check<span class="w">    </span><span class="c1"># package + toolsets OK</span>
+praisonai-bio<span class="w"> </span>validate<span class="w"> </span>repo<span class="w">     </span><span class="c1"># full plan compliance (scripts/validate_repo.py)</span>
 praisonai-bio<span class="w"> </span>tools<span class="w"> </span>validate<span class="w">    </span><span class="c1"># 21 entry points</span>
 praisonai-bio<span class="w"> </span>doctor<span class="w"> </span>mcp<span class="w">        </span><span class="c1"># MCP + BASICO check</span>
 </code></pre></div>
@@ -1260,7 +1339,9 @@ praisonai-bio<span class="w"> </span>doctor<span class="w"> </span>mcp<span clas
 <div class="highlight"><pre><span></span><code>praisonai<span class="w"> </span>run<span class="w"> </span>--agent<span class="w"> </span>biomodels-scout<span class="w"> </span><span class="s2">&quot;Find glycolysis models&quot;</span>
 praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/cookbooks/glycolysis_demo.yaml
 praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/discovery/biomodels_discovery_pipeline.yaml
+praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/platform/policy_guarded_simulation.yaml
 </code></pre></div>
+<p>Requires <code>pip install praisonai</code> and <code>python -c "import praisonai_bio"</code>.</p>
 <hr />
 <h2 id="mcp-servers">MCP servers<a class="headerlink" href="#mcp-servers" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>python<span class="w"> </span>mcp/sysbio-server/server.py<span class="w">       </span><span class="c1"># 11 T2B tools</span>
@@ -1268,6 +1349,13 @@ python<span class="w"> </span>mcp/biomodels-server/server.py<span class="w">    
 praisonai-bio-mcp<span class="w">                        </span><span class="c1"># console entry (if installed)</span>
 </code></pre></div>
 <p>See <a href="../concepts/mcp/">MCP</a>.</p>
+<hr />
+<h2 id="docs-site">Docs site<a class="headerlink" href="#docs-site" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-r<span class="w"> </span>docs/requirements.txt
+mkdocs<span class="w"> </span>serve<span class="w">    </span><span class="c1"># http://127.0.0.1:8000</span>
+mkdocs<span class="w"> </span>build<span class="w">    </span><span class="c1"># output in site/</span>
+</code></pre></div>
+<p>Live site: <a href="https://bio.praison.ai">https://bio.praison.ai</a></p>
 
 
 

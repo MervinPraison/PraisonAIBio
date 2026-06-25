@@ -16,7 +16,7 @@
         <link rel="prev" href="../toolsets/">
       
       
-        <link rel="next" href="../recipes/">
+        <link rel="next" href="../tools-reference/">
       
       
         
@@ -860,6 +860,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../tools-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../recipes/" class="md-nav__link">
         
   
@@ -868,6 +896,34 @@
     
   
     Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
   
 
     
@@ -1312,6 +1368,16 @@
 <td>Species, reactions summary</td>
 </tr>
 <tr>
+<td><strong>sbml_validate</strong></td>
+<td>“Is the SBML valid?”</td>
+<td>Structure and unit check</td>
+</tr>
+<tr>
+<td><strong>sedml_parse</strong></td>
+<td>“What SED-ML tasks exist?”</td>
+<td>Tasks and data generators</td>
+</tr>
+<tr>
 <td><strong>get_annotation</strong></td>
 <td>“What databases link to this?”</td>
 <td>MIRIAM annotations</td>
@@ -1419,20 +1485,45 @@
 <td>Discovery only — safe</td>
 </tr>
 <tr>
+<td><strong>sbml_analysis</strong></td>
+<td>Load, summarise, validate SBML</td>
+</tr>
+<tr>
 <td><strong>sysbio-core</strong></td>
 <td>Discovery + basic simulation</td>
 </tr>
 <tr>
 <td><strong>simulation</strong></td>
-<td>Running models</td>
+<td>Running models (BASICO)</td>
+</tr>
+<tr>
+<td><strong>reporting</strong></td>
+<td>Compare models and simulations</td>
+</tr>
+<tr>
+<td><strong>repro</strong></td>
+<td>Reproducibility bundles</td>
+</tr>
+<tr>
+<td><strong>sysbio-full</strong></td>
+<td>All 21 tools</td>
 </tr>
 <tr>
 <td><strong>sysbio-orchestrator</strong></td>
 <td>Multi-step discovery agent</td>
 </tr>
+<tr>
+<td><strong>sysbio-safe</strong></td>
+<td>Read-only, no writes or simulation</td>
+</tr>
+<tr>
+<td><strong>genomics-bridge</strong></td>
+<td>v2 stub — register ClawBio tools at runtime</td>
+</tr>
 </tbody>
 </table>
 <p>Use in agents: <code>toolsets=["biomodels-readonly"]</code></p>
+<p>Full parameter list: <a href="../tools-reference/">Tools reference</a></p>
 <p>Always run <code>import praisonai_bio</code> first.</p>
 
 

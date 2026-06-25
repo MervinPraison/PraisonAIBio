@@ -778,6 +778,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-workflowsplatform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform (workflows/platform/)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#flow-full-research" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -860,6 +871,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../tools-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../recipes/" class="md-nav__link">
         
   
@@ -868,6 +907,34 @@
     
   
     Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
   
 
     
@@ -1238,6 +1305,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#platform-workflowsplatform" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Platform (workflows/platform/)
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#flow-full-research" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1354,8 +1432,56 @@
 <td><code>full_platform_showcase.yaml</code></td>
 <td>Route + Parallel + Memory</td>
 </tr>
+<tr>
+<td><code>precision_medicine_loop.yaml</code></td>
+<td>Loop: baseline → perturb → compare</td>
+</tr>
 </tbody>
 </table>
+<hr />
+<h2 id="platform-workflowsplatform">Platform (<code>workflows/platform/</code>)<a class="headerlink" href="#platform-workflowsplatform" title="Permanent link">&para;</a></h2>
+<p>Production patterns — policy, approval, eval, MCP, bots.</p>
+<table>
+<thead>
+<tr>
+<th>File</th>
+<th>What it does</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>approval_assumption_gate.yaml</code></td>
+<td>Human approval before assumption review</td>
+</tr>
+<tr>
+<td><code>approval_parameter_scan.yaml</code></td>
+<td>Human approval before parameter scan</td>
+</tr>
+<tr>
+<td><code>policy_guarded_simulation.yaml</code></td>
+<td>Simulation with export path policy</td>
+</tr>
+<tr>
+<td><code>eval_regression_gate.yaml</code></td>
+<td>Eval gate on tool selection</td>
+</tr>
+<tr>
+<td><code>mcp_sysbio_server.yaml</code></td>
+<td>Run sysbio MCP server workflow</td>
+</tr>
+<tr>
+<td><code>botos_sysbio_telegram.yaml</code></td>
+<td>Telegram bot + sysbio tools (needs token)</td>
+</tr>
+<tr>
+<td><code>botos_stub.yaml</code></td>
+<td>BotOS wiring stub</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><code>praisonai<span class="w"> </span>workflow<span class="w"> </span>run<span class="w"> </span>workflows/platform/policy_guarded_simulation.yaml
+</code></pre></div>
+<p>Agent defaults: <code>workflows/agents/defaults.yaml</code></p>
 <hr />
 <h2 id="flow-full-research">Flow (full research)<a class="headerlink" href="#flow-full-research" title="Permanent link">&para;</a></h2>
 <pre class="mermaid"><code>graph TD
