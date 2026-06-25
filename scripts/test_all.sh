@@ -4,6 +4,7 @@ set -euo pipefail
 cd "$(dirname "$0")/.."
 
 echo "=== Plan compliance ==="
+bash scripts/check_no_submission.sh
 python scripts/validate_repo.py
 
 echo "=== Unit tests ==="
