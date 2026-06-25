@@ -1,0 +1,9 @@
+# PraisonAIBio
+
+Open-source PraisonAI extension for BioModels.org systems biology.
+
+Install: pip install praisonai-bio
+Import: import praisonai_bio
+Docs: README.md, AGENTS.md
+Toolsets: sysbio-core, sysbio-full, simulation, biomodels-readonly
+Demo: workflows/cookbooks/glycolysis_demo.yaml (BIOMD0000000206)

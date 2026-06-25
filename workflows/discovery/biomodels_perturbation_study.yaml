@@ -1,0 +1,26 @@
+framework: praisonai
+process: workflow
+
+agents:
+  perturbation_designer:
+    role: Perturbation Designer
+    toolsets: [sysbio-core]
+  scenario_runner:
+    role: Scenario Runner
+    toolsets: [simulation]
+
+steps:
+  - agent: perturbation_designer
+    action: Design parameter perturbation matrix (6 scenarios)
+
+  - name: parallel_scenarios
+    parallel:
+      - agent: scenario_runner
+        action: Run perturbation scenario A
+      - agent: scenario_runner
+        action: Run perturbation scenario B
+
+  - agent: scenario_runner
+    action: "Execute scenario {{item}}"
+    loop:
+      over: [1, 2, 3, 4]

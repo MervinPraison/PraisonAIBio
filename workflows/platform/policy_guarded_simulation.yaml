@@ -1,0 +1,15 @@
+type: job
+name: policy-guarded-simulation
+description: Simulation with export path policy
+
+steps:
+  - name: Validate SBML
+    run: python -c "import praisonai_bio; from praisonai_bio.tools.sbml_validate import sbml_validate; print(sbml_validate.run(model_id='BIOMD0000000206'))"
+
+  - name: Baseline simulation
+    agent:
+      role: Simulation Engineer
+      instructions: Run baseline simulation only to allowed paths.
+      prompt: Simulate BIOMD0000000206 for 50 time units.
+      model: gpt-4o-mini
+      toolsets: [simulation]

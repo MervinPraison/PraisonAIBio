@@ -1,0 +1,26 @@
+type: job
+name: assumption-hitl-gate
+description: HITL approval before simulation
+
+steps:
+  - name: Assumption review
+    agent:
+      role: SBML Analyst
+      instructions: Review assumptions for the selected BioModels ID.
+      prompt: Summarise assumptions for BIOMD0000000206 and list HITL flags.
+      model: gpt-4o-mini
+    output_file: assumption_review.md
+
+  - name: Approve assumptions
+    approve:
+      description: Approve assumption review before running simulation
+      risk_level: medium
+      auto_approve: false
+
+  - name: Baseline simulation
+    agent:
+      role: Simulation Engineer
+      instructions: Run baseline simulation after approval.
+      prompt: Simulate BIOMD0000000206 for 50 time units.
+      model: gpt-4o-mini
+      toolsets: [simulation]

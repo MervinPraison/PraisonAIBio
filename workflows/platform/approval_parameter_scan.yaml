@@ -1,0 +1,26 @@
+type: job
+name: approval-parameter-scan
+description: HITL gate before parameter scan
+
+steps:
+  - name: Plan scan
+    agent:
+      role: Perturbation Designer
+      instructions: Propose parameter scan ranges.
+      prompt: Design a scan for BIOMD0000000206 parameter v1 from 0.1 to 2.0
+      model: gpt-4o-mini
+    output_file: scan_plan.md
+
+  - name: Approve scan
+    approve:
+      description: Approve parameter scan plan before execution
+      risk_level: medium
+      auto_approve: false
+
+  - name: Execute scan
+    agent:
+      role: Simulation Engineer
+      instructions: Run approved parameter scan.
+      prompt: Execute parameter scan per scan_plan.md on BIOMD0000000206
+      model: gpt-4o-mini
+      toolsets: [simulation]

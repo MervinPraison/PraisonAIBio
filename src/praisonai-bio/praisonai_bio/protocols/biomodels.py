@@ -1,0 +1,9 @@
+"""PraisonAIBio protocol stubs for extension."""
+
+from typing import Any, Protocol
+
+
+class BioModelsAdapterProtocol(Protocol):
+    def search(self, query: str, **kwargs: Any) -> dict[str, Any]: ...
+    def get_model_info(self, model_id: str) -> dict[str, Any]: ...
+    def download_sbml(self, model_id: str) -> bytes: ...

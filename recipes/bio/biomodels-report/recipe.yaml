@@ -1,0 +1,10 @@
+---
+name: biomodels-report
+description: Model comparison and report
+workflow: workflows/discovery/biomodels_comparison_report.yaml
+tags: [bio, reporting]
+---
+
+```bash
+praisonai workflow run workflows/discovery/biomodels_comparison_report.yaml
+```

@@ -1,0 +1,20 @@
+framework: praisonai
+process: workflow
+
+agents:
+  comparator:
+    role: Comparator
+    toolsets: [reporting]
+  report_writer:
+    role: Report Writer
+    toolsets: [reporting]
+
+steps:
+  - agent: comparator
+    action: Compare two models or simulation scenarios side by side
+
+  - agent: report_writer
+    action: Write comparison report with citations and model IDs
+    repeat:
+      until: APPROVED
+      max_iterations: 3

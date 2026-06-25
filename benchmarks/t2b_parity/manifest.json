@@ -1,0 +1,9 @@
+{
+  "version": "0.1.0",
+  "description": "Talk2BioModels parity benchmark scaffold",
+  "cases": [
+    {"tool": "search_models", "args": {"query": "glycolysis"}, "expect": "models"},
+    {"tool": "get_modelinfo", "args": {"model_id": "BIOMD0000000206"}, "expect": "metadata"},
+    {"tool": "ask_question", "args": {"model_id": "BIOMD0000000206", "question": "What organism?"}, "expect": "metadata"}
+  ]
+}

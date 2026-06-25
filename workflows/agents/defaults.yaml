@@ -1,0 +1,15 @@
+# Shared agent defaults for PraisonAIBio workflows
+
+defaults:
+  llm: gpt-4o-mini
+  memory: true
+
+specialists:
+  scout:
+    toolsets: [biomodels-readonly]
+  analyst:
+    toolsets: [sbml_analysis]
+  engineer:
+    toolsets: [simulation]
+  reporter:
+    toolsets: [reporting]

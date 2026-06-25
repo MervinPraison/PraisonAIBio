@@ -1,0 +1,1 @@
+{"id": "01_search_glycolysis", "prompt": "Search for curated glycolysis models", "expected_tool": "search_models", "mock_tool": "search_models"}

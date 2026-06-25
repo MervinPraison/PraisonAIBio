@@ -1,0 +1,1 @@
+{"id": "05_ask_question", "prompt": "What organism is BIOMD0000000206?", "expected_tool": "ask_question", "mock_tool": "ask_question"}

@@ -1,0 +1,21 @@
+framework: praisonai
+process: workflow
+
+agents:
+  clinician:
+    role: Clinician
+    instructions: State clinical question and constraints.
+  modeller:
+    role: Modeller
+    instructions: Propose BioModels and simulation approach.
+    toolsets: [sysbio-orchestrator]
+
+steps:
+  - agent: clinician
+    action: State precision medicine question for p53 pathway
+  - agent: modeller
+    action: Propose model and simulation plan
+    loop:
+      over: [1, 2, 3]
+      until: convergence noted in output
+      max_iterations: 3

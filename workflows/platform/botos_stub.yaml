@@ -1,0 +1,3 @@
+"""v2 BotOS integration stub."""
+
+BOTOS_PLATFORMS = ["telegram", "slack"]

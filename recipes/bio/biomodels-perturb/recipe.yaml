@@ -1,0 +1,10 @@
+---
+name: biomodels-perturb
+description: Parameter perturbation study
+workflow: workflows/discovery/biomodels_perturbation_study.yaml
+tags: [bio, perturbation]
+---
+
+```bash
+praisonai workflow run workflows/discovery/biomodels_perturbation_study.yaml
+```

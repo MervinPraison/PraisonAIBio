@@ -1,0 +1,42 @@
+# Glycolysis demo — BIOMD0000000206 (Teusink 2000)
+# Run: praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml
+
+config:
+  llm: gpt-4o-mini
+
+agents:
+  scout:
+    role: BioModels Scout
+    instructions: Locate the Teusink glycolysis model on BioModels.org.
+    toolsets:
+      - biomodels-readonly
+
+  analyst:
+    role: SBML Analyst
+    instructions: Summarise the glycolysis model structure.
+    toolsets:
+      - sbml_analysis
+
+  simulator:
+    role: Simulation Engineer
+    instructions: Run a baseline simulation of BIOMD0000000206.
+    toolsets:
+      - simulation
+
+tasks:
+  find_model:
+    description: Search for BIOMD0000000206 or Teusink glycolysis model.
+    expected_output: Model ID and metadata summary.
+    agent: scout
+
+  summarise:
+    description: Summarise species and reactions for BIOMD0000000206.
+    expected_output: SBML summary.
+    agent: analyst
+
+  simulate:
+    description: Run a 100 time-unit simulation of BIOMD0000000206.
+    expected_output: Simulation preview results.
+    agent: simulator
+
+process: sequential

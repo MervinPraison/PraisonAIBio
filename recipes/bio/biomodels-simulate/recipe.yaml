@@ -1,0 +1,10 @@
+---
+name: biomodels-simulate
+description: Baseline simulation on a BioModels ID
+workflow: workflows/discovery/biomodels_baseline_simulation.yaml
+tags: [bio, simulation]
+---
+
+```bash
+praisonai workflow run workflows/discovery/biomodels_baseline_simulation.yaml
+```

@@ -1,0 +1,36 @@
+config:
+  llm: gpt-4o-mini
+
+agents:
+  modeller:
+    role: Modeller
+    instructions: Load and summarise SBML models.
+    toolsets: [sbml_analysis]
+
+  reviewer:
+    role: Reviewer
+    instructions: Policy-check assumptions before simulation.
+    toolsets: [sysbio-safe]
+
+  reporter:
+    role: Reporter
+    instructions: Export reproducibility bundle.
+    toolsets: [repro]
+
+tasks:
+  model:
+    description: Summarise BIOMD0000000206 structure.
+    expected_output: SBML summary.
+    agent: modeller
+
+  review:
+    description: Trust scorecard and assumption flags.
+    expected_output: Review checklist.
+    agent: reviewer
+
+  report:
+    description: Export repro bundle metadata.
+    expected_output: Bundle path or export JSON.
+    agent: reporter
+
+process: sequential

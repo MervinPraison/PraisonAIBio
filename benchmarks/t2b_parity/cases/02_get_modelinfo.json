@@ -1,0 +1,1 @@
+{"id": "02_get_modelinfo", "prompt": "Get metadata for BIOMD0000000206", "expected_tool": "get_modelinfo", "mock_tool": "get_modelinfo"}

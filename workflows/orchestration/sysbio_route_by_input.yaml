@@ -1,0 +1,43 @@
+# Route by question domain (pathway / disease / drug / general)
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+
+variables:
+  question: "Find curated MAPK models on BioModels.org"
+
+agents:
+  domain_classifier:
+    role: Domain Classifier
+    instructions: |
+      Classify the question as exactly one word: pathway, disease, drug, or general.
+    goal: Route discovery by domain
+
+  pathway_scout:
+    role: Pathway Scout
+    instructions: Search BioModels for pathway models.
+    toolsets: [biomodels-readonly]
+
+  disease_scout:
+    role: Disease Scout
+    instructions: Search BioModels for disease-focused models.
+    toolsets: [biomodels-readonly]
+
+  general_scout:
+    role: General Scout
+    instructions: General BioModels search.
+    toolsets: [biomodels-readonly]
+
+steps:
+  - agent: domain_classifier
+    action: "Classify: {{ question }}"
+
+  - name: domain_route
+    route:
+      pathway: [pathway_scout]
+      disease: [disease_scout]
+      drug: [general_scout]
+      general: [general_scout]
+
+  - agent: pathway_scout
+    action: "Search and rank models for: {{ question }}"

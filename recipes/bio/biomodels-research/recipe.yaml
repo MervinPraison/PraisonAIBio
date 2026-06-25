@@ -1,0 +1,10 @@
+---
+name: biomodels-research
+description: Full research workflow from discovery to report
+workflow: workflows/discovery/biomodels_full_research_workflow.yaml
+tags: [bio, biomodels, research]
+---
+
+```bash
+praisonai workflow run workflows/discovery/biomodels_full_research_workflow.yaml
+```

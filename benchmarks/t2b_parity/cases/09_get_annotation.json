@@ -1,0 +1,1 @@
+{"id": "09_get_annotation", "prompt": "Annotations for BIOMD0000000206", "expected_tool": "get_annotation", "mock_tool": "get_annotation"}

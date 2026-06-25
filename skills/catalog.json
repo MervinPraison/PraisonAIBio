@@ -1,0 +1,30 @@
+{
+  "version": "0.1.0",
+  "skills": [
+    {
+      "id": "load-biomodel",
+      "name": "Load BioModels SBML",
+      "path": "skills/load-biomodel/SKILL.md"
+    },
+    {
+      "id": "repro-enforcer",
+      "name": "Reproducibility Enforcer",
+      "path": "skills/repro-enforcer/SKILL.md"
+    },
+    {
+      "id": "search-models",
+      "name": "Search BioModels",
+      "path": "skills/search-models/SKILL.md"
+    },
+    {
+      "id": "simulate-model",
+      "name": "Simulate Model",
+      "path": "skills/simulate-model/SKILL.md"
+    },
+    {
+      "id": "sysbio-orchestrator",
+      "name": "SysBio Orchestrator",
+      "path": "skills/sysbio-orchestrator/SKILL.md"
+    }
+  ]
+}

@@ -1,0 +1,6 @@
+{
+  "query": "glycolysis AND curationstatus:\"Manually curated\"",
+  "models": [
+    {"id": "BIOMD0000000206", "name": "Teusink2000_Glycolysis"}
+  ]
+}

@@ -1,0 +1,17 @@
+config:
+  llm: gpt-4o-mini
+
+agents:
+  simulation_engineer:
+    role: Simulation Engineer
+    instructions: Run baseline time-course simulations.
+    toolsets:
+      - simulation
+
+tasks:
+  baseline_sim:
+    description: Simulate the selected model and summarise dynamics.
+    expected_output: Time-course summary and optional plot.
+    agent: simulation_engineer
+
+process: sequential

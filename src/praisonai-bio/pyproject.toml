@@ -1,0 +1,70 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "praisonai-bio"
+version = "0.1.0"
+description = "Open-source AI agents for systems biology — BioModels.org discovery, simulation, and comparison"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [{name = "PraisonAI", email = "hello@praison.ai"}]
+keywords = ["praisonai", "biomodels", "sbml", "systems-biology", "agents"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+]
+dependencies = [
+    "praisonaiagents>=1.6.0",
+    "httpx>=0.27.0",
+    "pandas>=2.0",
+]
+
+[project.optional-dependencies]
+simulation = ["copasi-basico>=0.78"]
+plot = ["matplotlib>=3.7"]
+rag = ["pypdf>=4.0"]
+all = ["praisonai-bio[simulation,plot,rag]"]
+dev = ["pytest>=8.0", "pytest-mock>=3.10", "pyyaml>=6.0"]
+
+[project.entry-points."praisonaiagents.tools"]
+search_models = "praisonai_bio.tools.search_models:search_models"
+get_modelinfo = "praisonai_bio.tools.get_modelinfo:get_modelinfo"
+load_biomodel = "praisonai_bio.tools.load_biomodel:load_biomodel"
+simulate_model = "praisonai_bio.tools.simulate_model:simulate_model"
+ask_question = "praisonai_bio.tools.ask_question:ask_question"
+steady_state = "praisonai_bio.tools.steady_state:steady_state"
+parameter_scan = "praisonai_bio.tools.parameter_scan:parameter_scan"
+custom_plotter = "praisonai_bio.tools.custom_plotter:custom_plotter"
+get_annotation = "praisonai_bio.tools.get_annotation:get_annotation"
+query_article = "praisonai_bio.tools.query_article:query_article"
+save_model = "praisonai_bio.tools.save_model:save_model"
+rank_models = "praisonai_bio.tools.rank_models:rank_models"
+trust_scorecard = "praisonai_bio.tools.trust_scorecard:trust_scorecard"
+compare_models = "praisonai_bio.tools.compare_models:compare_models"
+preview_outcomes = "praisonai_bio.tools.preview_outcomes:preview_outcomes"
+sbml_summarise = "praisonai_bio.tools.sbml_summarise:sbml_summarise"
+sbml_validate = "praisonai_bio.tools.sbml_validate:sbml_validate"
+sedml_parse = "praisonai_bio.tools.sedml_parse:sedml_parse"
+simulate_perturbation = "praisonai_bio.tools.simulate_perturbation:simulate_perturbation"
+compare_simulations = "praisonai_bio.tools.compare_simulations:compare_simulations"
+repro_export = "praisonai_bio.tools.repro_export:repro_export"
+
+[project.scripts]
+praisonai-bio = "praisonai_bio.cli.main:main"
+praisonai-bio-mcp = "praisonai_bio.mcp.server:launch_sysbio_mcp"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["praisonai_bio*"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src/praisonai-bio"]
+markers = [
+    "integration: requires network or BASICO",
+    "agentic: requires LLM API key",
+]

@@ -1,0 +1,22 @@
+framework: praisonai
+process: workflow
+
+agents:
+  simulation_engineer:
+    role: Simulation Engineer
+    toolsets: [simulation]
+
+  aggregator:
+    role: Aggregator
+    instructions: Summarise parallel scan results.
+
+steps:
+  - name: parallel_scans
+    parallel:
+      - agent: simulation_engineer
+        action: "Parameter scan on BIOMD0000000206 parameter v1 from 0.1 to 1.0"
+      - agent: simulation_engineer
+        action: "Parameter scan on BIOMD0000000206 parameter v2 from 0.1 to 1.0"
+
+  - agent: aggregator
+    action: Compare parallel scan summaries

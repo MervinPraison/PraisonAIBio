@@ -1,0 +1,71 @@
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+
+variables:
+  question: "How does p53 affect cell cycle under DNA damage?"
+
+config:
+  llm: gpt-4o-mini
+
+agents:
+  intake_coordinator:
+    role: Intake Coordinator
+    instructions: Clarify research question and success criteria.
+    toolsets: [sysbio-safe]
+
+  question_decomposer:
+    role: Question Decomposer
+    instructions: Decompose into BioModels search queries.
+    toolsets: [sysbio-safe]
+
+  domain_classifier:
+    role: Domain Classifier
+    instructions: Respond with one word — pathway, disease, drug, or general.
+    toolsets: [sysbio-safe]
+
+  biomodels_scout:
+    role: BioModels Scout
+    instructions: Parallel multi-query search; dedupe and rank.
+    toolsets: [biomodels-readonly]
+
+  curation_reviewer:
+    role: Curation Reviewer
+    instructions: Trust scorecards for shortlist.
+    toolsets: [biomodels-readonly]
+
+  sbml_analyst:
+    role: SBML Analyst
+    instructions: Assumption checklist; flag HITL items.
+    toolsets: [sbml_analysis]
+
+  report_writer:
+    role: Report Writer
+    instructions: Discovery report with next steps.
+    toolsets: [reporting]
+
+steps:
+  - agent: intake_coordinator
+    action: "Intake for question: {{ question }}"
+
+  - agent: question_decomposer
+    action: "Decompose into search queries for: {{ question }}"
+
+  - agent: domain_classifier
+    action: "Classify domain for: {{ question }}"
+
+  - name: parallel_search
+    parallel:
+      - agent: biomodels_scout
+        action: "Search BioModels with primary query from decomposition"
+      - agent: biomodels_scout
+        action: "Search BioModels with alternate pathway keywords"
+
+  - agent: curation_reviewer
+    action: Trust scorecards for top 3 shortlisted models
+
+  - agent: sbml_analyst
+    action: SBML summarise and validate top candidate
+
+  - agent: report_writer
+    action: Write ranked shortlist report with model IDs

@@ -1,0 +1,1 @@
+{"id": "07_parameter_scan", "prompt": "Scan parameter v1 on BIOMD0000000206", "expected_tool": "parameter_scan", "mock_tool": "parameter_scan"}

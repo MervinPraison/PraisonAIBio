@@ -1,0 +1,22 @@
+type: job
+name: assumption-review-hitl
+description: Phase 3 — assumption review with HITL gate
+
+steps:
+  - name: SBML assumption review
+    agent:
+      role: SBML Analyst
+      instructions: Review assumptions, units, boundary conditions.
+      prompt: Review assumptions for BIOMD0000000206 using sbml_summarise and sbml_validate.
+      model: gpt-4o-mini
+      toolsets: [sbml_analysis]
+    output_file: assumption_review.md
+
+  - name: HITL approve assumptions
+    approve:
+      description: Human approval required before simulation
+      risk_level: high
+      auto_approve: false
+
+  - name: Post-approval note
+    run: echo "Assumptions approved — proceed to baseline simulation"

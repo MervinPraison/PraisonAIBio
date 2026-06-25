@@ -1,0 +1,6 @@
+llm: gpt-4o-mini
+toolsets:
+  - sysbio-core
+biomodels:
+  base_url: https://www.biomodels.org
+  curated_only: true

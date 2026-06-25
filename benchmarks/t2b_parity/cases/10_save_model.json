@@ -1,0 +1,1 @@
+{"id": "10_save_model", "prompt": "Save BIOMD0000000206 to disk", "expected_tool": "save_model", "mock_tool": "save_model"}

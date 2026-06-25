@@ -1,0 +1,1 @@
+{"cases": [{"input": "BIOMD0000000206", "expected_tool": "load_biomodel"}, {"input": "search glycolysis", "expected_tool": "search_models"}]}

@@ -1,0 +1,85 @@
+# Full 7-phase research pipeline
+# Run: praisonai workflow run workflows/discovery/biomodels_full_research_workflow.yaml --var question="..."
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+
+variables:
+  question: "How does p53 activation affect cell cycle arrest under DNA damage?"
+
+workflow:
+  memory:
+    backend: file
+  verbose: true
+
+agents:
+  intake_coordinator:
+    role: Intake Coordinator
+    toolsets: [sysbio-safe]
+  biomodels_scout:
+    role: BioModels Scout
+    toolsets: [biomodels-readonly]
+  sbml_analyst:
+    role: SBML Analyst
+    toolsets: [sbml_analysis]
+  simulation_engineer:
+    role: Simulation Engineer
+    toolsets: [simulation]
+  outcome_visualiser:
+    role: Outcome Visualiser
+    toolsets: [reporting]
+  perturbation_designer:
+    role: Perturbation Designer
+    toolsets: [sysbio-core]
+  scenario_runner:
+    role: Scenario Runner
+    toolsets: [simulation]
+  comparator:
+    role: Comparator
+    toolsets: [reporting]
+  report_writer:
+    role: Report Writer
+    toolsets: [repro]
+
+steps:
+  # Phase 1 — Intake
+  - agent: intake_coordinator
+    action: "Intake and scope: {{ question }}"
+
+  # Phase 2 — Shortlist (Parallel search)
+  - name: parallel_shortlist
+    parallel:
+      - agent: biomodels_scout
+        action: "Search BioModels for primary query from question"
+      - agent: biomodels_scout
+        action: "Rank curated models for research question"
+
+  # Phase 3 — Assumption review
+  - agent: sbml_analyst
+    action: SBML summarise and validate top shortlisted model
+
+  # Phase 4 — Baseline simulation
+  - agent: simulation_engineer
+    action: Run baseline simulation on selected model
+
+  # Phase 5 — Outcome preview
+  - agent: outcome_visualiser
+    action: Preview outcomes and plain-language summary
+
+  # Phase 6 — Perturbations
+  - agent: perturbation_designer
+    action: Design 6 perturbation scenarios
+  - name: scenario_loop
+    agent: scenario_runner
+    action: "Run perturbation scenario {{item}}"
+    loop:
+      over: [1, 2, 3]
+
+  # Phase 7 — Comparison report
+  - agent: comparator
+    action: Compare baseline vs perturbation runs
+  - agent: report_writer
+    action: Write final report with BioModels provenance
+    repeat:
+      until: APPROVED
+      max_iterations: 2

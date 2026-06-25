@@ -1,0 +1,12 @@
+# BotOS sysbio telegram — Phase 2 stub
+# Run: praisonai bot start --config workflows/platform/botos_sysbio_telegram.yaml
+
+platform: telegram
+agent:
+  name: sysbio-orchestrator
+  instructions: Answer BioModels questions using sysbio-orchestrator toolset.
+  toolsets:
+    - sysbio-orchestrator
+  llm: gpt-4o-mini
+
+token: ${TELEGRAM_BOT_TOKEN}

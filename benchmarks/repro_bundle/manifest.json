@@ -1,0 +1,1 @@
+{"bundle": "demo_data/bundles/glycolysis_demo", "checks": ["commands.sh", "checksums.sha256", "metadata optional"]}

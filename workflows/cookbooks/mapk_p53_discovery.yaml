@@ -1,0 +1,29 @@
+# MAPK/p53 discovery cookbook
+config:
+  llm: gpt-4o-mini
+
+agents:
+  scout:
+    role: BioModels Scout
+    instructions: Discover MAPK and p53 pathway models.
+    toolsets:
+      - biomodels-readonly
+
+  reviewer:
+    role: Curation Reviewer
+    instructions: Score trust for shortlisted models.
+    toolsets:
+      - biomodels-readonly
+
+tasks:
+  search:
+    description: Search BioModels for MAPK and p53 curated models.
+    expected_output: Ranked shortlist with model IDs.
+    agent: scout
+
+  trust:
+    description: Produce trust scorecards for top 3 models.
+    expected_output: Trust scores and publication links.
+    agent: reviewer
+
+process: sequential

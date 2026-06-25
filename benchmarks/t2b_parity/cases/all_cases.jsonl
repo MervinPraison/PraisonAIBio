@@ -1,0 +1,10 @@
+{"id": "01_search_glycolysis", "prompt": "Search for curated glycolysis models", "expected_tool": "search_models", "mock_tool": "search_models"}
+{"id": "02_get_modelinfo", "prompt": "Get metadata for BIOMD0000000206", "expected_tool": "get_modelinfo", "mock_tool": "get_modelinfo"}
+{"id": "03_load_biomodel", "prompt": "Load BIOMD0000000206", "expected_tool": "load_biomodel", "mock_tool": "load_biomodel"}
+{"id": "04_simulate_model", "prompt": "Simulate BIOMD0000000206", "expected_tool": "simulate_model", "mock_tool": "simulate_model"}
+{"id": "05_ask_question", "prompt": "What organism is BIOMD0000000206?", "expected_tool": "ask_question", "mock_tool": "ask_question"}
+{"id": "06_steady_state", "prompt": "Steady state for BIOMD0000000206", "expected_tool": "steady_state", "mock_tool": "steady_state"}
+{"id": "07_parameter_scan", "prompt": "Scan parameter v1 on BIOMD0000000206", "expected_tool": "parameter_scan", "mock_tool": "parameter_scan"}
+{"id": "08_custom_plotter", "prompt": "Plot simulation results", "expected_tool": "custom_plotter", "mock_tool": "custom_plotter"}
+{"id": "09_get_annotation", "prompt": "Annotations for BIOMD0000000206", "expected_tool": "get_annotation", "mock_tool": "get_annotation"}
+{"id": "10_save_model", "prompt": "Save BIOMD0000000206 to disk", "expected_tool": "save_model", "mock_tool": "save_model"}

@@ -1,0 +1,1 @@
+{"id": "03_load_biomodel", "prompt": "Load BIOMD0000000206", "expected_tool": "load_biomodel", "mock_tool": "load_biomodel"}

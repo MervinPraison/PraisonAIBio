@@ -1,0 +1,37 @@
+# Full platform showcase — Route, Parallel, Loop, Approval, Memory
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+
+variables:
+  question: "Discover and simulate a curated glycolysis model"
+
+workflow:
+  memory:
+    backend: file
+  verbose: true
+
+agents:
+  orchestrator:
+    role: SysBio Orchestrator
+    toolsets: [sysbio-orchestrator]
+  scout:
+    role: BioModels Scout
+    toolsets: [biomodels-readonly]
+  engineer:
+    role: Simulation Engineer
+    toolsets: [simulation]
+
+steps:
+  - agent: orchestrator
+    action: "Plan workflow for: {{ question }}"
+
+  - name: parallel_discovery
+    parallel:
+      - agent: scout
+        action: "Search BioModels for glycolysis"
+      - agent: scout
+        action: "Rank models for yeast glycolysis"
+
+  - agent: engineer
+    action: "Preview outcomes for BIOMD0000000206"

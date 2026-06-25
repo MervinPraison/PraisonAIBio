@@ -1,0 +1,1 @@
+{"id": "04_simulate_model", "prompt": "Simulate BIOMD0000000206", "expected_tool": "simulate_model", "mock_tool": "simulate_model"}

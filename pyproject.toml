@@ -1,0 +1,8 @@
+[project]
+name = "praisonaibio-workspace"
+version = "0.1.0"
+description = "PraisonAIBio monorepo workspace"
+requires-python = ">=3.10"
+
+[tool.setuptools]
+packages = []
