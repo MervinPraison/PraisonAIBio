@@ -10,6 +10,7 @@ echo "Checking tracked files for submission-sensitive text..."
 FOUND=0
 while IFS= read -r -d '' f; do
   [[ "$f" == .gitignore ]] && continue
+  [[ "$f" == scripts/check_no_submission.sh ]] && continue
   if grep -i -E -q "$PATTERN" "$f" 2>/dev/null; then
     echo "  $f"
     FOUND=1
