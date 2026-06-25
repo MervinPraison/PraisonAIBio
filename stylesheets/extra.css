@@ -191,12 +191,18 @@
 }
 
 /* Full-width home (no sparse sidebar) */
-.bio-home .md-sidebar--primary {
+.bio-home .md-sidebar--primary,
+.bio-home .md-sidebar--secondary {
   display: none;
 }
 
-.bio-home .md-content {
+.bio-home .md-content__inner {
+  margin: 0 auto;
   max-width: 960px;
+}
+
+.bio-home .md-main__inner {
+  margin-top: 0;
 }
 
 /* ── Hero (home page) ─────────────────────────────────────────────────── */
