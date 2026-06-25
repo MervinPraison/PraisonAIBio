@@ -1,0 +1,5 @@
+name: biomodels-discovery
+description: Discover curated BioModels for a research question
+version: "1.0.0"
+tags: [bio, biomodels, discovery]
+workflow_file: ../../../workflows/discovery/biomodels_discovery_pipeline.yaml

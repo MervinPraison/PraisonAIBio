@@ -11,7 +11,7 @@ ROOT = Path(__file__).resolve().parents[1]
 # --- Plan: repository structure (Phase 0 + Phase 1 scaffold) ---
 
 PLAN_PATHS: dict[str, list[str]] = {
-    "root": ["README.md", "AGENTS.md", "llms.txt", "LICENSE", "pyproject.toml", "pytest.ini"],
+    "root": ["README.md", "AGENTS.md", "CONTRIBUTING.md", "ROADMAP.md", "llms.txt", "LICENSE", "pyproject.toml", "pytest.ini"],
     "package": [
         "src/praisonai-bio/pyproject.toml",
         "src/praisonai-bio/praisonai_bio/__init__.py",
@@ -103,10 +103,15 @@ PLAN_PATHS: dict[str, list[str]] = {
     ],
     "recipes_all_5": [
         "recipes/bio/biomodels-discovery/recipe.yaml",
+        "recipes/bio/biomodels-discovery/TEMPLATE.yaml",
         "recipes/bio/biomodels-research/recipe.yaml",
+        "recipes/bio/biomodels-research/TEMPLATE.yaml",
         "recipes/bio/biomodels-simulate/recipe.yaml",
+        "recipes/bio/biomodels-simulate/TEMPLATE.yaml",
         "recipes/bio/biomodels-perturb/recipe.yaml",
+        "recipes/bio/biomodels-perturb/TEMPLATE.yaml",
         "recipes/bio/biomodels-report/recipe.yaml",
+        "recipes/bio/biomodels-report/TEMPLATE.yaml",
     ],
     "skills": [
         "skills/catalog.json",
@@ -127,6 +132,7 @@ PLAN_PATHS: dict[str, list[str]] = {
         "benchmarks/t2b_parity/runner.py",
         "benchmarks/t2b_parity/manifest.json",
         "benchmarks/t2b_parity/ground_truth/README.md",
+        "benchmarks/t2b_parity/ground_truth/BIOMD0000000206_trajectory.csv",
         "benchmarks/orchestrator_routing/manifest.json",
         "benchmarks/simulation_accuracy/manifest.json",
         "benchmarks/repro_bundle/manifest.json",
@@ -146,8 +152,13 @@ PLAN_PATHS: dict[str, list[str]] = {
     "scripts": [
         "scripts/generate_catalog.py",
         "scripts/download_demo_sbml.py",
+        "scripts/generate_ground_truth.py",
         "scripts/validate_repo.py",
         "scripts/capture_example_outputs.sh",
+    ],
+    "policy_packs": [
+        "policy/packs/bio-public.yaml",
+        "policy/packs/bio-lab.yaml",
     ],
     "tests": [
         "tests/unit/test_biomodels_adapter.py",
@@ -194,6 +205,7 @@ PLAN_PATHS: dict[str, list[str]] = {
         "docs/cli.md",
         "docs/faq.md",
         "docs/development.md",
+        "docs/plan-validation.md",
     ],
     "mkdocs": ["mkdocs.yml", "docs/requirements.txt"],
 }

@@ -1,0 +1,5 @@
+name: biomodels-research
+description: Full research workflow from discovery to report
+version: "1.0.0"
+tags: [bio, biomodels, research]
+workflow_file: ../../../workflows/discovery/biomodels_full_research_workflow.yaml

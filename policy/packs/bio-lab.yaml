@@ -1,0 +1,10 @@
+# Lab policy — simulation + perturbation + repro export
+name: bio-lab
+description: Full sysbio toolsets with export to user-specified dirs
+allow_toolsets:
+  - sysbio-full
+  - repro
+require_hitl_before:
+  - simulate_perturbation
+  - parameter_scan
+max_simulation_duration: 500

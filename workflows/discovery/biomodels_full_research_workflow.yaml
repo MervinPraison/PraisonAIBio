@@ -1,30 +1,41 @@
 # Full 7-phase research pipeline
 # Run: praisonai workflow run workflows/discovery/biomodels_full_research_workflow.yaml --var question="..."
+# HITL (Phase 3→4): praisonai workflow run workflows/platform/approval_assumption_gate.yaml
 framework: praisonai
 process: workflow
 input: "{{ question }}"
 
 variables:
   question: "How does p53 activation affect cell cycle arrest under DNA damage?"
+  run_id: "full-research-demo"
 
 workflow:
   memory:
     backend: file
+    session_id: "biomodels-{{ run_id }}"
   verbose: true
 
 agents:
   intake_coordinator:
     role: Intake Coordinator
     toolsets: [sysbio-safe]
+    handoffs: [biomodels_scout]
   biomodels_scout:
     role: BioModels Scout
     toolsets: [biomodels-readonly]
+    handoffs: [curation_reviewer, sbml_analyst]
+  curation_reviewer:
+    role: Curation Reviewer
+    toolsets: [biomodels-readonly]
+    handoffs: [sbml_analyst]
   sbml_analyst:
     role: SBML Analyst
     toolsets: [sbml_analysis]
+    handoffs: [simulation_engineer]
   simulation_engineer:
     role: Simulation Engineer
     toolsets: [simulation]
+    handoffs: [outcome_visualiser]
   outcome_visualiser:
     role: Outcome Visualiser
     toolsets: [reporting]
@@ -54,9 +65,18 @@ steps:
       - agent: biomodels_scout
         action: "Rank curated models for research question"
 
-  # Phase 3 — Assumption review
+  # Phase 3 — Curation + assumption review
+  - agent: curation_reviewer
+    action: Trust scorecards for top 3 shortlisted models
+
   - agent: sbml_analyst
     action: SBML summarise and validate top shortlisted model
+
+  - name: assumption_hitl
+    approve:
+      description: Approve assumption review before baseline simulation
+      risk_level: medium
+      auto_approve: false
 
   # Phase 4 — Baseline simulation
   - agent: simulation_engineer
@@ -79,7 +99,7 @@ steps:
   - agent: comparator
     action: Compare baseline vs perturbation runs
   - agent: report_writer
-    action: Write final report with BioModels provenance
+    action: "Write final report with BioModels provenance; use repro_export with run_id={{ run_id }}"
     repeat:
       until: APPROVED
       max_iterations: 2

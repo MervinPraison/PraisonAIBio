@@ -24,6 +24,21 @@ agents:
     instructions: Respond with one word — pathway, disease, drug, or general.
     toolsets: [sysbio-safe]
 
+  pathway_scout:
+    role: Pathway Scout
+    instructions: Search BioModels for pathway models.
+    toolsets: [biomodels-readonly]
+
+  disease_scout:
+    role: Disease Scout
+    instructions: Search BioModels for disease-focused models.
+    toolsets: [biomodels-readonly]
+
+  general_scout:
+    role: General Scout
+    instructions: General BioModels search.
+    toolsets: [biomodels-readonly]
+
   biomodels_scout:
     role: BioModels Scout
     instructions: Parallel multi-query search; dedupe and rank.
@@ -53,6 +68,16 @@ steps:
 
   - agent: domain_classifier
     action: "Classify domain for: {{ question }}"
+
+  - name: domain_route
+    route:
+      pathway: [pathway_scout]
+      disease: [disease_scout]
+      drug: [general_scout]
+      general: [general_scout]
+
+  - agent: pathway_scout
+    action: "Search and rank models for: {{ question }}"
 
   - name: parallel_search
     parallel:

@@ -80,6 +80,7 @@ nav:
       - vs ClawBio: concepts/vs-clawbio.md
   - Development:
       - Testing: development.md
+      - Plan validation: plan-validation.md
       - Custom domain: custom-domain.md
 
 extra:

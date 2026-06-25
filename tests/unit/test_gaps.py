@@ -33,23 +33,34 @@ def test_repro_export(tmp_path):
         mock_client.download_sbml.return_value = b"<sbml/>"
         mock_client.get_model_info.return_value = {"name": "test"}
         mock_get.return_value = mock_client
-        out = repro_export.run(model_id="BIOMD0000000206", output_dir=str(tmp_path))
+        out = repro_export.run(model_id="BIOMD0000000206", output_dir=str(tmp_path), run_id="test-run-001")
         data = json.loads(out)
         assert (tmp_path / "commands.sh").exists()
         assert (tmp_path / "checksums.sha256").exists()
+        assert data.get("session_dir")
+        manifest = data["session_dir"] + "/repro_manifest.json"
+        from pathlib import Path
+
+        assert Path(manifest).exists()
 
 
 def test_basico_load_model_downloads_sbml():
+    import sys
     from praisonai_bio.adapters import basico_adapter
 
-    with patch.object(basico_adapter, "check_basico_available", return_value=(True, "")):
-        with patch("praisonai_bio.tools._helpers.get_client") as mock_get:
-            mock_client = MagicMock()
-            mock_client.download_sbml.return_value = b"<sbml/>"
-            mock_get.return_value = mock_client
-            with patch("praisonai_bio.adapters.basico_adapter.write_temp_sbml", return_value="/tmp/x.xml"):
-                with patch("basico.load_model", return_value="model") as mock_load:
+    mock_basico = MagicMock()
+    mock_basico.load_model.return_value = "model"
+    sys.modules["basico"] = mock_basico
+    try:
+        with patch.object(basico_adapter, "check_basico_available", return_value=(True, "")):
+            with patch("praisonai_bio.tools._helpers.get_client") as mock_get:
+                mock_client = MagicMock()
+                mock_client.download_sbml.return_value = b"<sbml/>"
+                mock_get.return_value = mock_client
+                with patch("praisonai_bio.adapters.basico_adapter.write_temp_sbml", return_value="/tmp/x.xml"):
                     result = basico_adapter.load_model(model_id="BIOMD0000000206")
                     mock_client.download_sbml.assert_called_once_with("BIOMD0000000206")
-                    mock_load.assert_called_once()
+                    mock_basico.load_model.assert_called_once()
                     assert result == "model"
+    finally:
+        sys.modules.pop("basico", None)

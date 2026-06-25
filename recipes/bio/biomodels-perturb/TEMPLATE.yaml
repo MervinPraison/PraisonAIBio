@@ -1,0 +1,5 @@
+name: biomodels-perturb
+description: Parameter perturbation study
+version: "1.0.0"
+tags: [bio, perturbation]
+workflow_file: ../../../workflows/discovery/biomodels_perturbation_study.yaml

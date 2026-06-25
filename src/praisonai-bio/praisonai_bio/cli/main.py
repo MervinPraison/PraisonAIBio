@@ -24,7 +24,11 @@ def cmd_init() -> int:
             shutil.copy2(src, agents_dir / name)
     config = praisonai_dir / "config.yaml"
     if not config.exists():
-        config.write_text("llm: gpt-4o-mini\ntoolsets:\n  - sysbio-core\n", encoding="utf-8")
+        config.write_text(
+            "llm: gpt-4o-mini\ntoolsets:\n  - sysbio-core\n"
+            "biomodels:\n  base_url: https://www.biomodels.org\n  curated_only: true\n",
+            encoding="utf-8",
+        )
     print(f"Initialised {praisonai_dir}")
     print("Next: pip install -e 'src/praisonai-bio[simulation]' && python -c \"import praisonai_bio\"")
     return 0

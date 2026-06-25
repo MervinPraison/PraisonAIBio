@@ -1,0 +1,11 @@
+# Public-safe BioModels policy (read-only, no local writes outside /tmp)
+name: bio-public
+description: Curated BioModels read + reporting only
+allow_toolsets:
+  - biomodels-readonly
+  - sbml_analysis
+  - reporting
+  - sysbio-safe
+deny_tools:
+  - save_model
+max_simulation_duration: 100

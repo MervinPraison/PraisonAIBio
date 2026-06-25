@@ -5,6 +5,7 @@ from pathlib import Path
 from praisonaiagents import tool
 
 from praisonai_bio.tools._helpers import as_json, get_client, normalise_model_id
+from praisonai_bio.state.session import run_dir, save_json
 
 
 @tool
@@ -39,6 +40,10 @@ def repro_export(model_id: str, output_dir: str, run_id: str | None = None) -> s
             f"# Reproducibility bundle\n\nModel: `{model_id}`\nRun: `{run_id or 'manual'}`\n",
             encoding="utf-8",
         )
-        return as_json({"model_id": model_id, "bundle_dir": str(out.resolve()), "files": [p.name for p in out.iterdir()]})
+        result = {"model_id": model_id, "bundle_dir": str(out.resolve()), "files": [p.name for p in out.iterdir()]}
+        if run_id:
+            save_json(run_id, "repro_manifest.json", result)
+            result["session_dir"] = str(run_dir(run_id))
+        return as_json(result)
     except Exception as exc:
         return as_json({"error": str(exc)})
