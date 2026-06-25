@@ -14,3 +14,4 @@ grant/
 .DS_Store
 benchmarks/reports/*
 !benchmarks/reports/.gitkeep
+site/

@@ -170,12 +170,20 @@ PLAN_PATHS: dict[str, list[str]] = {
         "examples/big/04_glycolysis_demo.py",
     ],
     "docs_hub": [
-        "docs/README.md",
+        "docs/index.md",
         "docs/get-started.md",
+        "docs/install.md",
         "docs/quick-tasks.md",
         "docs/for-researchers.md",
         "docs/tools-at-a-glance.md",
+        "docs/examples.md",
+        "docs/toolsets.md",
+        "docs/recipes.md",
+        "docs/cli.md",
+        "docs/faq.md",
+        "docs/development.md",
     ],
+    "mkdocs": ["mkdocs.yml", "docs/requirements.txt"],
 }
 
 T2B_TOOLS = [
@@ -196,7 +204,6 @@ REQUIRED_TOOLSETS = [
 PHASE2_DEFERRED = [
     "src/praisonai-bio/praisonai_bio/adapters/ols_adapter.py",
     "mcp/sysbio-server/Dockerfile",
-    "docs/mintlify/",
 ]
 
 

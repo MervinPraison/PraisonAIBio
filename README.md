@@ -2,7 +2,9 @@
 
 Open-source AI agents for systems biology: discover, simulate, and compare curated models from [BioModels.org](https://www.biomodels.org) using [PraisonAI](https://github.com/MervinPraison/PraisonAI).
 
-**New here?** → [docs/get-started.md](docs/get-started.md) · [docs/quick-tasks.md](docs/quick-tasks.md) · [examples/](examples/)
+**New here?** → [Documentation](https://mervinpraison.github.io/PraisonAIBio/) · [Get started](docs/get-started.md) · [examples/](examples/)
+
+Build docs locally: `pip install -r docs/requirements.txt && mkdocs serve`
 
 ## Quick start
 
