@@ -1,82 +1,126 @@
 # PraisonAIBio
 
-Open-source AI agents for systems biology: discover, simulate, and compare curated models from [BioModels.org](https://www.biomodels.org) using [PraisonAI](https://github.com/MervinPraison/PraisonAI).
+**Find, check, and simulate curated systems-biology models** from [BioModels.org](https://www.biomodels.org) — with plain Python, AI agents, or YAML workflows.
 
-**New here?** → [Documentation](https://bio.praison.ai/) · [Get started](docs/get-started.md) · [examples/](examples/)
+Built on [PraisonAI](https://github.com/MervinPraison/PraisonAI).
 
-Build docs locally: `pip install -r docs/requirements.txt && mkdocs serve`
+📖 **Full documentation:** [bio.praison.ai](https://bio.praison.ai)
 
-## Quick start
+---
+
+## What you need
+
+| | Required | Optional |
+|---|----------|----------|
+| **Python 3.10+** | Yes | |
+| **`praisonai-bio` package** | Yes | |
+| **`import praisonai_bio`** | Yes — registers tools for agents/YAML | |
+| **Internet** | Yes — live BioModels.org API | |
+| **`OPENAI_API_KEY`** | Only for AI agent examples | |
+| **`praisonai` CLI** | Only for YAML workflows | `pip install praisonai` |
+| **`[simulation]` extra** | Only to run ODE simulations (BASICO) | `pip install -e "src/praisonai-bio[simulation]"` |
+
+---
+
+## Install (minimum)
 
 ```bash
-pip install -e "src/praisonai-bio[simulation]"
-python -c "import praisonai_bio"  # registers toolsets
-praisonai run --agent biomodels-scout --prompt "Find glycolysis models"
+git clone https://github.com/MervinPraison/PraisonAIBio.git
+cd PraisonAIBio
+pip install -e "src/praisonai-bio"
+python -c "import praisonai_bio"
 ```
 
-Or run the glycolysis cookbook:
+Verify:
 
 ```bash
+praisonai-bio validate check
+```
+
+---
+
+## Try it — pick one path
+
+### 1. Direct tool (no AI, no API key)
+
+Search BioModels for glycolysis models:
+
+```bash
+python examples/small/01_search.py
+```
+
+Sample output: JSON list of curated model IDs and names.  
+→ [More small examples](docs/examples/index.md)
+
+### 2. AI agent (needs `OPENAI_API_KEY`)
+
+```bash
+export OPENAI_API_KEY=sk-...
+python examples/big/01_find_models.py
+```
+
+Sample output: plain-English answer with recommended model IDs.  
+→ [All agent examples](docs/examples/index.md)
+
+### 3. YAML workflow (needs `praisonai` CLI + API key)
+
+```bash
+pip install praisonai
+export OPENAI_API_KEY=sk-...
+python -c "import praisonai_bio"
 praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml
 ```
 
-## Features
+Three agents in sequence: find → summarise → simulate **BIOMD0000000206**.  
+→ [Workflow guide](docs/concepts/workflows.md)
 
-- **BioModels.org integration** — search, metadata, SBML download via REST
-- **T2B tool parity** — 11 Talk2BioModels-compatible tools on PraisonAI
-- **Multi-agent workflows** — discovery, assumption review, simulation, perturbation, comparison
-- **Toolsets** — `sysbio-core`, `simulation`, `sysbio-full`, `sysbio-orchestrator`, and more
-- **Reproducibility** — bundle helpers and benchmark scaffolds
-- **CLI / YAML / Python** — same workflows in all three modes
+---
 
-## Install
+## Demo model
 
-```bash
-pip install praisonai-bio
-# Optional simulation (BASICO/COPASI)
-pip install "praisonai-bio[simulation,plot]"
+**BIOMD0000000206** — Teusink yeast glycolysis. Used in examples, cookbooks, and docs.
+
+---
+
+## What it includes
+
+- **21 tools** — search, rank, validate SBML, simulate, export repro bundles
+- **10 toolsets** — e.g. `biomodels-readonly` (safe), `sysbio-full` (everything)
+- **YAML workflows** — discovery pipelines, cookbooks, multi-agent teams
+- **MCP servers** — use tools from Cursor / Claude Desktop
+
+Details: [Tools](https://bio.praison.ai/tools-at-a-glance/) · [Toolsets](https://bio.praison.ai/toolsets/) · [Examples with sample output](https://bio.praison.ai/examples/)
+
+---
+
+## Python one-liner
+
+```python
+import praisonai_bio
+from praisonai_bio.tools.search_models import search_models
+
+print(search_models.run(query="glycolysis", num_results=5))
 ```
 
-## Toolsets
+---
 
-| Toolset | Purpose |
-|---------|---------|
-| `biomodels-readonly` | Search and metadata (safe) |
-| `sbml_analysis` | Load and summarise SBML |
-| `sysbio-core` | Phase 0 demo (5 core tools + discovery) |
-| `simulation` | BASICO simulation and plotting |
-| `sysbio-full` | All 11 T2B tools + discovery |
-| `sysbio-orchestrator` | Multi-agent pipeline |
-| `sysbio-safe` | Read-only, no simulation |
-
-**Important:** `import praisonai_bio` before using toolsets in YAML or CLI.
-
-## Phase 0 demo model
-
-`BIOMD0000000206` — Teusink et al. yeast glycolysis (glycolysis cookbook).
-
-## Development
+## For developers
 
 ```bash
 pip install -e "src/praisonai-bio[dev,simulation]"
-pytest tests/unit -q
-python scripts/validate_repo.py   # plan completeness check
-praisonai-bio validate check
-praisonai-bio tools validate
+./scripts/test_all.sh
+python scripts/validate_repo.py
 ```
 
-## Tools (21)
-
-T2B parity (11): `search_models`, `get_modelinfo`, `load_biomodel`, `simulate_model`, `ask_question`, `steady_state`, `parameter_scan`, `custom_plotter`, `get_annotation`, `query_article`, `save_model`
-
-Discovery & extras: `rank_models`, `trust_scorecard`, `compare_models`, `preview_outcomes`, `sbml_summarise`, `sbml_validate`, `sedml_parse`, `simulate_perturbation`, `compare_simulations`, `repro_export`
-
-## MCP
+Build docs locally:
 
 ```bash
-python mcp/sysbio-server/server.py      # all T2B tools
-python mcp/biomodels-server/server.py   # read-only
+pip install -r docs/requirements.txt && mkdocs serve
 ```
+
+→ [Development](docs/development.md) · [AGENTS.md](AGENTS.md)
+
+---
 
 ## Licence
 
@@ -84,6 +128,6 @@ MIT
 
 ## Links
 
+- [Documentation](https://bio.praison.ai)
 - [BioModels.org](https://www.biomodels.org)
 - [PraisonAI](https://github.com/MervinPraison/PraisonAI)
-- [Talk2BioModels](https://github.com/coinse/talk2biomodels)
