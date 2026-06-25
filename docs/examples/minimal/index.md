@@ -9,7 +9,7 @@ python examples/minimal/search.py
 
 | Script | Tested output |
 |--------|---------------|
-| [search.py](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/search.py) | [output.txt](minimal/search/output.txt) |
+| [search.py](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/search.py) | [output.txt](search/output.txt) |
 | [info.py](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/info.py) | same as [02-model-info](../small/02-model-info.md) |
 | [trust.py](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/trust.py) | same as [03-trust-score](../small/03-trust-score.md) |
 | [validate.py](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/validate.py) | same as [04-validate-sbml](../small/04-validate-sbml.md) |

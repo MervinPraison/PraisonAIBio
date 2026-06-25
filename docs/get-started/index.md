@@ -12,6 +12,8 @@ pip install -e "src/praisonai-bio"
 python -c "import praisonai_bio"
 ```
 
+Full guide: [Install](../install.md)
+
 ---
 
 ## Step 2 — Try a search (no AI)
@@ -39,6 +41,18 @@ python examples/big/01_find_models.py
 
 ## What next?
 
+| Goal | Link |
+|------|------|
+| Interactive walkthrough | [Interactive guide](../interactive-guide.md) |
+| Copy-paste task menu | [Quick tasks](../quick-tasks.md) |
+| For lab scientists | [For researchers](../for-researchers.md) |
+| All examples | [Examples](../examples/index.md) |
+| FAQ | [FAQ](../faq.md) |
+
+---
+
+## Quick commands
+
 | Goal | Command |
 |------|---------|
 | Check one model | `python examples/small/02_model_info.py` |
@@ -46,5 +60,3 @@ python examples/big/01_find_models.py
 | Validate SBML | `python examples/small/04_validate_sbml.py` |
 | Full glycolysis walkthrough | `python examples/big/04_glycolysis_demo.py` |
 | YAML workflow (no Python) | `praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml` |
-
-Open [Quick tasks](quick-tasks.md) for a task menu.

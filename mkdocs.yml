@@ -8,34 +8,54 @@ edit_uri: edit/main/docs/
 theme:
   name: material
   language: en
+  logo: assets/favicon.svg
+  favicon: assets/favicon.svg
+  icon:
+    repo: fontawesome/brands/github
+  font:
+    text: Inter
+    code: JetBrains Mono
   palette:
-    - scheme: default
-      primary: red
-      accent: cyan
+    - media: "(prefers-color-scheme: light)"
+      scheme: mint-light
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-7
         name: Dark mode
-    - scheme: slate
-      primary: red
-      accent: cyan
+    - media: "(prefers-color-scheme: dark)"
+      scheme: mint-dark
+      primary: custom
+      accent: custom
       toggle:
         icon: material/brightness-4
         name: Light mode
   features:
     - navigation.tabs
+    - navigation.tabs.sticky
     - navigation.sections
     - navigation.expand
+    - navigation.path
+    - navigation.indexes
     - navigation.top
+    - navigation.footer
+    - toc.follow
     - search.suggest
     - search.highlight
+    - search.share
     - content.code.copy
+    - content.code.annotate
     - content.tabs.link
+    - header.autohide
 
 plugins:
-  - search
+  - search:
+      separator: '[\s\-]+'
 
 markdown_extensions:
   - admonition
+  - attr_list
+  - md_in_html
   - pymdownx.details
   - pymdownx.superfences:
       custom_fences:
@@ -46,55 +66,73 @@ markdown_extensions:
       alternate_style: true
   - pymdownx.snippets:
       base_path: ["."]
+  - pymdownx.emoji:
+      emoji_index: !!python/name:material.extensions.emoji.twemoji
+      emoji_generator: !!python/name:material.extensions.emoji.to_svg
   - tables
   - toc:
       permalink: true
-
-nav:
-  - Home: index.md
-  - Get started:
-      - Overview: get-started.md
-      - Install: install.md
-      - Quick tasks: quick-tasks.md
-      - Interactive guide: interactive-guide.md
-      - For researchers: for-researchers.md
-      - FAQ: faq.md
-  - Guides:
-      - Examples:
-          - Overview: examples/index.md
-          - Minimal (2 lines): examples/minimal/index.md
-          - Small — Search: examples/small/01-search.md
-          - Small — Model info: examples/small/02-model-info.md
-          - Small — Trust score: examples/small/03-trust-score.md
-          - Small — Validate SBML: examples/small/04-validate-sbml.md
-          - Small — Simulate: examples/small/05-simulate.md
-          - Small — Perturb: examples/small/06-perturb.md
-          - Small — Compare models: examples/small/07-compare-models.md
-          - Small — Compare sims: examples/small/08-compare-sims.md
-          - Small — Repro export: examples/small/09-repro-export.md
-          - Small — SBML graph: examples/small/10-sbml-graph.md
-          - Notebooks: examples/notebooks/index.md
-          - Agent — Find models: examples/big/01-find-models.md
-          - Agent — Summarise: examples/big/02-summarise-model.md
-          - Agent — Discovery: examples/big/03-discovery-study.md
-          - Agent — Glycolysis: examples/big/04-glycolysis-demo.md
-      - Workflows: concepts/workflows.md
-      - Toolsets: toolsets.md
-      - Tools: tools-at-a-glance.md
-      - Tools reference: tools-reference.md
-      - Recipes: recipes.md
-      - Skills: skills.md
-      - CLI: cli.md
-      - MCP: concepts/mcp.md
-  - Compare:
-      - vs Talk2BioModels: concepts/vs-t2b.md
-      - vs ClawBio: concepts/vs-clawbio.md
-  - Development:
-      - Testing: development.md
-      - Plan validation: plan-validation.md
-      - Custom domain: custom-domain.md
+      toc_depth: 3
 
 extra:
   social:
     - icon: fontawesome/brands/github
       link: https://github.com/MervinPraison/PraisonAIBio
+    - icon: fontawesome/solid/dna
+      link: https://www.biomodels.org
+  generator: false
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascript/extra.js
+
+nav:
+  - Home: index.md
+  - Get started:
+      - get-started/index.md
+      - Install: install.md
+      - Quick tasks: quick-tasks.md
+      - Interactive guide: interactive-guide.md
+      - For researchers: for-researchers.md
+      - FAQ: faq.md
+  - Examples:
+      - examples/index.md
+      - Minimal (2 lines): examples/minimal/index.md
+      - Small examples:
+          - examples/small/index.md
+          - "01 — Search": examples/small/01-search.md
+          - "02 — Model info": examples/small/02-model-info.md
+          - "03 — Trust score": examples/small/03-trust-score.md
+          - "04 — Validate SBML": examples/small/04-validate-sbml.md
+          - "05 — Simulate": examples/small/05-simulate.md
+          - "06 — Perturb": examples/small/06-perturb.md
+          - "07 — Compare models": examples/small/07-compare-models.md
+          - "08 — Compare sims": examples/small/08-compare-sims.md
+          - "09 — Repro export": examples/small/09-repro-export.md
+          - "10 — SBML graph": examples/small/10-sbml-graph.md
+      - Agent examples:
+          - examples/big/index.md
+          - "01 — Find models": examples/big/01-find-models.md
+          - "02 — Summarise": examples/big/02-summarise-model.md
+          - "03 — Discovery": examples/big/03-discovery-study.md
+          - "04 — Glycolysis": examples/big/04-glycolysis-demo.md
+      - Notebooks: examples/notebooks/index.md
+  - Tools:
+      - tools-at-a-glance.md
+      - tools-reference.md
+      - toolsets.md
+      - skills.md
+      - cli.md
+      - MCP: concepts/mcp.md
+  - Workflows:
+      - concepts/workflows.md
+      - recipes.md
+  - Compare:
+      - concepts/vs-t2b.md
+      - concepts/vs-clawbio.md
+  - Development:
+      - development.md
+      - plan-validation.md
+      - custom-domain.md

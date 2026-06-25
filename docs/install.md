@@ -107,4 +107,4 @@ pip install -r docs/requirements.txt
 mkdocs serve
 ```
 
-Next: [Get started](get-started.md)
+Next: [Get started](get-started/index.md)

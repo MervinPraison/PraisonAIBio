@@ -2,7 +2,7 @@
 
 Pick a task. Copy the command. Run it.
 
-**Guides:** [Minimal examples](../examples/minimal/README.md) · [Interactive guide](interactive-guide.md)
+**Guides:** [Minimal examples](examples/minimal/index.md) · [Interactive guide](interactive-guide.md)
 
 ---
 
