@@ -1,0 +1,34 @@
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+variables:
+  question: "Full scientist lifecycle from literature to FAIR export"
+  run_id: "scientist-full"
+config:
+  llm: gpt-4o-mini
+agents:
+  scoper:
+    role: Literature Scoper
+    instructions: Search BioModels and rank candidates.
+    toolsets: [biomodels-readonly]
+  modeller:
+    role: SBML Modeller
+    instructions: Summarise, validate, and graph SBML.
+    toolsets: [sbml_analysis]
+  simulator:
+    role: Simulation Engineer
+    instructions: Baseline simulate and perturb.
+    toolsets: [simulation]
+  publisher:
+    role: FAIR Publisher
+    instructions: Export repro bundle with run_id.
+    toolsets: [repro, reporting]
+steps:
+  - agent: scoper
+    action: "Literature and search for: {{ question }}"
+  - agent: modeller
+    action: "SBML summarise, validate, and graph top model"
+  - agent: simulator
+    action: "Baseline simulation and one perturbation scan"
+  - agent: publisher
+    action: "Export repro bundle with run_id {{ run_id }}"

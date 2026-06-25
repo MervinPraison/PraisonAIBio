@@ -218,6 +218,8 @@ T2B_TOOLS = [
 DISCOVERY_TOOL_NAMES = [
     "rank_models", "trust_scorecard", "compare_models", "preview_outcomes", "sbml_summarise",
     "sbml_validate", "sedml_parse", "simulate_perturbation", "compare_simulations", "repro_export",
+    "sbml_to_graph", "list_model_files", "download_model_file", "advanced_search", "sedml_simulate",
+    "search_parameters", "get_reaction_graph",
 ]
 
 REQUIRED_TOOLSETS = [

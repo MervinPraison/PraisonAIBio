@@ -1,7 +1,7 @@
 ---
 name: biomodels-report
 description: Model comparison and report
-workflow: workflows/discovery/biomodels_comparison_report.yaml
+workflow_file: workflows/discovery/biomodels_comparison_report.yaml
 tags: [bio, reporting]
 ---
 

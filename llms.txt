@@ -1,10 +1,70 @@
 # PraisonAIBio
 
-Open-source PraisonAI extension for BioModels.org systems biology.
+Open-source PraisonAI extension for BioModels.org systems biology (v0.2.0).
 
-Install: pip install praisonai-bio  (or pip install -e src/praisonai-bio from GitHub)
-Import: import praisonai_bio
-Docs: https://bio.praison.ai
-Toolsets: sysbio-core, sysbio-full, simulation, biomodels-readonly, repro
-Tools: 21 (11 T2B + 10 discovery) — see docs/tools-reference.md
-Demo: workflows/cookbooks/glycolysis_demo.yaml (BIOMD0000000206)
+## Install
+pip install praisonai-bio
+pip install -e "src/praisonai-bio[simulation,plot,rag,dev]"
+
+## Import
+import praisonai_bio  # registers 28 tools + wire_bio_hooks()
+
+## Docs
+https://bio.praison.ai
+
+## Toolsets
+biomodels-readonly, sbml_analysis, sysbio-core, simulation, reporting, sysbio-full, sysbio-orchestrator, repro, sysbio-safe, genomics-bridge, sysbio-orchestrator-scheduled
+
+## T2B parity tools (11)
+search_models, get_modelinfo, load_biomodel, simulate_model, ask_question, steady_state, parameter_scan, custom_plotter, get_annotation, query_article, save_model
+
+## Discovery / API tools (17)
+rank_models, trust_scorecard, compare_models, preview_outcomes, sbml_summarise, sbml_validate, sbml_to_graph, sedml_parse, sedml_simulate, simulate_perturbation, compare_simulations, repro_export, list_model_files, download_model_file, advanced_search, search_parameters, get_reaction_graph
+
+## Workflows
+praisonai workflow run workflows/cookbooks/full_platform_pipeline.yaml
+praisonai workflow run workflows/lifecycle/scientist_full_pipeline.yaml
+praisonai workflow run workflows/cookbooks/t2b_il6_precision_medicine.yaml
+praisonai workflow run workflows/cookbooks/t2b_mapk_hysteresis.yaml
+praisonai workflow run workflows/cookbooks/t2b_covid_epidemiology.yaml
+
+## Recipes
+export PRAISONAI_RECIPE_PATH=recipes/bio
+praisonai recipe run biomodels-discovery --policy bio-public
+praisonai recipe run biomodels-research --policy bio-lab
+praisonai recipe run biomodels-simulate
+praisonai recipe run biomodels-perturb
+praisonai recipe run biomodels-report
+
+## Policy
+PRAISONAI_POLICY_PACK=bio-public|bio-lab
+PRAISONAI_REQUIRE_APPROVAL=1  # enforce HITL for parameter_scan / simulate_perturbation
+BIOMODELS_RUN_ID=run-123  # JSONL trace under ~/.praisonai/biomodels-runs/
+
+## MCP
+praisonai-bio-mcp  # sysbio-full toolset (28 tools)
+
+## Skills
+skills/catalog.json — 16 skills; bridge via PRAISONAI_SKILLS_PATH=skills
+
+## Notebooks
+examples/notebooks/01_search_rank.ipynb … 05_repro_bundle.ipynb
+python scripts/notebook_to_repro.py examples/notebooks/05_repro_bundle.ipynb
+
+## Agent presets
+from praisonai_bio.config.presets import DISCOVERY_AGENT, SIMULATION_AGENT, ORCHESTRATOR_AGENT
+
+## Demo model
+BIOMD0000000206 (Teusink yeast glycolysis)
+
+## Benchmarks
+python benchmarks/run_all.py
+python benchmarks/t2b_parity/eval_suite_runner.py
+benchmarks/moy2024/manifest.json
+
+## AgentTeam example
+python examples/python/team_model_review.py
+
+## Compare
+vs Talk2BioModels: docs/concepts/vs-t2b.md
+vs ClawBio (complementary): docs/concepts/vs-clawbio.md

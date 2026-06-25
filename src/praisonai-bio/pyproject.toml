@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "praisonai-bio"
-version = "0.1.0"
+version = "0.2.0"
 description = "Open-source AI agents for systems biology — BioModels.org discovery, simulation, and comparison"
 readme = "README.md"
 license = {text = "MIT"}
@@ -22,6 +22,12 @@ dependencies = [
     "httpx>=0.27.0",
     "pandas>=2.0",
 ]
+
+[project.urls]
+Homepage = "https://bio.praison.ai"
+Documentation = "https://bio.praison.ai"
+Repository = "https://github.com/MervinPraison/PraisonAIBio"
+Changelog = "https://github.com/MervinPraison/PraisonAIBio/blob/main/CHANGELOG.md"
 
 [project.optional-dependencies]
 simulation = ["copasi-basico>=0.78"]
@@ -53,6 +59,13 @@ sedml_parse = "praisonai_bio.tools.sedml_parse:sedml_parse"
 simulate_perturbation = "praisonai_bio.tools.simulate_perturbation:simulate_perturbation"
 compare_simulations = "praisonai_bio.tools.compare_simulations:compare_simulations"
 repro_export = "praisonai_bio.tools.repro_export:repro_export"
+sbml_to_graph = "praisonai_bio.tools.sbml_to_graph:sbml_to_graph"
+list_model_files = "praisonai_bio.tools.list_model_files:list_model_files"
+download_model_file = "praisonai_bio.tools.download_model_file:download_model_file"
+advanced_search = "praisonai_bio.tools.advanced_search:advanced_search"
+sedml_simulate = "praisonai_bio.tools.sedml_simulate:sedml_simulate"
+search_parameters = "praisonai_bio.tools.search_parameters:search_parameters"
+get_reaction_graph = "praisonai_bio.tools.get_reaction_graph:get_reaction_graph"
 
 [project.scripts]
 praisonai-bio = "praisonai_bio.cli.main:main"
@@ -69,3 +82,10 @@ markers = [
     "integration: requires network or BASICO",
     "agentic: requires LLM API key",
 ]
+
+[tool.ruff]
+line-length = 100
+target-version = "py310"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "W"]

@@ -20,7 +20,7 @@ def test_all_entry_points_importable():
 
     eps = entry_points(group="praisonaiagents.tools")
     bio = [e for e in eps if e.module.startswith("praisonai_bio")]
-    assert len(bio) >= 21
+    assert len(bio) >= 26
     for ep in bio:
         obj = ep.load()
         assert obj is not None

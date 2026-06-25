@@ -1,11 +1,16 @@
-# Public-safe BioModels policy (read-only, no local writes outside /tmp)
+# Bio-public: read-only BioModels discovery and reporting (no save_model)
 name: bio-public
 description: Curated BioModels read + reporting only
-allow_toolsets:
-  - biomodels-readonly
-  - sbml_analysis
-  - reporting
-  - sysbio-safe
-deny_tools:
-  - save_model
-max_simulation_duration: 100
+policies:
+  - name: bio-public
+    description: Deny write tools in public-safe mode
+    priority: 100
+    rules:
+      - name: deny_save_model
+        action: deny
+        resource: "tool:save_model"
+        reason: save_model disabled in bio-public policy
+      - name: deny_repro_export
+        action: deny
+        resource: "tool:repro_export"
+        reason: repro_export disabled in bio-public policy

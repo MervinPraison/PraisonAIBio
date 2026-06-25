@@ -1,3 +1,16 @@
-"""v2 BotOS integration stub."""
+# v2 BotOS integration stub — valid YAML for workflow validation
+framework: praisonai
+process: workflow
 
-BOTOS_PLATFORMS = ["telegram", "slack"]
+variables:
+  platform: telegram
+
+agents:
+  bot_stub:
+    role: BotOS Stub
+    instructions: Placeholder agent for future BotOS wiring.
+    toolsets: [sysbio-safe]
+
+steps:
+  - agent: bot_stub
+    action: "BotOS platforms ({{ platform }}) are not wired in Phase 0/1 — use workflows/platform/botos_sysbio_telegram.yaml for the demo."

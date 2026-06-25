@@ -1,10 +1,16 @@
-# Lab policy — simulation + perturbation + repro export
+# Bio-lab: full sysbio toolsets; HITL recommended for perturbation scans
 name: bio-lab
 description: Full sysbio toolsets with export to user-specified dirs
-allow_toolsets:
-  - sysbio-full
-  - repro
-require_hitl_before:
-  - simulate_perturbation
-  - parameter_scan
-max_simulation_duration: 500
+policies:
+  - name: bio-lab
+    description: Allow all bio tools; log high-risk simulation tools
+    priority: 50
+    rules:
+      - name: log_parameter_scan
+        action: log
+        resource: "tool:parameter_scan"
+        reason: parameter_scan requires lab approval in production
+      - name: log_simulate_perturbation
+        action: log
+        resource: "tool:simulate_perturbation"
+        reason: simulate_perturbation requires lab approval in production

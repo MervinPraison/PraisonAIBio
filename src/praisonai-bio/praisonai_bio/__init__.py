@@ -32,6 +32,13 @@ from praisonai_bio.tools.sedml_parse import sedml_parse
 from praisonai_bio.tools.simulate_perturbation import simulate_perturbation
 from praisonai_bio.tools.compare_simulations import compare_simulations
 from praisonai_bio.tools.repro_export import repro_export
+from praisonai_bio.tools.sbml_to_graph import sbml_to_graph
+from praisonai_bio.tools.list_model_files import list_model_files
+from praisonai_bio.tools.download_model_file import download_model_file
+from praisonai_bio.tools.advanced_search import advanced_search
+from praisonai_bio.tools.sedml_simulate import sedml_simulate
+from praisonai_bio.tools.search_parameters import search_parameters
+from praisonai_bio.tools.get_reaction_graph import get_reaction_graph
 
 _ALL_TOOLS = [
     search_models,
@@ -55,12 +62,23 @@ _ALL_TOOLS = [
     simulate_perturbation,
     compare_simulations,
     repro_export,
+    sbml_to_graph,
+    list_model_files,
+    download_model_file,
+    advanced_search,
+    sedml_simulate,
+    search_parameters,
+    get_reaction_graph,
 ]
 
 for _tool in _ALL_TOOLS:
     if getattr(_tool, "retry_policy", None) is None:
         _tool.retry_policy = _DEFAULT_RETRY
     register_tool(_tool)
+
+from praisonai_bio.hooks.register import wire_bio_hooks
+
+wire_bio_hooks()
 
 # Toolsets (import-time registration)
 from praisonai_bio.toolsets import prebuilt  # noqa: F401, E402
@@ -87,6 +105,14 @@ __all__ = [
     "simulate_perturbation",
     "compare_simulations",
     "repro_export",
+    "sbml_to_graph",
+    "list_model_files",
+    "download_model_file",
+    "advanced_search",
+    "sedml_simulate",
+    "search_parameters",
+    "get_reaction_graph",
+    "wire_bio_hooks",
 ]
 
-__version__ = "0.1.0"
+__version__ = "0.2.0"

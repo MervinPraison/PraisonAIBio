@@ -1,0 +1,17 @@
+# T2B use case — COVID-19 epidemiology (BIOMD0000000958)
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+variables:
+  question: "Explore COVID-19 epidemiological dynamics"
+  model_id: BIOMD0000000958
+config:
+  llm: gpt-4o-mini
+agents:
+  epidemiologist:
+    role: Epidemiology Analyst
+    instructions: Use BioModels tools for COVID model BIOMD0000000958.
+    toolsets: [sysbio-full]
+steps:
+  - agent: epidemiologist
+    action: "Search context, load {{ model_id }}, summarise SBML, trust scorecard, and preview simulation for: {{ question }}"

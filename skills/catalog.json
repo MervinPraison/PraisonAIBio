@@ -1,30 +1,21 @@
 {
-  "version": "0.1.0",
+  "version": "0.2.0",
   "skills": [
-    {
-      "id": "load-biomodel",
-      "name": "Load BioModels SBML",
-      "path": "skills/load-biomodel/SKILL.md"
-    },
-    {
-      "id": "repro-enforcer",
-      "name": "Reproducibility Enforcer",
-      "path": "skills/repro-enforcer/SKILL.md"
-    },
-    {
-      "id": "search-models",
-      "name": "Search BioModels",
-      "path": "skills/search-models/SKILL.md"
-    },
-    {
-      "id": "simulate-model",
-      "name": "Simulate Model",
-      "path": "skills/simulate-model/SKILL.md"
-    },
-    {
-      "id": "sysbio-orchestrator",
-      "name": "SysBio Orchestrator",
-      "path": "skills/sysbio-orchestrator/SKILL.md"
-    }
+    {"id": "load-biomodel", "name": "Load BioModels SBML", "path": "skills/load-biomodel/SKILL.md"},
+    {"id": "repro-enforcer", "name": "Reproducibility Enforcer", "path": "skills/repro-enforcer/SKILL.md"},
+    {"id": "search-models", "name": "Search BioModels", "path": "skills/search-models/SKILL.md"},
+    {"id": "simulate-model", "name": "Simulate Model", "path": "skills/simulate-model/SKILL.md"},
+    {"id": "sysbio-orchestrator", "name": "SysBio Orchestrator", "path": "skills/sysbio-orchestrator/SKILL.md"},
+    {"id": "get-modelinfo", "name": "Get Model Info", "path": "skills/get-modelinfo/SKILL.md"},
+    {"id": "ask-question", "name": "Ask Question", "path": "skills/ask-question/SKILL.md"},
+    {"id": "steady-state", "name": "Steady State", "path": "skills/steady-state/SKILL.md"},
+    {"id": "parameter-scan", "name": "Parameter Scan", "path": "skills/parameter-scan/SKILL.md"},
+    {"id": "sbml-summarise", "name": "SBML Summarise", "path": "skills/sbml-summarise/SKILL.md"},
+    {"id": "sbml-validate", "name": "SBML Validate", "path": "skills/sbml-validate/SKILL.md"},
+    {"id": "compare-models", "name": "Compare Models", "path": "skills/compare-models/SKILL.md"},
+    {"id": "rank-models", "name": "Rank Models", "path": "skills/rank-models/SKILL.md"},
+    {"id": "trust-scorecard", "name": "Trust Scorecard", "path": "skills/trust-scorecard/SKILL.md"},
+    {"id": "query-article", "name": "Query Article", "path": "skills/query-article/SKILL.md"},
+    {"id": "sedml-parse", "name": "SED-ML Parse", "path": "skills/sedml-parse/SKILL.md"}
   ]
 }

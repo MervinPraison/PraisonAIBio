@@ -70,7 +70,18 @@ praisonai-bio validate check
 praisonai-bio tools validate
 ```
 
-Expected: 21 tools, toolsets including `sysbio-full`.
+Expected: 26 tools, toolsets including `sysbio-full`.
+
+## Recipes (PraisonAI wrapper)
+
+Do not use a custom bio recipe CLI. Point the wrapper at this repo:
+
+```bash
+export PRAISONAI_RECIPE_PATH=recipes/bio
+praisonai recipe run biomodels-discovery --policy bio-public
+```
+
+Available recipes: `biomodels-discovery`, `biomodels-research`, `biomodels-simulate`, `biomodels-perturb`, `biomodels-report`.
 
 ---
 
@@ -80,7 +91,8 @@ Expected: 21 tools, toolsets including `sysbio-full`.
 |----------|---------|
 | `OPENAI_API_KEY` | Agent examples (big/) |
 | `BIOMODELS_BASE_URL` | Default `https://www.biomodels.org` |
-| `TELEGRAM_BOT_TOKEN` | Optional — `botos_sysbio_telegram.yaml` workflow |
+| `PRAISONAI_POLICY_PACK` | `bio-public` or `bio-lab` — loads policy/packs/*.yaml |
+| `PRAISONAI_RECIPE_PATH` | Set to `recipes/bio` for wrapper recipes |
 
 ---
 

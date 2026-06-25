@@ -1,1 +1,1 @@
-{"id": "06_steady_state", "prompt": "Steady state for BIOMD0000000206", "expected_tool": "steady_state", "mock_tool": "steady_state"}
+{"id": "06_steady_state", "prompt": "Steady state for BIOMD0000000206", "expected_tool": "steady_state"}

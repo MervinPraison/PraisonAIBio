@@ -22,7 +22,18 @@ register_toolset(
 
 register_toolset(
     "sbml_analysis",
-    ["load_biomodel", "sbml_summarise", "sbml_validate", "get_annotation", "ask_question", "sedml_parse"],
+    [
+        "load_biomodel",
+        "sbml_summarise",
+        "sbml_validate",
+        "sbml_to_graph",
+        "list_model_files",
+        "download_model_file",
+        "get_annotation",
+        "ask_question",
+        "sedml_parse",
+        "advanced_search",
+    ],
     description="SBML loading and structural analysis",
 )
 
@@ -93,6 +104,13 @@ register_toolset(
         "simulate_perturbation",
         "compare_simulations",
         "repro_export",
+        "sbml_to_graph",
+        "list_model_files",
+        "download_model_file",
+        "advanced_search",
+        "sedml_simulate",
+        "search_parameters",
+        "get_reaction_graph",
     ],
     description="Full T2B parity plus discovery tools",
 )
@@ -109,9 +127,32 @@ register_toolset(
         "simulate_model",
         "preview_outcomes",
         "compare_models",
+        "advanced_search",
+        "list_model_files",
     ],
     description="Multi-agent discovery pipeline orchestrator tools",
 )
+
+try:
+    from praisonaiagents.tools import register_tool as _register_tool
+    from praisonaiagents.tools.schedule_tools import schedule_add, schedule_list, schedule_remove
+
+    for _sched in (schedule_add, schedule_list, schedule_remove):
+        _register_tool(_sched)
+    register_toolset(
+        "sysbio-orchestrator-scheduled",
+        [
+            "search_models",
+            "rank_models",
+            "simulate_model",
+            "schedule_add",
+            "schedule_list",
+            "schedule_remove",
+        ],
+        description="Orchestrator with PraisonAI scheduler tools",
+    )
+except ImportError:
+    pass
 
 register_toolset(
     "repro",

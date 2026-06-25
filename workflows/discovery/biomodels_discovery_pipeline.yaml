@@ -76,9 +76,6 @@ steps:
       drug: [general_scout]
       general: [general_scout]
 
-  - agent: pathway_scout
-    action: "Search and rank models for: {{ question }}"
-
   - name: parallel_search
     parallel:
       - agent: biomodels_scout

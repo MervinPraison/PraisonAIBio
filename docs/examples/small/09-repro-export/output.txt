@@ -1,0 +1,14 @@
+{
+  "model_id": "BIOMD0000000206",
+  "bundle_dir": "/private/tmp/glycolysis_bundle",
+  "files": [
+    "BIOMD0000000206_combine.zip",
+    "README.md",
+    "checksums.sha256",
+    "combine_manifest.json",
+    "commands.sh",
+    "metadata.json",
+    "model.sbml"
+  ],
+  "session_dir": "/Users/praison/.praisonai/biomodels-runs/demo"
+}

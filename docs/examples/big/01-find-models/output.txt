@@ -1,9 +1,22 @@
-Here are the curated yeast glycolysis model IDs:
-
-1. BIOMD0000000471
-2. BIOMD0000000472
-3. BIOMD0000000473
-4. BIOMD0000000691
-5. BIOMD0000000064
-6. BIOMD0000000254
-7. BIOMD0000000172
+Here are some curated models related to yeast glycolysis:
+1. **[Smallbone2013 - Yeast metabolic model with linlog rate law](https://www.biomodels.org/BIOMD0000000471)**
+   - **ID**: BIOMD0000000471
+   - **Submitter**: Kieran Smallbone
+   - **Submission Date**: 2013-02-14
+2. **[Smallbone2013 - Yeast metabolic model with modular rate law](https://www.biomodels.org/BIOMD0000000472)**
+   - **ID**: BIOMD0000000472
+   - **Submitter**: Kieran Smallbone
+   - **Submission Date**: 2013-02-14
+3. **[Smallbone2013 - Yeast metabolic model with modular rate law, merged with Pritchard 2002](https://www.biomodels.org/BIOMD0000000473)**
+   - **ID**: BIOMD0000000473
+   - **Submitter**: Kieran Smallbone
+   - **Submission Date**: 2013-02-14
+4. **[Wolf2000 - Cellular interaction on glycolytic oscillations in yeast](https://www.biomodels.org/BIOMD0000000691)**
+   - **ID**: BIOMD0000000691
+   - **Submitter**: Camille Laibe
+   - **Submission Date**: 2010-06-23
+5. **[Teusink2000_Glycolysis](https://www.biomodels.org/BIOMD0000000064)**
+   - **ID**: BIOMD0000000064
+   - **Submitter**: Nicolas Le Novère
+   - **Submission Date**: 2006-08-14
+These models focus on different aspects of glycolysis in yeast and can be accessed through the provided links. Feel free to ask if you need more information!

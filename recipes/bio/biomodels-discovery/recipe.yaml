@@ -1,7 +1,7 @@
 ---
 name: biomodels-discovery
 description: Discover curated BioModels for a research question
-workflow: workflows/discovery/biomodels_discovery_pipeline.yaml
+workflow_file: workflows/discovery/biomodels_discovery_pipeline.yaml
 tags: [bio, biomodels, discovery]
 ---
 

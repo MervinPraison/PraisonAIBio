@@ -9,6 +9,7 @@ build/
 .mypy_cache/
 .ruff_cache/
 *.sbml.bak
+BIOMD*_model.sbml
 grant/
 .env
 .DS_Store

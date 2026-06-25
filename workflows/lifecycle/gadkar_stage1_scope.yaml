@@ -1,0 +1,16 @@
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+variables:
+  question: "Gadkar stage 1 — systems biology model development"
+  run_id: "gadkar-stage-1"
+config:
+  llm: gpt-4o-mini
+agents:
+  lead:
+    role: Scope goals and literature
+    instructions: Execute Gadkar stage 1 with BioModels tools.
+    toolsets: [biomodels-readonly]
+steps:
+  - agent: lead
+    action: "Stage 1: {{ question }}. Persist artefacts under run_id {{ run_id }}."

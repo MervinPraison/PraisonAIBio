@@ -13,8 +13,8 @@ pytest tests/unit -q
 echo "=== Integration (live BioModels) ==="
 pytest tests/integration -q
 
-echo "=== Benchmark scorer ==="
-python benchmarks/t2b_parity/scorer.py | head -5
+echo "=== Benchmark suite ==="
+python benchmarks/run_all.py
 
 echo "=== CLI ==="
 python -m praisonai_bio.cli.main validate check

@@ -1,54 +1,31 @@
-# Example — Glycolysis walkthrough
+# Example — Glycolysis demo
 
 **Category:** Big (AI agent) · **Script:** [`examples/big/04_glycolysis_demo.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/big/04_glycolysis_demo.py)
 
-End-to-end walkthrough of **BIOMD0000000206** — find, summarise, and preview simulation.
+Summarise and simulate **BIOMD0000000206** in one agent run.
 
 ---
 
 ## How to run
 
 ```bash
-pip install -e "src/praisonai-bio[simulation]"
+pip install -e "src/praisonai-bio"
 export OPENAI_API_KEY=sk-...
-python -c "import praisonai_bio"
 python examples/big/04_glycolysis_demo.py
 ```
 
-Uses toolset `sysbio-core`. Simulation preview needs BASICO (`[simulation]` extra).
+**Needs:** Internet + OpenAI API key + BASICO for simulation.
 
 ---
 
-## Sample output
+## Tested output
 
-```
-The Teusink Yeast Glycolysis Model investigates glycolytic oscillations in
-Saccharomyces cerevisiae.
+Live capture from `./scripts/capture_example_outputs.sh`.
 
-Model Overview
-- Title: Wolf2000 Glycolytic Oscillations
-- Purpose: oscillatory dynamics of ATP and NADH; synchronization via acetaldehyde
-
-Simulation Outcomes (100 time units)
-- ATP: fluctuates ~1.6 to 3.0 (periodic oscillations)
-- NAD: oscillatory behaviour from ~0.6
-- Acetaldehyde: minor fluctuations as signaling metabolite
-```
-
-With `[simulation]` installed, the agent can call `preview_outcomes` or `simulate_model` and report time-course values.
-
-??? "Full captured output"
-    [`output.txt`](04-glycolysis-demo/output.txt)
-
----
-
-## Related workflow
-
-Same demo as YAML (3 agent steps):
-
-```bash
-praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml
-```
+??? "Click to view full output"
+    ```text
+    --8<-- "docs/examples/big/04-glycolysis-demo/output.txt"
+    ```
 
 ---
 

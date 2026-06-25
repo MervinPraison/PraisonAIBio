@@ -1,0 +1,19 @@
+{
+  "baseline_keys": [
+    "ATP"
+  ],
+  "perturbation_keys": [
+    "ATP"
+  ],
+  "parameter_changed": null,
+  "metrics": {
+    "ATP": {
+      "rmse": 0.04082482904638634,
+      "peak_time_baseline": 0.0,
+      "peak_time_variant": 0.0,
+      "auc_baseline": 1.8,
+      "auc_variant": 1.725
+    }
+  },
+  "status": "compared"
+}

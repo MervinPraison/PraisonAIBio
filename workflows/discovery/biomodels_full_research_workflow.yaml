@@ -93,7 +93,7 @@ steps:
     agent: scenario_runner
     action: "Run perturbation scenario {{item}}"
     loop:
-      over: [1, 2, 3]
+      over: [1, 2, 3, 4, 5, 6]
 
   # Phase 7 — Comparison report
   - agent: comparator

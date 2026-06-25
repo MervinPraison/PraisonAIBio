@@ -6,7 +6,38 @@ Catalog: `skills/catalog.json`
 
 ---
 
-## Available skills
+## Available skills (16)
+
+| Skill | Use when |
+|-------|----------|
+| Search BioModels | Find models by keyword |
+| Get model info | Metadata for one ID |
+| Load BioModels SBML | Download SBML file |
+| Simulate model | Time-course or steady state |
+| Ask question | Plain-English Q&A about a model |
+| Steady state | Equilibrium concentrations |
+| Parameter scan | Sweep a parameter range |
+| SBML summarise | Structure overview |
+| SBML validate | Check SBML file |
+| Compare models | Two models side by side |
+| Rank models | Sort search results |
+| Trust scorecard | Curation quality |
+| Query article | Linked publications |
+| SED-ML parse | Read experiment definitions |
+| SysBio orchestrator | Multi-step pipeline |
+| Repro enforcer | Export study bundle |
+
+<details markdown="1">
+<summary>Developer: how skills are registered</summary>
+
+Catalog: `skills/catalog.json` · Template: `skills/SKILL-TEMPLATE.md`
+
+See sections below for adding new skills.
+</details>
+
+---
+
+## Legacy table (core five)
 
 | Skill | ID | Use when |
 |-------|-----|----------|
@@ -15,8 +46,6 @@ Catalog: `skills/catalog.json`
 | Simulate Model | `simulate-model` | Run BASICO time-course or steady state |
 | SysBio Orchestrator | `sysbio-orchestrator` | Multi-step discovery → simulate pipeline |
 | Reproducibility Enforcer | `repro-enforcer` | Export repro bundles with checksums |
-
-Each skill lives in `skills/<id>/SKILL.md`.
 
 ---
 

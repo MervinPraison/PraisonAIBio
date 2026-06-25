@@ -2,17 +2,15 @@
 
 Pick a task. Copy the command. Run it.
 
+**Guides:** [Minimal examples](../examples/minimal/README.md) · [Interactive guide](interactive-guide.md)
+
 ---
 
 ## Task 1 — Find models
 
-**Question:** *“What glycolysis models exist?”*
-
 ```bash
-python examples/small/01_search.py
+python examples/minimal/search.py
 ```
-
-No API key needed.
 
 ---
 

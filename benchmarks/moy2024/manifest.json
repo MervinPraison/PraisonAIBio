@@ -1,0 +1,31 @@
+{
+  "name": "moy2024-integration",
+  "description": "Model of the Year 2024 winners — integration test manifest",
+  "models": [
+    {
+      "id": "BIOMD0000000537",
+      "domain": "IL-6 immune signalling",
+      "type": "ODE",
+      "tests": ["search", "metadata", "simulate_stub"]
+    },
+    {
+      "id": "BIOMD0000000064",
+      "domain": "MAPK hysteresis",
+      "type": "ODE",
+      "tests": ["steady_state", "metadata"]
+    },
+    {
+      "id": "BIOMD0000000206",
+      "domain": "Glycolysis",
+      "type": "ODE",
+      "tests": ["simulate", "repro_export"]
+    },
+    {
+      "id": "BIOMD0000000001",
+      "domain": "Agent-based intestinal epithelium",
+      "type": "ABM",
+      "tests": ["metadata_only"],
+      "note": "ABM limitation — metadata and discovery only in v0.2"
+    }
+  ]
+}

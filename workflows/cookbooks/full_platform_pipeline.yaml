@@ -1,0 +1,78 @@
+# Full platform pipeline — eight pillars (Discover → Inspect → Graph → HITL → Simulate → Perturb → Compare → Export)
+# Run: BIOMODELS_RUN_ID=demo praisonai workflow run workflows/cookbooks/full_platform_pipeline.yaml
+
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+
+variables:
+  question: "End-to-end glycolysis study with BIOMD0000000206"
+  model_id: BIOMD0000000206
+  run_id: platform-demo
+
+config:
+  llm: gpt-4o-mini
+
+workflow:
+  memory:
+    backend: file
+    session_id: "biomodels-{{ run_id }}"
+
+agents:
+  scout:
+    role: BioModels Scout
+    instructions: Search and rank curated models.
+    toolsets: [biomodels-readonly]
+
+  analyst:
+    role: SBML Analyst
+    instructions: Summarise and validate SBML structure.
+    toolsets: [sbml_analysis]
+
+  graph_agent:
+    role: Graph Analyst
+    instructions: Produce reaction graph overview.
+    toolsets: [sbml_analysis]
+
+  engineer:
+    role: Simulation Engineer
+    instructions: Run baseline and perturbation simulations.
+    toolsets: [simulation]
+
+  comparator:
+    role: Comparator
+    instructions: Compare models and simulation outputs.
+    toolsets: [reporting]
+
+  publisher:
+    role: FAIR Publisher
+    instructions: Export repro bundle with run_id.
+    toolsets: [repro]
+
+steps:
+  - agent: scout
+    action: "Discover: search and rank models for {{ question }}. Prefer {{ model_id }}."
+
+  - agent: analyst
+    action: "Inspect: sbml_summarise and sbml_validate for {{ model_id }}."
+
+  - agent: graph_agent
+    action: "Graph: sbml_to_graph for {{ model_id }}."
+
+  - name: assumption_hitl
+    approve:
+      description: Approve SBML assumptions before simulation
+      risk_level: medium
+      auto_approve: false
+
+  - agent: engineer
+    action: "Simulate: sedml_simulate or simulate_model for {{ model_id }} (50 time units)."
+
+  - agent: engineer
+    action: "Perturb: one parameter perturbation on {{ model_id }} and capture outputs."
+
+  - agent: comparator
+    action: "Compare: compare_models and compare_simulations for baseline vs perturbation."
+
+  - agent: publisher
+    action: "Export: repro_export for {{ model_id }} with run_id {{ run_id }}."

@@ -1,12 +1,6 @@
-The model **Wolf2000_Glycolytic_Oscillations** simulates the dynamics of ATP (adenosine triphosphate) and NADH (nicotinamide adenine dinucleotide) in yeast glycolysis, particularly showcasing the oscillatory behavior of these molecules. It successfully reproduces the patterns seen in a figure from a supporting paper and was tested using software tools Jarnac and MathSBML.
-
-This model uses ordinary differential equations to describe the interactions and relationships within the glycolytic process. It highlights how populations of yeast cells can exhibit synchronized glycolytic oscillations due to intercellular signaling through acetaldehyde.
-
-The researchers behind this work aimed to uncover how these oscillations propagate through cellular networks, revealing that dynamics may not solely rely on glycolysis itself, but also on energy changes and redox properties.
-
-Key publication details include:
-- **Title**: Transduction of intracellular and intercellular dynamics in yeast glycolytic oscillations.
-- **Authors**: Jana Wolf et al.
-- **Published in**: Biophysical Journal, March 2000.
-
-The model and its associated files are publicly available for use, modification, and redistribution under a public domain dedication. You can navigate to the model's details through identifiers available in the BioModels Database for more in-depth exploration or citation purposes.
+The model **BIOMD0000000206**, titled **Wolf2000_Glycolytic_Oscillations**, has the following structure:
+- **Species:** 9
+- **Reactions:** 11
+- **Compartments:** 1
+- **Parameters:** 18
+This model explores glycolytic oscillations. If you need more detailed information or specific aspects, let me know!

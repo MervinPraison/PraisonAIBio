@@ -1,1 +1,1 @@
-{"id": "08_custom_plotter", "prompt": "Plot simulation results", "expected_tool": "custom_plotter", "mock_tool": "custom_plotter"}
+{"id": "08_custom_plotter", "prompt": "Plot simulation results", "expected_tool": "custom_plotter"}

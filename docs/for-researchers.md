@@ -1,5 +1,7 @@
 # For researchers
 
+**Start here:** [Interactive guide](interactive-guide.md) — pick your path, self-checks, and troubleshooting (click to expand).
+
 PraisonAIBio helps you **find**, **check**, and **simulate** models from [BioModels.org](https://www.biomodels.org) — without browsing thousands of entries by hand.
 
 ---
@@ -55,6 +57,7 @@ YAML workflows in `workflows/discovery/` automate this team.
 | `biomodels_assumption_review.yaml` | Check assumptions (human approval step) |
 | `biomodels_baseline_simulation.yaml` | Run baseline simulation |
 | `biomodels_full_research_workflow.yaml` | All phases together |
+| `cookbooks/full_platform_pipeline.yaml` | Eight-step end-to-end demo |
 
 Run any workflow:
 

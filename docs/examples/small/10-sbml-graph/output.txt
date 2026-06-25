@@ -1,0 +1,236 @@
+{
+  "model_id": "BIOMD0000000206",
+  "graph": {
+    "nodes": [
+      {
+        "id": "s1",
+        "type": "species",
+        "label": "Glucose"
+      },
+      {
+        "id": "at",
+        "type": "species",
+        "label": "ATP"
+      },
+      {
+        "id": "s2",
+        "type": "species",
+        "label": "F16P"
+      },
+      {
+        "id": "s3",
+        "type": "species",
+        "label": "Triose_Gly3Phos_DHAP"
+      },
+      {
+        "id": "na",
+        "type": "species",
+        "label": "NAD"
+      },
+      {
+        "id": "s4",
+        "type": "species",
+        "label": "3PG"
+      },
+      {
+        "id": "s5",
+        "type": "species",
+        "label": "Pyruvate"
+      },
+      {
+        "id": "s6",
+        "type": "species",
+        "label": "Acetaldehyde"
+      },
+      {
+        "id": "s6o",
+        "type": "species",
+        "label": "extracellular acetaldehyde"
+      },
+      {
+        "id": "v1",
+        "type": "reaction",
+        "label": "v1"
+      },
+      {
+        "id": "v2",
+        "type": "reaction",
+        "label": "v2"
+      },
+      {
+        "id": "v3",
+        "type": "reaction",
+        "label": "v3"
+      },
+      {
+        "id": "v4",
+        "type": "reaction",
+        "label": "v4"
+      },
+      {
+        "id": "v5",
+        "type": "reaction",
+        "label": "v5"
+      },
+      {
+        "id": "v7",
+        "type": "reaction",
+        "label": "v7"
+      },
+      {
+        "id": "v8",
+        "type": "reaction",
+        "label": "v8"
+      },
+      {
+        "id": "v9",
+        "type": "reaction",
+        "label": "v9"
+      },
+      {
+        "id": "v10",
+        "type": "reaction",
+        "label": "v10"
+      },
+      {
+        "id": "v6",
+        "type": "reaction",
+        "label": "v6"
+      },
+      {
+        "id": "v0",
+        "type": "reaction",
+        "label": "v0"
+      },
+      {
+        "id": "compartment",
+        "type": "compartment",
+        "label": "compartment"
+      }
+    ],
+    "edges": [
+      {
+        "source": "s1",
+        "target": "v1",
+        "type": "reactant"
+      },
+      {
+        "source": "at",
+        "target": "v1",
+        "type": "reactant"
+      },
+      {
+        "source": "v1",
+        "target": "s2",
+        "type": "product"
+      },
+      {
+        "source": "s2",
+        "target": "v2",
+        "type": "reactant"
+      },
+      {
+        "source": "v2",
+        "target": "s3",
+        "type": "product"
+      },
+      {
+        "source": "s3",
+        "target": "v3",
+        "type": "reactant"
+      },
+      {
+        "source": "na",
+        "target": "v3",
+        "type": "reactant"
+      },
+      {
+        "source": "v3",
+        "target": "s4",
+        "type": "product"
+      },
+      {
+        "source": "v3",
+        "target": "at",
+        "type": "product"
+      },
+      {
+        "source": "s4",
+        "target": "v4",
+        "type": "reactant"
+      },
+      {
+        "source": "v4",
+        "target": "s5",
+        "type": "product"
+      },
+      {
+        "source": "v4",
+        "target": "at",
+        "type": "product"
+      },
+      {
+        "source": "s5",
+        "target": "v5",
+        "type": "reactant"
+      },
+      {
+        "source": "v5",
+        "target": "s6",
+        "type": "product"
+      },
+      {
+        "source": "at",
+        "target": "v7",
+        "type": "reactant"
+      },
+      {
+        "source": "s3",
+        "target": "v8",
+        "type": "reactant"
+      },
+      {
+        "source": "v8",
+        "target": "na",
+        "type": "product"
+      },
+      {
+        "source": "s6o",
+        "target": "v9",
+        "type": "reactant"
+      },
+      {
+        "source": "s6",
+        "target": "v10",
+        "type": "reactant"
+      },
+      {
+        "source": "v10",
+        "target": "s6o",
+        "type": "product"
+      },
+      {
+        "source": "s6",
+        "target": "v6",
+        "type": "reactant"
+      },
+      {
+        "source": "v6",
+        "target": "na",
+        "type": "product"
+      },
+      {
+        "source": "v0",
+        "target": "s1",
+        "type": "product"
+      }
+    ],
+    "meta": {
+      "species": 9,
+      "reactions": 11,
+      "compartments": 1,
+      "parameters": 18
+    },
+    "model_id": "Wolf2000_Glycolytic_Oscillations"
+  }
+}

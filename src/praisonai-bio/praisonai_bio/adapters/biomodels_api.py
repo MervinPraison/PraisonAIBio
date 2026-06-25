@@ -50,7 +50,38 @@ class BioModelsClient:
 
     def get_model_info(self, model_id: str) -> dict[str, Any]:
         model_id = model_id.strip().upper()
-        return self._get(model_id, {"format": "json"})
+        try:
+            return self._get(f"v1/model/{model_id}", {"format": "json"})
+        except Exception:
+            return self._get(model_id, {"format": "json"})
+
+    def search_v1(
+        self,
+        query: str,
+        offset: int = 0,
+        num_results: int = 10,
+    ) -> dict[str, Any]:
+        params = {"query": query, "offset": offset, "numResults": num_results, "format": "json"}
+        try:
+            return self._get("v1/search", params)
+        except Exception:
+            return self.search(query, offset=offset, num_results=num_results)
+
+    def list_all_model_ids(self, offset: int = 0, num_results: int = 100) -> dict[str, Any]:
+        return self.search_v1("curationstatus:*", offset=offset, num_results=num_results)
+
+    def path2models_representative(self, model_id: str) -> dict[str, Any]:
+        model_id = model_id.strip().upper()
+        return self._get(f"p2m/representative/{model_id}", {"format": "json"})
+
+    def search_parameters(
+        self,
+        query: str,
+        offset: int = 0,
+        num_results: int = 10,
+    ) -> dict[str, Any]:
+        params = {"query": query, "offset": offset, "numResults": num_results, "format": "json"}
+        return self._get("parameterSearch/search", params)
 
     def list_files(self, model_id: str) -> dict[str, Any]:
         model_id = model_id.strip().upper()
@@ -77,6 +108,10 @@ class BioModelsClient:
             return response.content
 
     def download_sedml(self, model_id: str, filename: str) -> bytes:
+        return self.download_file(model_id, filename)
+
+    def download_file(self, model_id: str, filename: str) -> bytes:
+        """Download a named file from a BioModels entry."""
         import httpx
 
         model_id = model_id.strip().upper()
@@ -85,6 +120,37 @@ class BioModelsClient:
             response = client.get(url, params={"filename": filename})
             response.raise_for_status()
             return response.content
+
+    def download_combine_archive(self, model_id: str) -> bytes:
+        """Download the full COMBINE archive (all model files) as a zip bundle."""
+        import httpx
+
+        model_id = model_id.strip().upper()
+        url = f"{self.base_url}/model/download/{model_id}"
+        with httpx.Client(timeout=self.timeout, follow_redirects=True) as client:
+            response = client.get(url)
+            response.raise_for_status()
+            return response.content
+
+    def search_advanced(
+        self,
+        query: str,
+        offset: int = 0,
+        num_results: int = 10,
+        sort: str | None = None,
+        **extra: Any,
+    ) -> dict[str, Any]:
+        """Advanced search with optional sort and extra API parameters."""
+        params: dict[str, Any] = {
+            "query": query,
+            "offset": offset,
+            "numResults": num_results,
+            "format": "json",
+        }
+        if sort:
+            params["sort"] = sort
+        params.update({k: v for k, v in extra.items() if v is not None})
+        return self._get("search", params)
 
     @staticmethod
     def curated_filter(query: str, curated_only: bool = True) -> str:

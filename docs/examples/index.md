@@ -23,13 +23,18 @@ Regenerate all saved outputs:
 
 ```bash
 ./scripts/capture_example_outputs.sh
+python scripts/generate_example_docs.py
 ```
+
+**Shortest scripts:** [minimal/](minimal/index.md) (2 lines each).
+
+**Not sure which to run?** → [Interactive guide](../interactive-guide.md)
 
 ---
 
 ## Small — direct tools (no AI)
 
-No API key. One BioModels call per script.
+No API key. One BioModels call per script. Each doc page has **Tested output** (expand accordion).
 
 | Example | Script | Docs |
 |---------|--------|------|
@@ -37,12 +42,24 @@ No API key. One BioModels call per script.
 | Model metadata | `examples/small/02_model_info.py` | [02 — Model info](small/02-model-info.md) |
 | Trust score | `examples/small/03_trust_score.py` | [03 — Trust score](small/03-trust-score.md) |
 | Validate SBML | `examples/small/04_validate_sbml.py` | [04 — Validate SBML](small/04-validate-sbml.md) |
+| Simulate | `examples/small/05_simulate.py` | [05 — Simulate](small/05-simulate.md) *(BASICO)* |
+| Perturb | `examples/small/06_perturb.py` | [06 — Perturb](small/06-perturb.md) *(BASICO)* |
+| Compare models | `examples/small/07_compare_models.py` | [07 — Compare models](small/07-compare-models.md) |
+| Compare sims | `examples/small/08_compare_sims.py` | [08 — Compare sims](small/08-compare-sims.md) *(offline)* |
+| Repro export | `examples/small/09_repro_export.py` | [09 — Repro export](small/09-repro-export.md) |
+| SBML graph | `examples/small/10_sbml_graph.py` | [10 — SBML graph](small/10-sbml-graph.md) |
+
+---
+
+## Notebooks
+
+Five Jupyter notebooks — [overview](notebooks/index.md)
 
 ---
 
 ## Big — AI agent
 
-Uses `gpt-4o-mini` and PraisonAI toolsets.
+Uses `gpt-4o-mini` and PraisonAI toolsets. Each doc includes **Tested output**.
 
 | Example | Script | Docs |
 |---------|--------|------|

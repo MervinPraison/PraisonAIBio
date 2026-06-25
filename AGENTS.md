@@ -2,6 +2,37 @@
 
 Extension package for PraisonAI systems biology workflows.
 
+## PraisonAI backbone (do not reimplement)
+
+PraisonAI (`praisonaiagents` + `praisonai` wrapper) is the **execution backbone**; PraisonAIBio is the **domain plugin**.
+
+| PraisonAI owns | PraisonAIBio owns |
+|----------------|-------------------|
+| Agent, AgentTeam, Task, handoffs, workflows (route/parallel/loop/approve) | BioModels REST adapter, BASICO simulation |
+| Hooks, EventBus, trace, PolicyEngine, GuardrailConfig, ApprovalConfig | 26 `@tool` functions + entry points |
+| MemoryConfig, Session, KnowledgeConfig, RAG | Repro bundles, ground-truth CSVs |
+| EvalSuite, MCP launcher, recipes, scheduler, BotOS | Tool implementations, biomodels-runs artefacts |
+
+**Integration (three paths, one backbone):**
+
+```bash
+import praisonai_bio
+praisonai workflow run workflows/discovery/biomodels_discovery_pipeline.yaml
+export PRAISONAI_RECIPE_PATH=recipes/bio && praisonai recipe run biomodels-discovery
+```
+
+```python
+from praisonaiagents import Agent
+from praisonai_bio.config.presets import DISCOVERY_AGENT
+import praisonai_bio  # noqa: F401 — registers tools + wire_bio_hooks()
+
+agent = Agent(name="scout", **DISCOVERY_AGENT)
+```
+
+**Do not build:** `praisonai-bio workflow run` or `praisonai-bio recipe run`. Bio CLI stays: `init`, `validate`, `tools validate`, `doctor`, `bench`.
+
+Agent presets live in `praisonai_bio/config/presets.py`. Hooks register via `wire_bio_hooks()` on import.
+
 ## Layout
 
 - `src/praisonai-bio/praisonai_bio/` — pip package (tools, adapters, toolsets)
@@ -64,7 +95,7 @@ Adapted from the main PraisonAI `AGENTS.md`. Apply these when changing this repo
 
 **T2B parity:** `search_models`, `get_modelinfo`, `load_biomodel`, `simulate_model`, `ask_question`, `steady_state`, `parameter_scan`, `custom_plotter`, `get_annotation`, `query_article`, `save_model`
 
-**Discovery extras:** `rank_models`, `trust_scorecard`, `compare_models`, `preview_outcomes`, `sbml_summarise`, `sbml_validate`, `sedml_parse`, `simulate_perturbation`, `compare_simulations`, `repro_export`
+**Discovery extras:** `rank_models`, `trust_scorecard`, `compare_models`, `preview_outcomes`, `sbml_summarise`, `sbml_validate`, `sbml_to_graph`, `sedml_parse`, `sedml_simulate`, `simulate_perturbation`, `compare_simulations`, `repro_export`, `list_model_files`, `download_model_file`, `advanced_search`
 
 ---
 

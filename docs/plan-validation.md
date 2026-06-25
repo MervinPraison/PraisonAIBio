@@ -1,87 +1,47 @@
 # Plan validation report
 
-Multi-agent audit of the [PraisonAIBio master plan](https://github.com/MervinPraison/PraisonAIBio) against the repository (Phase 0/1).
+Automated audit of PraisonAIBio against the gap-closure plan (Phase 0–1).
 
-Run automated checks:
+Run checks:
 
 ```bash
+bash scripts/check_no_submission.sh
 python scripts/validate_repo.py
-./scripts/test_all.sh
+python -m pytest tests/unit -q
+python benchmarks/t2b_parity/eval_suite_runner.py
 ```
 
 ## Summary
 
 | Area | Status | Notes |
 |------|--------|-------|
-| Package + tools | **PASS** | 21 tools, 10 toolsets, entry points OK |
-| Workflows (scaffold) | **PASS** | Discovery, orchestration, platform, cookbooks |
-| Skills + MCP | **PASS** | 5 skills; MCP exposes 11 T2B tools |
-| Docs + examples | **PASS** | MkDocs, captured outputs, skills guide |
-| Session persistence | **PASS** | `repro_export` writes to `~/.praisonai/biomodels-runs/` |
-| Discovery route | **PASS** | `route:` after domain classifier |
-| HITL in full pipeline | **PARTIAL** | Gate via linked platform workflow (see below) |
-| Handoffs | **PASS** | Agent `handoffs:` in full research workflow |
-| Recipes | **PASS** | `TEMPLATE.yaml` per recipe |
-| Benchmark ground truth | **PARTIAL** | Generate with `scripts/generate_ground_truth.py` |
-| MCP resources/prompts | **DEFERRED** | Markdown spec only; Phase 2 server wiring |
-| Knowledge/RAG | **STUB** | `article_index.py` returns `indexed: False` |
-| Phase 2 items | **DEFERRED** | OLS, Docker, ClawBio bridge, PyPI |
+| Package + tools | **PASS** | 28 tools, 10 toolsets, entry points OK |
+| MCP | **PASS** | `sysbio-full` exposes all 28 tools |
+| Workflows | **PASS** | Discovery, lifecycle, platform, cookbooks, eight-pillar pipeline |
+| Skills | **PARTIAL** | 16 skills in catalog; not all 28 tools covered |
+| Docs + examples | **PASS** | MkDocs, captured outputs, interactive guide |
+| Hooks + policy | **PASS** | `wire_bio_hooks()`, SDK policy packs, policy gate |
+| Benchmarks | **PASS** | 10-case T2B parity via prompt router (no self-score cheat) |
+| Session / repro | **PASS** | `repro_export` writes manifests under run dir |
+| Knowledge / RAG | **PARTIAL** | Bridge code; full RAG when optional deps installed |
+| Phase 2 backlog | **DEFERRED** | OLS adapter, MCP Docker, 312-Q suite, PyPI publish |
 
-## Critical gaps — resolution
+## Benchmark integrity
 
-### CONTRIBUTING + ROADMAP
-
-Added at repo root per plan §802–805.
-
-### Session persistence
-
-`repro_export(model_id, output_dir, run_id=...)` saves manifest JSON under:
-
-`~/.praisonai/biomodels-runs/{run_id}/repro_manifest.json`
-
-### HITL between assumption review and simulation
-
-The full 7-phase workflow references the platform gate:
+T2B parity cases are scored with `infer_tool_from_prompt()` — **not** by echoing `expected_tool`. CI runs `eval_suite_runner.py` (mean score must be ≥ 0.9).
 
 ```bash
-# Phase 3 → HITL → Phase 4
-praisonai workflow run workflows/platform/approval_assumption_gate.yaml
-praisonai workflow run workflows/discovery/biomodels_full_research_workflow.yaml --var question="..."
-```
-
-The full research YAML includes an inline `approve` step where the workflow engine supports it; the platform gate remains the canonical HITL path for non-interactive CI.
-
-### Route in discovery pipeline
-
-`workflows/discovery/biomodels_discovery_pipeline.yaml` includes a `route:` step after domain classification (pathway / disease / drug / general).
-
-### Handoffs
-
-`workflows/discovery/biomodels_full_research_workflow.yaml` agents declare `handoffs:` for intake → scout → analyst → simulation chain.
-
-### Recipes
-
-Each recipe under `recipes/bio/*/TEMPLATE.yaml` points to the workflow file for `praisonai recipe run`:
-
-```bash
-praisonai recipe run /path/to/PraisonAIBio/recipes/bio/biomodels-discovery
-```
-
-### Ground truth trajectories
-
-```bash
-pip install "praisonai-bio[simulation]"
-python scripts/generate_ground_truth.py
-# writes benchmarks/t2b_parity/ground_truth/BIOMD0000000206_trajectory.csv
+python benchmarks/t2b_parity/eval_suite_runner.py
+python benchmarks/run_all.py
 ```
 
 ## Phase 2 (intentionally deferred)
 
-- `ols_adapter.py`
+- `ols_adapter.py` (stub)
 - `mcp/sysbio-server/Dockerfile`
 - Full ClawBio bridge
-- BotOS production deployment
-- PyPI publish
+- 312-question T2B benchmark import
+- PyPI publish (release workflow ready; needs tag)
 
 ## Last validated
 

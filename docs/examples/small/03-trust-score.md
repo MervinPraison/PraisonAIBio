@@ -1,8 +1,9 @@
 # Example — Trust scorecard
 
 **Category:** Small (no AI) · **Script:** [`examples/small/03_trust_score.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/small/03_trust_score.py)
+**Minimal (2 lines):** [`examples/minimal/trust.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/trust.py)
 
-Score how trustworthy a BioModels entry is (curation, publication, metadata completeness).
+Curation trust check for **BIOMD0000000206**.
 
 ---
 
@@ -10,34 +11,21 @@ Score how trustworthy a BioModels entry is (curation, publication, metadata comp
 
 ```bash
 pip install -e "src/praisonai-bio"
-python -c "import praisonai_bio"
 python examples/small/03_trust_score.py
 ```
 
-Uses model **BIOMD0000000206**.
+**Needs:** Internet.
 
 ---
 
-## Sample output
+## Tested output
 
-```json
-{
-  "model_id": "BIOMD0000000206",
-  "score": 85,
-  "grade": "high",
-  "reasons": [
-    "Manually curated on BioModels.org",
-    "Linked publication metadata present",
-    "MIRIAM annotations available"
-  ],
-  "curation_status": "Manually curated"
-}
-```
+Live capture from `./scripts/capture_example_outputs.sh`.
 
-Exact score fields depend on live BioModels metadata.
-
-??? "Full captured output"
-    [`output.txt`](03-trust-score/output.txt)
+??? "Click to view full output"
+    ```text
+    --8<-- "docs/examples/small/03-trust-score/output.txt"
+    ```
 
 ---
 

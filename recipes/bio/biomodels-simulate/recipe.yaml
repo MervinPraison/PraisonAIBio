@@ -1,7 +1,7 @@
 ---
 name: biomodels-simulate
 description: Baseline simulation on a BioModels ID
-workflow: workflows/discovery/biomodels_baseline_simulation.yaml
+workflow_file: workflows/discovery/biomodels_baseline_simulation.yaml
 tags: [bio, simulation]
 ---
 

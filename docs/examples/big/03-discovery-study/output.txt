@@ -1,9 +1,17 @@
-The best curated MAPK model for cell signaling studies is:
-
-### [Sarma2012 - Oscillations in MAPK cascade (S2), inclusion of external signaling module](https://www.biomodels.org/BIOMD0000000442)
-- **ID**: BIOMD0000000442
-- **Submitter**: Uddipan Sarma
-- **Submission Date**: 2011-12-19
-- **Relevance Score**: 3
-
-This model provides a comprehensive framework for studying MAPK behavior in a signaling context.
+Here are some curated MAPK models for cell signaling that might interest you:
+1. **[Sarma2012 - Oscillations in MAPK cascade](https://www.biomodels.org/BIOMD0000000442)**  
+   *Submission Date:* 2011-12-19  
+   *Submitter:* Uddipan Sarma  
+2. **[Pappalardo2016 - PI3K/AKT and MAPK Signaling Pathways in Melanoma Cancer](https://www.biomodels.org/BIOMD0000000666)**  
+   *Submission Date:* 2016-09-19  
+   *Submitter:* Francesco Pappalardo  
+3. **[Shin2016 - Unveiling Hidden Dynamics of Hippo Signalling](https://www.biomodels.org/BIOMD0000000832)**  
+   *Submission Date:* 2019-09-25  
+   *Submitter:* Johannes Meyer  
+4. **[Cursons2015 - Regulation of ERK-MAPK signaling in human epidermis](https://www.biomodels.org/BIOMD0000000659)**  
+   *Submission Date:* 2015-03-27  
+   *Submitter:* Joe Cursons  
+5. **[Neves2008 - Role of cell shape and size in controlling intracellular signalling](https://www.biomodels.org/BIOMD0000000182)**  
+   *Submission Date:* 2008-08-14  
+   *Submitter:* Harish Dharuri  
+You can explore each model further through the links provided. Would you like more information on any specific model?

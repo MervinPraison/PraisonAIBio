@@ -44,6 +44,8 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+  - pymdownx.snippets:
+      base_path: ["."]
   - tables
   - toc:
       permalink: true
@@ -54,15 +56,24 @@ nav:
       - Overview: get-started.md
       - Install: install.md
       - Quick tasks: quick-tasks.md
+      - Interactive guide: interactive-guide.md
       - For researchers: for-researchers.md
       - FAQ: faq.md
   - Guides:
       - Examples:
           - Overview: examples/index.md
+          - Minimal (2 lines): examples/minimal/index.md
           - Small — Search: examples/small/01-search.md
           - Small — Model info: examples/small/02-model-info.md
           - Small — Trust score: examples/small/03-trust-score.md
           - Small — Validate SBML: examples/small/04-validate-sbml.md
+          - Small — Simulate: examples/small/05-simulate.md
+          - Small — Perturb: examples/small/06-perturb.md
+          - Small — Compare models: examples/small/07-compare-models.md
+          - Small — Compare sims: examples/small/08-compare-sims.md
+          - Small — Repro export: examples/small/09-repro-export.md
+          - Small — SBML graph: examples/small/10-sbml-graph.md
+          - Notebooks: examples/notebooks/index.md
           - Agent — Find models: examples/big/01-find-models.md
           - Agent — Summarise: examples/big/02-summarise-model.md
           - Agent — Discovery: examples/big/03-discovery-study.md

@@ -6,7 +6,7 @@ import json
 from typing import Any
 
 
-def validate_simulation_output(output: Any) -> tuple[bool, str]:
+def validate_simulation_output(output: Any):
     if isinstance(output, str):
         try:
             output = json.loads(output)

@@ -1,0 +1,17 @@
+# T2B use case — IL-6 precision medicine (BIOMD0000000537)
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+variables:
+  question: "How does IL-6 signalling affect immune response?"
+  model_id: BIOMD0000000537
+config:
+  llm: gpt-4o-mini
+agents:
+  researcher:
+    role: Precision Medicine Researcher
+    instructions: Use BioModels tools for IL-6 model BIOMD0000000537.
+    toolsets: [sysbio-full]
+steps:
+  - agent: researcher
+    action: "Search, load {{ model_id }}, summarise SBML, and preview simulation outcomes for: {{ question }}"

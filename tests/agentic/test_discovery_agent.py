@@ -15,7 +15,7 @@ def test_agent_search_glycolysis():
     agent = Agent(
         name="bio-scout",
         instructions="Search BioModels for curated glycolysis models. Reply with one model ID.",
-        llm="gpt-4o-mini",
+        model="gpt-4o-mini",
         toolsets=["biomodels-readonly"],
     )
     result = agent.start("Find a curated yeast glycolysis model on BioModels.org")

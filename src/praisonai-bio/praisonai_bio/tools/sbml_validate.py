@@ -1,12 +1,12 @@
 from praisonaiagents import tool
 
+from praisonai_bio.adapters.sbml_adapter import parse_structure
 from praisonai_bio.tools._helpers import as_json, get_client, normalise_model_id
 
 
 @tool
 def sbml_validate(model_id: str | None = None, sbml_path: str | None = None) -> str:
     """Validate SBML structure and basic unit consistency."""
-    import xml.etree.ElementTree as ET
     from pathlib import Path
 
     try:
@@ -18,26 +18,22 @@ def sbml_validate(model_id: str | None = None, sbml_path: str | None = None) -> 
         else:
             return as_json({"valid": False, "error": "Provide model_id or sbml_path"})
 
-        root = ET.fromstring(content)
-        tag = root.tag.split("}")[-1] if "}" in root.tag else root.tag
-        species = root.findall(".//{*}species") or root.findall(".//species")
-        reactions = root.findall(".//{*}reaction") or root.findall(".//reaction")
+        structure = parse_structure(content)
         issues = []
-        if tag.lower() != "sbml":
-            issues.append(f"Root element is {tag}, expected sbml")
-        for sp in species:
+        if structure.get("root", "").lower() != "sbml":
+            issues.append(f"Root element is {structure.get('root')}, expected sbml")
+        for sp in structure.get("species", []):
             if not (sp.get("id") or sp.get("name")):
                 issues.append("Species missing id/name")
                 break
+        counts = structure.get("counts", {})
         return as_json(
             {
                 "valid": len(issues) == 0,
-                "species_count": len(species),
-                "reaction_count": len(reactions),
+                "species_count": counts.get("species", 0),
+                "reaction_count": counts.get("reactions", 0),
                 "issues": issues,
             }
         )
-    except ET.ParseError as exc:
-        return as_json({"valid": False, "error": str(exc)})
     except Exception as exc:
         return as_json({"valid": False, "error": str(exc)})

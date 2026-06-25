@@ -1,8 +1,9 @@
 # Example — Validate SBML
 
 **Category:** Small (no AI) · **Script:** [`examples/small/04_validate_sbml.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/small/04_validate_sbml.py)
+**Minimal (2 lines):** [`examples/minimal/validate.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/validate.py)
 
-Download SBML from BioModels and check structure (species, reactions, basic validity). No simulation required.
+Check SBML structure for **BIOMD0000000206**.
 
 ---
 
@@ -10,27 +11,21 @@ Download SBML from BioModels and check structure (species, reactions, basic vali
 
 ```bash
 pip install -e "src/praisonai-bio"
-python -c "import praisonai_bio"
 python examples/small/04_validate_sbml.py
 ```
 
+**Needs:** Internet.
+
 ---
 
-## Sample output
+## Tested output
 
-```json
-{
-  "valid": true,
-  "species_count": 9,
-  "reaction_count": 11,
-  "issues": []
-}
-```
+Live capture from `./scripts/capture_example_outputs.sh`.
 
-If validation fails, `valid` is `false` and `issues` lists problems found.
-
-??? "Full captured output"
-    [`output.txt`](04-validate-sbml/output.txt)
+??? "Click to view full output"
+    ```text
+    --8<-- "docs/examples/small/04-validate-sbml/output.txt"
+    ```
 
 ---
 

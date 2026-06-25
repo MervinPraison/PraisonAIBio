@@ -1,0 +1,17 @@
+# T2B use case — MAPK hysteresis steady state (BIOMD0000000064)
+framework: praisonai
+process: workflow
+input: "{{ question }}"
+variables:
+  question: "Demonstrate MAPK hysteresis and steady-state behaviour"
+  model_id: BIOMD0000000064
+config:
+  llm: gpt-4o-mini
+agents:
+  analyst:
+    role: MAPK Analyst
+    instructions: Focus on steady-state and parameter behaviour for MAPK models.
+    toolsets: [simulation, sbml_analysis]
+steps:
+  - agent: analyst
+    action: "Load {{ model_id }}, compute steady state, and summarise hysteresis-related parameters for: {{ question }}"

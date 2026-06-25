@@ -1,6 +1,7 @@
 # Example — Search BioModels
 
 **Category:** Small (no AI) · **Script:** [`examples/small/01_search.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/small/01_search.py)
+**Minimal (2 lines):** [`examples/minimal/search.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/search.py)
 
 Search curated glycolysis models on BioModels.org.
 
@@ -10,42 +11,20 @@ Search curated glycolysis models on BioModels.org.
 
 ```bash
 pip install -e "src/praisonai-bio"
-python -c "import praisonai_bio"
 python examples/small/01_search.py
 ```
 
-No API key required. Needs network access to [BioModels.org](https://www.biomodels.org).
+**Needs:** Internet. No API key.
 
 ---
 
-## Sample output
+## Tested output
 
-Returns JSON with a curated search query and matching models:
+Live capture from `./scripts/capture_example_outputs.sh`.
 
-```json
-{
-  "query": "glycolysis AND curationstatus:\"Manually curated\"",
-  "count": 10,
-  "models": [
-    {
-      "id": "BIOMD0000000471",
-      "name": "Smallbone2013 - Yeast metabolic model with linlog rate law",
-      "url": "https://www.biomodels.org/BIOMD0000000471"
-    },
-    {
-      "id": "BIOMD0000000472",
-      "name": "Smallbone2013 - Yeast metabolic model with modular rate law",
-      "url": "https://www.biomodels.org/BIOMD0000000472"
-    }
-  ]
-}
-```
-
-??? "Full captured output"
-    Full JSON is saved in the repo: [`output.txt`](01-search/output.txt)
-
-    ```bash
-    cat docs/examples/small/01-search/output.txt
+??? "Click to view full output"
+    ```text
+    --8<-- "docs/examples/small/01-search/output.txt"
     ```
 
 ---

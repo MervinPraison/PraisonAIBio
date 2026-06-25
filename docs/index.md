@@ -23,6 +23,13 @@ graph LR
 
 ## Try in 30 seconds
 
+```bash
+pip install -e "src/praisonai-bio"
+python examples/minimal/search.py
+```
+
+More: [minimal examples](examples/minimal/README.md) (2 lines each).
+
 === "No AI (fastest)"
 
 ```bash
@@ -50,6 +57,7 @@ praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml
 
 | Task | Start here |
 |------|------------|
+| **Pick your path (interactive)** | [**Interactive guide**](interactive-guide.md) |
 | Install | [Install](install.md) |
 | Copy-paste tasks | [Quick tasks](quick-tasks.md) |
 | Understand workflows | [For researchers](for-researchers.md) |
