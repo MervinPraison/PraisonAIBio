@@ -20,6 +20,7 @@ Toolsets are named bundles of tools for agents and YAML workflows.
 | `sysbio-orchestrator` | Multi-step discovery agent |
 | `sysbio-safe` | Read-only, no writes or simulation |
 | `repro` | Reproducibility bundles |
+| `genomics-bridge` | v2 stub — ClawBio genomics bridge (empty until external tools registered) |
 
 ---
 
@@ -57,4 +58,4 @@ agents:
 
 **Discovery:** rank_models, trust_scorecard, compare_models, preview_outcomes, sbml_summarise, sbml_validate, sedml_parse, simulate_perturbation, compare_simulations, repro_export
 
-Details: [Tools](tools-at-a-glance.md)
+Details: [Tools at a glance](tools-at-a-glance.md) · [Tools reference](tools-reference.md)

@@ -14,6 +14,8 @@ What each tool does — no code required to understand.
 | **trust_scorecard** | “Is this curated?” | Trust score + reasons |
 | **compare_models** | “How do A and B differ?” | Side-by-side metadata |
 | **sbml_summarise** | “What’s in the model?” | Species, reactions summary |
+| **sbml_validate** | “Is the SBML valid?” | Structure and unit check |
+| **sedml_parse** | “What SED-ML tasks exist?” | Tasks and data generators |
 | **get_annotation** | “What databases link to this?” | MIRIAM annotations |
 | **query_article** | “Which paper?” | DOI / PubMed links |
 
@@ -49,10 +51,18 @@ What each tool does — no code required to understand.
 | Toolset | Who it's for |
 |---------|--------------|
 | **biomodels-readonly** | Discovery only — safe |
+| **sbml_analysis** | Load, summarise, validate SBML |
 | **sysbio-core** | Discovery + basic simulation |
-| **simulation** | Running models |
+| **simulation** | Running models (BASICO) |
+| **reporting** | Compare models and simulations |
+| **repro** | Reproducibility bundles |
+| **sysbio-full** | All 21 tools |
 | **sysbio-orchestrator** | Multi-step discovery agent |
+| **sysbio-safe** | Read-only, no writes or simulation |
+| **genomics-bridge** | v2 stub — register ClawBio tools at runtime |
 
 Use in agents: `toolsets=["biomodels-readonly"]`
+
+Full parameter list: [Tools reference](tools-reference.md)
 
 Always run `import praisonai_bio` first.

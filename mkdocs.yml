@@ -61,7 +61,9 @@ nav:
       - Workflows: concepts/workflows.md
       - Toolsets: toolsets.md
       - Tools: tools-at-a-glance.md
+      - Tools reference: tools-reference.md
       - Recipes: recipes.md
+      - Skills: skills.md
       - CLI: cli.md
       - MCP: concepts/mcp.md
   - Compare:

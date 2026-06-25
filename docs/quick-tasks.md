@@ -38,6 +38,16 @@ python examples/small/03_trust_score.py
 
 ---
 
+## Task 3b — Validate SBML structure
+
+**Question:** *“Is BIOMD0000000206 structurally valid?”*
+
+```bash
+python examples/small/04_validate_sbml.py
+```
+
+---
+
 ## Task 4 — Let AI search for you
 
 **Question:** *“Find MAPK models for me.”*
@@ -69,6 +79,15 @@ python examples/big/04_glycolysis_demo.py
 
 ---
 
+## Task 6b — Agent summarises one model
+
+```bash
+export OPENAI_API_KEY=sk-...
+python examples/big/02_summarise_model.py
+```
+
+---
+
 ## Task 7 — Workflow file (multi-step team)
 
 No Python — uses PraisonAI workflow YAML:
@@ -92,3 +111,15 @@ print(repro_export.run(model_id='BIOMD0000000206', output_dir='/tmp/glycolysis_b
 ```
 
 Creates `model.sbml`, metadata, and `commands.sh` in the folder.
+
+---
+
+## Task 9 — Policy-guarded simulation (workflow)
+
+```bash
+export OPENAI_API_KEY=sk-...
+python -c "import praisonai_bio"
+praisonai workflow run workflows/platform/policy_guarded_simulation.yaml
+```
+
+See [Workflows — Platform](concepts/workflows.md).

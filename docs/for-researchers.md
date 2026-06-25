@@ -80,4 +80,4 @@ Used in cookbooks, examples, and benchmarks.
 | Have a pathway name only | `examples/big/01_find_models.py` |
 | Want a full pipeline | `workflows/cookbooks/glycolysis_demo.yaml` |
 
-See [Tools at a glance](tools-at-a-glance.md) for the full tool list in plain language.
+See [Tools at a glance](tools-at-a-glance.md) and [Tools reference](tools-reference.md) for the full tool list and parameters.

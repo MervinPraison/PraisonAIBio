@@ -43,6 +43,7 @@ python examples/big/01_find_models.py
 |------|---------|
 | Check one model | `python examples/small/02_model_info.py` |
 | Trust / curation score | `python examples/small/03_trust_score.py` |
+| Validate SBML | `python examples/small/04_validate_sbml.py` |
 | Full glycolysis walkthrough | `python examples/big/04_glycolysis_demo.py` |
 | YAML workflow (no Python) | `praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml` |
 

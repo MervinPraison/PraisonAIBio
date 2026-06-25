@@ -38,6 +38,29 @@ praisonai workflow run workflows/discovery/biomodels_discovery_pipeline.yaml
 | `parallel_sensitivity_scan.yaml` | Parallel scans |
 | `team_model_review.yaml` | AgentTeam review |
 | `full_platform_showcase.yaml` | Route + Parallel + Memory |
+| `precision_medicine_loop.yaml` | Loop: baseline → perturb → compare |
+
+---
+
+## Platform (`workflows/platform/`)
+
+Production patterns — policy, approval, eval, MCP, bots.
+
+| File | What it does |
+|------|--------------|
+| `approval_assumption_gate.yaml` | Human approval before assumption review |
+| `approval_parameter_scan.yaml` | Human approval before parameter scan |
+| `policy_guarded_simulation.yaml` | Simulation with export path policy |
+| `eval_regression_gate.yaml` | Eval gate on tool selection |
+| `mcp_sysbio_server.yaml` | Run sysbio MCP server workflow |
+| `botos_sysbio_telegram.yaml` | Telegram bot + sysbio tools (needs token) |
+| `botos_stub.yaml` | BotOS wiring stub |
+
+```bash
+praisonai workflow run workflows/platform/policy_guarded_simulation.yaml
+```
+
+Agent defaults: `workflows/agents/defaults.yaml`
 
 ---
 
