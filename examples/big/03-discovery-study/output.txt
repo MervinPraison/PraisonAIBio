@@ -1,0 +1,9 @@
+The best curated MAPK model for cell signaling studies is:
+
+### [Sarma2012 - Oscillations in MAPK cascade (S2), inclusion of external signaling module](https://www.biomodels.org/BIOMD0000000442)
+- **ID**: BIOMD0000000442
+- **Submitter**: Uddipan Sarma
+- **Submission Date**: 2011-12-19
+- **Relevance Score**: 3
+
+This model provides a comprehensive framework for studying MAPK behavior in a signaling context.

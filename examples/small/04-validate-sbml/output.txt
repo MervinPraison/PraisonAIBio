@@ -1,0 +1,6 @@
+{
+  "valid": true,
+  "species_count": 9,
+  "reaction_count": 11,
+  "issues": []
+}

@@ -1,0 +1,36 @@
+The **Teusink Yeast Glycolysis Model**, originally developed by Jana Wolf and collaborators, investigates the dynamics of glycolytic oscillations in the yeast *Saccharomyces cerevisiae*. Here’s an overview of the key aspects of the model:
+
+### Model Overview
+
+- **Title**: Wolf2000 Glycolytic Oscillations
+- **Description**: The model captures the oscillatory dynamics of key metabolites during glycolysis, particularly ATP (Adenosine Triphosphate) and NADH (Nicotinamide Adenine Dinucleotide), showcasing how these concentrations change over time in yeast cells.
+- **Purpose**: The model illustrates how glycolytic oscillations can synchronize among a population of yeast cells, mediated through acetaldehyde.
+  
+### Publication Information
+
+- **Journal**: Biophysical Journal
+- **Year**: 2000
+- **Link**: [Read the original paper](http://identifiers.org/pubmed/10692304)
+- **Authors**: Includes prominent researchers like Jana Wolf and H.V. Westerhoff.
+
+### Key Dynamics and Findings
+
+1. **Glycolytic Oscillation**: The model demonstrates how glycolysis, the pathway for glucose metabolism, can produce oscillations in ATP and NADH levels, driven by the underlying biochemical reactions.
+  
+2. **Synchronization Signal**: It explores the transmission of dynamics through intercellular signaling, specifically relating to acetaldehyde production and propagation.
+
+3. **Modeling Approach**: The model employs ordinary differential equations (ODEs) to represent the dynamic behaviors of metabolites over time.
+
+### Simulation Outcomes
+
+I ran a brief simulation of the model over 100 time units, and here are some notable results:
+
+- **ATP Concentration**: Fluctuates between approximately 1.6 to 3.0 units, showcasing periodic oscillations characteristic of the glycolytic cycle.
+- **NAD Concentration**: Similarly exhibits oscillatory behavior, starting at around 0.6 and adjusting through its metabolic pathways.
+- **Acetaldehyde**: Shows minor fluctuations in concentration, indicating its role as both a product and a signaling molecule during glycolysis.
+
+### Sample Graphical Results
+
+- The model dynamically depicts key pathways and can be represented with graphs (not shown here), illustrating changes over time for various metabolites (ATP, NADH, Acetaldehyde, etc.).
+
+This model provides profound insights into the biochemical complexities of glycolytic oscillations and is a valuable tool for studying cellular dynamics in microbiological and biochemical research. Would you like to explore further details or specific aspects?

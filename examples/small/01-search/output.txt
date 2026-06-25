@@ -1,0 +1,96 @@
+{
+  "query": "glycolysis AND curationstatus:\"Manually curated\"",
+  "count": 10,
+  "models": [
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000471",
+      "lastModified": null,
+      "name": "Smallbone2013 - Yeast metabolic model with linlog rate law",
+      "submissionDate": "2013-02-14T00:00:00Z",
+      "submitter": "Kieran Smallbone",
+      "url": "https://www.biomodels.org/BIOMD0000000471"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000472",
+      "lastModified": null,
+      "name": "Smallbone2013 - Yeast metabolic model with modular rate law",
+      "submissionDate": "2013-02-14T00:00:00Z",
+      "submitter": "Kieran Smallbone",
+      "url": "https://www.biomodels.org/BIOMD0000000472"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000473",
+      "lastModified": null,
+      "name": "Smallbone2013 - Yeast metabolic model with modular rate law, merged with Pritchard 2002",
+      "submissionDate": "2013-02-14T00:00:00Z",
+      "submitter": "Kieran Smallbone",
+      "url": "https://www.biomodels.org/BIOMD0000000473"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000469",
+      "lastModified": null,
+      "name": "Smallbone2013 - E.coli metabolic model with linlog rate law",
+      "submissionDate": "2013-02-14T00:00:00Z",
+      "submitter": "Kieran Smallbone",
+      "url": "https://www.biomodels.org/BIOMD0000000469"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000470",
+      "lastModified": null,
+      "name": "Smallbone2013 - E.coli metabolic model with modular rate law",
+      "submissionDate": "2013-02-14T00:00:00Z",
+      "submitter": "Kieran Smallbone",
+      "url": "https://www.biomodels.org/BIOMD0000000470"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000428",
+      "lastModified": null,
+      "name": "Achcar2012 - Glycolysis in bloodstream form T. brucei",
+      "submissionDate": "2012-09-13T00:00:00Z",
+      "submitter": "Lukas Endler",
+      "url": "https://www.biomodels.org/BIOMD0000000428"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000513",
+      "lastModified": null,
+      "name": "Kerkhoven2013 - Glycolysis in T.brucei - MODEL A",
+      "submissionDate": "2014-01-31T00:00:00Z",
+      "submitter": "Vijayalakshmi Chelliah",
+      "url": "https://www.biomodels.org/BIOMD0000000513"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000503",
+      "lastModified": null,
+      "name": "Messiha2013 - combined glycolysis and pentose phosphate pathway model",
+      "submissionDate": "2013-11-29T00:00:00Z",
+      "submitter": "Kieran Smallbone",
+      "url": "https://www.biomodels.org/BIOMD0000000503"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000482",
+      "lastModified": null,
+      "name": "Noguchi2013 - Insulin dependent glucose metabolism",
+      "submissionDate": "2013-01-02T00:00:00Z",
+      "submitter": "Rei Noguchi",
+      "url": "https://www.biomodels.org/BIOMD0000000482"
+    },
+    {
+      "format": "SBML",
+      "id": "BIOMD0000000172",
+      "lastModified": null,
+      "name": "Pritchard2002_glycolysis",
+      "submissionDate": "2008-05-20T00:00:00Z",
+      "submitter": "Nicolas Le Nov\u00e8re",
+      "url": "https://www.biomodels.org/BIOMD0000000172"
+    }
+  ]
+}

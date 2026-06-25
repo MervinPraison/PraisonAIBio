@@ -76,4 +76,40 @@
          <loc>https://bio.praison.ai/concepts/workflows/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/01-find-models/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/02-summarise-model/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/03-discovery-study/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/04-glycolysis-demo/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/01-search/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/02-model-info/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/03-trust-score/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/04-validate-sbml/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
 </urlset>
