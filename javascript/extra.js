@@ -1,6 +1,9 @@
-/* PraisonAIBio docs — Mermaid dark theme + subtle UX polish */
-
+/* Add home-page class for full-width layout */
 document.addEventListener("DOMContentLoaded", function () {
+  if (document.location.pathname === "/" || document.location.pathname.endsWith("/index.html")) {
+    document.body.classList.add("bio-home");
+  }
+
   if (typeof mermaid !== "undefined") {
     mermaid.initialize({
       startOnLoad: true,
