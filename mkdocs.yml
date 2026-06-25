@@ -16,20 +16,18 @@ theme:
     text: Inter
     code: JetBrains Mono
   palette:
-    - media: "(prefers-color-scheme: light)"
-      scheme: mint-light
-      primary: custom
-      accent: custom
-      toggle:
-        icon: material/brightness-7
-        name: Dark mode
-    - media: "(prefers-color-scheme: dark)"
-      scheme: mint-dark
+    - scheme: mint-light
       primary: custom
       accent: custom
       toggle:
         icon: material/brightness-4
-        name: Light mode
+        name: Switch to dark mode
+    - scheme: mint-dark
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
   features:
     - navigation.tabs
     - navigation.tabs.sticky

@@ -1,3 +1,8 @@
+---
+hide:
+  - navigation
+---
+
 <div class="bio-hero" markdown="1">
 
 # PraisonAIBio
