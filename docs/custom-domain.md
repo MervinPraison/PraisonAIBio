@@ -22,11 +22,13 @@ If you use **Cloudflare**, proxy (orange cloud) is fine — enable **Full** SSL.
 ## 2. GitHub repo settings
 
 1. Open [PraisonAIBio → Settings → Pages](https://github.com/MervinPraison/PraisonAIBio/settings/pages)
-2. **Custom domain:** `bio.praison.ai`
-3. Save — wait for DNS check (can take up to 24h, often minutes)
-4. Enable **Enforce HTTPS** when available
+2. **Build and deployment → Source:** Deploy from a branch
+3. **Branch:** `gh-pages` · **Folder:** `/ (root)` — **not** `main`
+4. **Custom domain:** `bio.praison.ai`
+5. Save — wait for DNS check (can take up to 24h, often minutes)
+6. Enable **Enforce HTTPS** when available
 
-The deploy workflow writes `CNAME` on each push (`cname: bio.praison.ai`).
+The `docs` workflow builds MkDocs and pushes to `gh-pages` via `peaceiris/actions-gh-pages` (`cname: bio.praison.ai`).
 
 ---
 
@@ -55,5 +57,5 @@ curl -I https://bio.praison.ai
 |-------|-----|
 | DNS not verified | Wait; confirm CNAME points to `mervinpraison.github.io` |
 | Certificate pending | Disable/re-enable Enforce HTTPS after DNS is green |
-| Wrong content | Ensure Pages source is **GitHub Actions**, not a branch |
-| Old URL | Redirect optional: keep `site_url` as bio.praison.ai only |
+| Wrong content / old Jekyll theme | Pages source must be **`gh-pages` / (root)**, not `main`. Rebuild: `gh api --method POST repos/MervinPraison/PraisonAIBio/pages/builds` |
+| Design not updating after push | Confirm `docs` workflow succeeded and `gh-pages` has MkDocs HTML (`mkdocs-` in page source) |
