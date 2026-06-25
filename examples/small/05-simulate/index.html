@@ -1,0 +1,3328 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="AI agents for systems biology — BioModels.org discovery, simulation, and comparison">
+      
+      
+      
+        <link rel="canonical" href="https://bio.praison.ai/examples/small/05-simulate/">
+      
+      
+        <link rel="prev" href="../04-validate-sbml/">
+      
+      
+        <link rel="next" href="../06-perturb/">
+      
+      
+        
+      
+      
+      <link rel="icon" href="../../../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
+    
+    
+      
+        <title>05 — Simulate - PraisonAIBio</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="mint-light" data-md-color-primary="custom" data-md-color-accent="custom">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#example-simulate" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="PraisonAIBio" class="md-header__button md-logo" aria-label="PraisonAIBio" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            PraisonAIBio
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              05 — Simulate
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="mint-light" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="mint-dark" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+          <a href="javascript:void(0)" class="md-search__icon md-icon" title="Share" aria-label="Share" data-clipboard data-clipboard-text="" data-md-component="search-share" tabindex="-1">
+            
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18 16.08c-.76 0-1.44.3-1.96.77L8.91 12.7c.05-.23.09-.46.09-.7s-.04-.47-.09-.7l7.05-4.11c.54.5 1.25.81 2.04.81a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3c0 .24.04.47.09.7L8.04 9.81C7.5 9.31 6.79 9 6 9a3 3 0 0 0-3 3 3 3 0 0 0 3 3c.79 0 1.5-.31 2.04-.81l7.12 4.15c-.05.21-.08.43-.08.66 0 1.61 1.31 2.91 2.92 2.91s2.92-1.3 2.92-2.91A2.92 2.92 0 0 0 18 16.08"/></svg>
+          </a>
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/MervinPraison/PraisonAIBio" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MervinPraison/PraisonAIBio
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../get-started/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Get started
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Examples
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../tools-at-a-glance/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Tools
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/workflows/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Workflows
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../concepts/vs-t2b/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Compare
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../development/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Development
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="PraisonAIBio" class="md-nav__button md-logo" aria-label="PraisonAIBio" data-md-component="logo">
+      
+  <img src="../../../assets/favicon.svg" alt="logo">
+
+    </a>
+    PraisonAIBio
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/MervinPraison/PraisonAIBio" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+  </div>
+  <div class="md-source__repository">
+    MervinPraison/PraisonAIBio
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Home
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../get-started/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Get started
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Get started
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../install/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Install
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../quick-tasks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick tasks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../interactive-guide/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Interactive guide
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../for-researchers/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    For researchers
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../faq/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    FAQ
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../minimal/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Minimal (2 lines)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Small examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Small examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 — Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../02-model-info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 — Model info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-trust-score/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 — Trust score
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-validate-sbml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 — Validate SBML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 — Simulate
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 — Simulate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tested-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tested output
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-perturb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 — Perturb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-compare-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 — Compare models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-compare-sims/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 — Compare sims
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-repro-export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 — Repro export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-sbml-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 — SBML graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../big/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_4" id="__nav_3_4_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Agent examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../big/01-find-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 — Find models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../big/02-summarise-model/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 — Summarise
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../big/03-discovery-study/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 — Discovery
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../big/04-glycolysis-demo/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 — Glycolysis
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../notebooks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Notebooks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Tools
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools-at-a-glance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools at a glance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tools-reference/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Tools reference
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../toolsets/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Toolsets
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cli/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    CLI
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/mcp/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    MCP
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Workflows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/workflows/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workflows
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../recipes/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Recipes
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Compare
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Compare
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/vs-t2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PraisonAIBio vs Talk2BioModels
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../concepts/vs-clawbio/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    PraisonAIBio vs ClawBio
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+          
+        
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Development
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../development/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Development
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../plan-validation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Plan validation report
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../custom-domain/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Custom domain — bio.praison.ai
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#how-to-run" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        How to run
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tested-output" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tested output
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              
+                
+
+
+
+  
+
+
+  <nav class="md-path" aria-label="Navigation" >
+    <ol class="md-path__list">
+      
+        
+  
+  
+    <li class="md-path__item">
+      <a href="../../.." class="md-path__link">
+        
+  <span class="md-ellipsis">
+    Home
+  </span>
+
+      </a>
+    </li>
+  
+
+      
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Examples
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+    
+      <li class="md-path__item">
+        <a href="../" class="md-path__link">
+          
+  <span class="md-ellipsis">
+    Small examples
+  </span>
+
+        </a>
+      </li>
+    
+  
+
+      
+    </ol>
+  </nav>
+
+              
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  
+  
+
+
+<h1 id="example-simulate">Example — Simulate<a class="headerlink" href="#example-simulate" title="Permanent link">&para;</a></h1>
+<p><strong>Category:</strong> Small (no AI) · <strong>Script:</strong> <a href="https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/small/05_simulate.py"><code>examples/small/05_simulate.py</code></a>
+<strong>Minimal (2 lines):</strong> <a href="https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/simulate.py"><code>examples/minimal/simulate.py</code></a></p>
+<p>10 time-unit baseline simulation of <strong>BIOMD0000000206</strong>.</p>
+<hr />
+<h2 id="how-to-run">How to run<a class="headerlink" href="#how-to-run" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;src/praisonai-bio&quot;</span>
+python<span class="w"> </span>examples/small/05_simulate.py
+</code></pre></div>
+<p><strong>Needs:</strong> Internet + BASICO (<code>pip install -e "src/praisonai-bio[simulation]"</code>).</p>
+<hr />
+<h2 id="tested-output">Tested output<a class="headerlink" href="#tested-output" title="Permanent link">&para;</a></h2>
+<p>Live capture from <code>./scripts/capture_example_outputs.sh</code>.</p>
+<details>
+<summary>Click to view full output</summary>
+<div class="highlight"><pre><span></span><code>{
+  &quot;model_id&quot;: &quot;BIOMD0000000206&quot;,
+  &quot;duration&quot;: 10,
+  &quot;result_preview&quot;: {
+    &quot;ATP&quot;: {
+      &quot;0.0&quot;: 2.0,
+      &quot;0.1&quot;: 2.198373924577007,
+      &quot;0.2&quot;: 2.5363620776795015,
+      &quot;0.3&quot;: 2.4367116079207807,
+      &quot;0.4&quot;: 0.5914803212095638,
+      &quot;0.5&quot;: 2.726631588680213,
+      &quot;0.6&quot;: 2.98705053596741,
+      &quot;0.7&quot;: 1.8067648005510977,
+      &quot;0.8&quot;: 1.5973210672356963,
+      &quot;0.9&quot;: 2.9858551309316597,
+      &quot;1.0&quot;: 2.7088434498764378,
+      &quot;1.1&quot;: 0.6898541256063441,
+      &quot;1.2&quot;: 2.725258423910848,
+      &quot;1.3&quot;: 3.0175482351730265,
+      &quot;1.4&quot;: 1.7745596290549823,
+      &quot;1.5&quot;: 1.8041210983940459,
+      &quot;1.6&quot;: 3.007339318920367,
+      &quot;1.7&quot;: 2.652409668334737,
+      &quot;1.8&quot;: 0.5910953885210322,
+      &quot;1.9&quot;: 2.7822379722549706,
+      &quot;2.0&quot;: 3.0015934843514063,
+      &quot;2.1&quot;: 1.6016957987457365,
+      &quot;2.2&quot;: 2.089694658508526,
+      &quot;2.3&quot;: 3.0243886839987892,
+      &quot;2.4&quot;: 2.5513930136008334,
+      &quot;2.5&quot;: 0.4917782519547275,
+      &quot;2.6&quot;: 2.8366435761832003,
+      &quot;2.7&quot;: 2.972838815350751,
+      &quot;2.8&quot;: 1.4103888071986104,
+      &quot;2.9&quot;: 2.287160190153013,
+      &quot;3.0&quot;: 3.0360085819012252,
+      &quot;3.1&quot;: 2.431042629489933,
+      &quot;3.2&quot;: 0.4132900314699902,
+      &quot;3.3&quot;: 2.8835084581908257,
+      &quot;3.4&quot;: 2.9339408155108457,
+      &quot;3.5&quot;: 1.219249370299776,
+      &quot;3.6&quot;: 2.4326677436909554,
+      &quot;3.7&quot;: 3.04207758313995,
+      &quot;3.8&quot;: 2.2941721610900507,
+      &quot;3.9&quot;: 0.3611390975271629,
+      &quot;4.0&quot;: 2.9234049704465512,
+      &quot;4.1&quot;: 2.884167839297318,
+      &quot;4.2&quot;: 1.0362883460225998,
+      &quot;4.3&quot;: 2.5465242044291285,
+      &quot;4.4&quot;: 3.0423045828292583,
+      &quot;4.5&quot;: 2.1414932539199567,
+      &quot;4.6&quot;: 0.38721076595875165,
+      &quot;4.7&quot;: 2.957022360595382,
+      &quot;4.8&quot;: 2.8223882201006543,
+      &quot;4.9&quot;: 0.8682794318963596,
+      &quot;5.0&quot;: 2.6389769002199235,
+      &quot;5.1&quot;: 3.0362339996877346,
+      &quot;5.2&quot;: 1.9743230620607075,
+      &quot;5.3&quot;: 1.0969071791424638,
+      &quot;5.4&quot;: 2.984861760647575,
+      &quot;5.5&quot;: 2.7473823646064894,
+      &quot;5.6&quot;: 0.7202424448074038,
+      &quot;5.7&quot;: 2.7158891053950405,
+      &quot;5.8&quot;: 3.023252743352693,
+      &quot;5.9&quot;: 1.7947210178395052,
+      &quot;6.0&quot;: 1.7732821609339777,
+      &quot;6.1&quot;: 3.007221452778113,
+      &quot;6.2&quot;: 2.6580444056106223,
+      &quot;6.3&quot;: 0.5950755177133441,
+      &quot;6.4&quot;: 2.780738293309866,
+      &quot;6.5&quot;: 3.0026095732643423,
+      &quot;6.6&quot;: 1.6061611356794316,
+      &quot;6.7&quot;: 2.084879970867222,
+      &quot;6.8&quot;: 3.0242302585125738,
+      &quot;6.9&quot;: 2.553445949745089,
+      &quot;7.0&quot;: 0.49323349995290505,
+      &quot;7.1&quot;: 2.8358809409479573,
+      &quot;7.2&quot;: 2.973399259393571,
+      &quot;7.3&quot;: 1.413292590019184,
+      &quot;7.4&quot;: 2.2847067485315042,
+      &quot;7.5&quot;: 3.035891397877223,
+      &quot;7.6&quot;: 2.432888247502484,
+      &quot;7.7&quot;: 0.4142260939301906,
+      &quot;7.8&quot;: 2.8829162197715927,
+      &quot;7.9&quot;: 2.9345494282974145,
+      &quot;8.0&quot;: 1.2217883589424938,
+      &quot;8.1&quot;: 2.4309533240356,
+      &quot;8.2&quot;: 3.042035223927077,
+      &quot;8.3&quot;: 2.2961156343539066,
+      &quot;8.4&quot;: 0.36158022554900526,
+      &quot;8.5&quot;: 2.9229189082008213,
+      &quot;8.6&quot;: 2.8849061864390615,
+      &quot;8.7&quot;: 1.0386312421421697,
+      &quot;8.8&quot;: 2.545168984176235,
+      &quot;8.9&quot;: 3.042342030096218,
+      &quot;9.0&quot;: 2.143641993595709,
+      &quot;9.1&quot;: 0.3852325574935435,
+      &quot;9.2&quot;: 2.9566054831784685,
+      &quot;9.3&quot;: 2.8233233595684277,
+      &quot;9.4&quot;: 0.8704626823320107,
+      &quot;9.5&quot;: 2.6378193352578947,
+      &quot;9.6&quot;: 3.0363638539178335,
+      &quot;9.7&quot;: 1.9767492605044368,
+      &quot;9.8&quot;: 1.0812515785063521,
+      &quot;9.9&quot;: 2.984502484185699,
+      &quot;10.0&quot;: 2.748539650673268
+    },
+    &quot;Triose_Gly3Phos_DHAP&quot;: {
+      &quot;0.0&quot;: 0.6,
+      &quot;0.1&quot;: 0.5221595437233103,
+      &quot;0.2&quot;: 0.5297061170550186,
+      &quot;0.3&quot;: 0.5861912116686743,
+      &quot;0.4&quot;: 0.5755015602637557,
+      &quot;0.5&quot;: 0.483376432405271,
+      &quot;0.6&quot;: 0.5653685965750457,
+      &quot;0.7&quot;: 0.6135459934062228,
+      &quot;0.8&quot;: 0.473883427980812,
+      &quot;0.9&quot;: 0.525588787584507,
+      &quot;1.0&quot;: 0.5935764189103153,
+      &quot;1.1&quot;: 0.5947749959315753,
+      &quot;1.2&quot;: 0.482665034555122,
+      &quot;1.3&quot;: 0.5693942035163967,
+      &quot;1.4&quot;: 0.6165500472327207,
+      &quot;1.5&quot;: 0.4707779318646237,
+      &quot;1.6&quot;: 0.5311144589037176,
+      &quot;1.7&quot;: 0.5970703168509018,
+      &quot;1.8&quot;: 0.5860161544744149,
+      &quot;1.9&quot;: 0.48793262554436334,
+      &quot;2.0&quot;: 0.5741442392876882,
+      &quot;2.1&quot;: 0.6180365234255054,
+      &quot;2.2&quot;: 0.46760440104795076,
+      &quot;2.3&quot;: 0.5381623283437127,
+      &quot;2.4&quot;: 0.600613715385461,
+      &quot;2.5&quot;: 0.5718766358055087,
+      &quot;2.6&quot;: 0.4943938823891553,
+      &quot;2.7&quot;: 0.5785800798423787,
+      &quot;2.8&quot;: 0.618091973101587,
+      &quot;2.9&quot;: 0.46726291489078836,
+      &quot;3.0&quot;: 0.5451251729495598,
+      &quot;3.1&quot;: 0.6042083437972492,
+      &quot;3.2&quot;: 0.5540196392950373,
+      &quot;3.3&quot;: 0.5013376430597664,
+      &quot;3.4&quot;: 0.5826474454497723,
+      &quot;3.5&quot;: 0.6164115718328222,
+      &quot;3.6&quot;: 0.4689641761256952,
+      &quot;3.7&quot;: 0.5517748470794555,
+      &quot;3.8&quot;: 0.6077845160787394,
+      &quot;3.9&quot;: 0.5320987115423395,
+      &quot;4.0&quot;: 0.5085728651998479,
+      &quot;4.1&quot;: 0.5864282489935236,
+      &quot;4.2&quot;: 0.6126728974820734,
+      &quot;4.3&quot;: 0.47216515423744776,
+      &quot;4.4&quot;: 0.5580315793453243,
+      &quot;4.5&quot;: 0.6112029312027139,
+      &quot;4.6&quot;: 0.505827478919458,
+      &quot;4.7&quot;: 0.5159726363468872,
+      &quot;4.8&quot;: 0.5900182935937917,
+      &quot;4.9&quot;: 0.606599966952056,
+      &quot;5.0&quot;: 0.47651822955485423,
+      &quot;5.1&quot;: 0.563844418536788,
+      &quot;5.2&quot;: 0.6142482862182397,
+      &quot;5.3&quot;: 0.4813097443484263,
+      &quot;5.4&quot;: 0.5234220235201612,
+      &quot;5.5&quot;: 0.5935202107348932,
+      &quot;5.6&quot;: 0.5979649121614342,
+      &quot;5.7&quot;: 0.48178155933785216,
+      &quot;5.8&quot;: 0.5691927258845391,
+      &quot;5.9&quot;: 0.6166419803913944,
+      &quot;6.0&quot;: 0.47120457119475406,
+      &quot;6.1&quot;: 0.5308131734163678,
+      &quot;6.2&quot;: 0.5970180859670272,
+      &quot;6.3&quot;: 0.586566518546632,
+      &quot;6.4&quot;: 0.48775839068213617,
+      &quot;6.5&quot;: 0.574073601583205,
+      &quot;6.6&quot;: 0.6180489105027005,
+      &quot;6.7&quot;: 0.4676385897069186,
+      &quot;6.8&quot;: 0.5380438332299134,
+      &quot;6.9&quot;: 0.6005635638331979,
+      &quot;7.0&quot;: 0.5721469368529991,
+      &quot;7.1&quot;: 0.4942899378255194,
+      &quot;7.2&quot;: 0.578519979781512,
+      &quot;7.3&quot;: 0.6181063981940366,
+      &quot;7.4&quot;: 0.4672511805206894,
+      &quot;7.5&quot;: 0.5450277419685025,
+      &quot;7.6&quot;: 0.6041582068303207,
+      &quot;7.7&quot;: 0.5542969570169445,
+      &quot;7.8&quot;: 0.5012388687176771,
+      &quot;7.9&quot;: 0.5825946873569087,
+      &quot;8.0&quot;: 0.616447804469391,
+      &quot;8.1&quot;: 0.4689304777067341,
+      &quot;8.2&quot;: 0.5516881252277842,
+      &quot;8.3&quot;: 0.6077373380245343,
+      &quot;8.4&quot;: 0.532419923050368,
+      &quot;8.5&quot;: 0.5084751794179084,
+      &quot;8.6&quot;: 0.586379589863743,
+      &quot;8.7&quot;: 0.6127373084534685,
+      &quot;8.8&quot;: 0.4721144749279878,
+      &quot;8.9&quot;: 0.5579514125519218,
+      &quot;9.0&quot;: 0.6111587923282872,
+      &quot;9.1&quot;: 0.5062050848548514,
+      &quot;9.2&quot;: 0.5158715638246038,
+      &quot;9.3&quot;: 0.5899696274414771,
+      &quot;9.4&quot;: 0.6067002497401244,
+      &quot;9.5&quot;: 0.47645164757150915,
+      &quot;9.6&quot;: 0.5637663579758769,
+      &quot;9.7&quot;: 0.6142094338750497,
+      &quot;9.8&quot;: 0.48154411015074855,
+      &quot;9.9&quot;: 0.5233166846896394,
+      &quot;10.0&quot;: 0.5934708143643332
+    },
+    &quot;Acetaldehyde&quot;: {
+      &quot;0.0&quot;: 0.08,
+      &quot;0.1&quot;: 0.07335847757467388,
+      &quot;0.2&quot;: 0.07469875170428852,
+      &quot;0.3&quot;: 0.0718619640543541,
+      &quot;0.4&quot;: 0.06998208569636236,
+      &quot;0.5&quot;: 0.07923361973438021,
+      &quot;0.6&quot;: 0.07769826291342494,
+      &quot;0.7&quot;: 0.06956715414113594,
+      &quot;0.8&quot;: 0.07687789682588135,
+      &quot;0.9&quot;: 0.08026820742399453,
+      &quot;1.0&quot;: 0.07408650454260374,
+      &quot;1.1&quot;: 0.06987560604201602,
+      &quot;1.2&quot;: 0.08015050724107572,
+      &quot;1.3&quot;: 0.0785837159334119,
+      &quot;1.4&quot;: 0.06982688603056596,
+      &quot;1.5&quot;: 0.07762878495185487,
+      &quot;1.6&quot;: 0.0805420160168127,
+      &quot;1.7&quot;: 0.07372509559635813,
+      &quot;1.8&quot;: 0.07047866830241425,
+      &quot;1.9&quot;: 0.08042524865865351,
+      &quot;2.0&quot;: 0.07818317165198138,
+      &quot;2.1&quot;: 0.06954491889906415,
+      &quot;2.2&quot;: 0.07832908493314521,
+      &quot;2.3&quot;: 0.08043786935433399,
+      &quot;2.4&quot;: 0.07298925797789632,
+      &quot;2.5&quot;: 0.07133465166072833,
+      &quot;2.6&quot;: 0.08057378563832636,
+      &quot;2.7&quot;: 0.07757665530717321,
+      &quot;2.8&quot;: 0.0693148185505038,
+      &quot;2.9&quot;: 0.0788887218706497,
+      &quot;3.0&quot;: 0.08024012439894594,
+      &quot;3.1&quot;: 0.072247478600324,
+      &quot;3.2&quot;: 0.07246535695815147,
+      &quot;3.3&quot;: 0.0806681106534379,
+      &quot;3.4&quot;: 0.07689258769593445,
+      &quot;3.5&quot;: 0.06920997565829143,
+      &quot;3.6&quot;: 0.07934101327882134,
+      &quot;3.7&quot;: 0.07997570484015633,
+      &quot;3.8&quot;: 0.07155257489422857,
+      &quot;3.9&quot;: 0.07384737943799025,
+      &quot;4.0&quot;: 0.08071727004208307,
+      &quot;4.1&quot;: 0.07615457037830455,
+      &quot;4.2&quot;: 0.06925145137631103,
+      &quot;4.3&quot;: 0.07970922845278382,
+      &quot;4.4&quot;: 0.07964327723026304,
+      &quot;4.5&quot;: 0.07092246992233439,
+      &quot;4.6&quot;: 0.0753466748486744,
+      &quot;4.7&quot;: 0.08072172227128199,
+      &quot;4.8&quot;: 0.07537909735785499,
+      &quot;4.9&quot;: 0.06945797501154752,
+      &quot;5.0&quot;: 0.08000798700420526,
+      &quot;5.1&quot;: 0.0792393133844643,
+      &quot;5.2&quot;: 0.07037133763521398,
+      &quot;5.3&quot;: 0.07666837858169948,
+      &quot;5.4&quot;: 0.0806799912737295,
+      &quot;5.5&quot;: 0.07458316726783769,
+      &quot;5.6&quot;: 0.06985228085700489,
+      &quot;5.7&quot;: 0.08024756091591387,
+      &quot;5.8&quot;: 0.07876124634874894,
+      &quot;5.9&quot;: 0.0699115868577245,
+      &quot;6.0&quot;: 0.07761282774432579,
+      &quot;6.1&quot;: 0.08058915501423197,
+      &quot;6.2&quot;: 0.07378552194967418,
+      &quot;6.3&quot;: 0.07046233910136027,
+      &quot;6.4&quot;: 0.08043452987144221,
+      &quot;6.5&quot;: 0.07820964783820451,
+      &quot;6.6&quot;: 0.06955615519291955,
+      &quot;6.7&quot;: 0.07832124159353926,
+      &quot;6.8&quot;: 0.08044531990584805,
+      &quot;6.9&quot;: 0.07300476189660751,
+      &quot;7.0&quot;: 0.07131956476022765,
+      &quot;7.1&quot;: 0.0805735287816232,
+      &quot;7.2&quot;: 0.07758788216320975,
+      &quot;7.3&quot;: 0.06931788282892155,
+      &quot;7.4&quot;: 0.07888190937471766,
+      &quot;7.5&quot;: 0.08024393336156747,
+      &quot;7.6&quot;: 0.07225803221764657,
+      &quot;7.7&quot;: 0.07244777442359895,
+      &quot;7.8&quot;: 0.08066731569828346,
+      &quot;7.9&quot;: 0.07690255208455415,
+      &quot;8.0&quot;: 0.06921048597475477,
+      &quot;8.1&quot;: 0.07933559506461575,
+      &quot;8.2&quot;: 0.07997976312355119,
+      &quot;8.3&quot;: 0.0715615144899312,
+      &quot;8.4&quot;: 0.07382774929655232,
+      &quot;8.5&quot;: 0.08071693739364155,
+      &quot;8.6&quot;: 0.07616468862820246,
+      &quot;8.7&quot;: 0.06924986272773269,
+      &quot;8.8&quot;: 0.07970482771719466,
+      &quot;8.9&quot;: 0.07964815848853056,
+      &quot;9.0&quot;: 0.07093045191179218,
+      &quot;9.1&quot;: 0.07532676333618031,
+      &quot;9.2&quot;: 0.08072198795204685,
+      &quot;9.3&quot;: 0.07538991661705635,
+      &quot;9.4&quot;: 0.06945391940115021,
+      &quot;9.5&quot;: 0.08000443429331748,
+      &quot;9.6&quot;: 0.07924545086425429,
+      &quot;9.7&quot;: 0.07037843908095076,
+      &quot;9.8&quot;: 0.07665256196957959,
+      &quot;9.9&quot;: 0.08068093066690679,
+      &quot;10.0&quot;: 0.07459447220271813
+    },
+    &quot;NAD&quot;: {
+      &quot;0.0&quot;: 0.6,
+      &quot;0.1&quot;: 0.5841409532181877,
+      &quot;0.2&quot;: 0.5961091936780074,
+      &quot;0.3&quot;: 0.5630255561922968,
+      &quot;0.4&quot;: 0.5360152938428017,
+      &quot;0.5&quot;: 0.6378601831682145,
+      &quot;0.6&quot;: 0.6212555074734144,
+      &quot;0.7&quot;: 0.5316455294537287,
+      &quot;0.8&quot;: 0.604973553528125,
+      &quot;0.9&quot;: 0.6438717564970279,
+      &quot;1.0&quot;: 0.5798879256552972,
+      &quot;1.1&quot;: 0.5288978074603693,
+      &quot;1.2&quot;: 0.6404221696429839,
+      &quot;1.3&quot;: 0.6251256904569512,
+      &quot;1.4&quot;: 0.5308468600951848,
+      &quot;1.5&quot;: 0.6105922229640935,
+      &quot;1.6&quot;: 0.6445280940117057,
+      &quot;1.7&quot;: 0.5745328213664417,
+      &quot;1.8&quot;: 0.5334813582939205,
+      &quot;1.9&quot;: 0.6426156397119032,
+      &quot;2.0&quot;: 0.6205484632153438,
+      &quot;2.1&quot;: 0.527046927779445,
+      &quot;2.2&quot;: 0.6185335089954709,
+      &quot;2.3&quot;: 0.6432292720809937,
+      &quot;2.4&quot;: 0.5663650891445914,
+      &quot;2.5&quot;: 0.5410356363022345,
+      &quot;2.6&quot;: 0.6442441369264196,
+      &quot;2.7&quot;: 0.6143997677298364,
+      &quot;2.8&quot;: 0.5241358832371863,
+      &quot;2.9&quot;: 0.6249568799317619,
+      &quot;3.0&quot;: 0.6411783706145715,
+      &quot;3.1&quot;: 0.5581402057941875,
+      &quot;3.2&quot;: 0.5512046124432342,
+      &quot;3.3&quot;: 0.6453518480298461,
+      &quot;3.4&quot;: 0.6074778411017614,
+      &quot;3.5&quot;: 0.5226131376613904,
+      &quot;3.6&quot;: 0.6301119745699378,
+      &quot;3.7&quot;: 0.638482305051665,
+      &quot;3.8&quot;: 0.5503260825719201,
+      &quot;3.9&quot;: 0.5642166678875701,
+      &quot;4.0&quot;: 0.645961087199152,
+      &quot;4.1&quot;: 0.5999384334305352,
+      &quot;4.2&quot;: 0.5226314578872965,
+      &quot;4.3&quot;: 0.6342988932137134,
+      &quot;4.4&quot;: 0.6351194638944118,
+      &quot;4.5&quot;: 0.543140143453546,
+      &quot;4.6&quot;: 0.5803057404123333,
+      &quot;4.7&quot;: 0.6460730884065105,
+      &quot;4.8&quot;: 0.5919104711233742,
+      &quot;4.9&quot;: 0.5243130223517887,
+      &quot;5.0&quot;: 0.6377040579850648,
+      &quot;5.1&quot;: 0.6310580827466196,
+      &quot;5.2&quot;: 0.5367701166607788,
+      &quot;5.3&quot;: 0.5978575851695359,
+      &quot;5.4&quot;: 0.6456780148793535,
+      &quot;5.5&quot;: 0.5835419006779178,
+      &quot;5.6&quot;: 0.527792415891691,
+      &quot;5.7&quot;: 0.6404488458372812,
+      &quot;5.8&quot;: 0.6262698762114632,
+      &quot;5.9&quot;: 0.5313808176614072,
+      &quot;6.0&quot;: 0.6099680499930439,
+      &quot;6.1&quot;: 0.6447557527999882,
+      &quot;6.2&quot;: 0.5750119441858934,
+      &quot;6.3&quot;: 0.5332407146680637,
+      &quot;6.4&quot;: 0.6426070494279343,
+      &quot;6.5&quot;: 0.6207483850135456,
+      &quot;6.6&quot;: 0.5271328899121283,
+      &quot;6.7&quot;: 0.6183986338629277,
+      &quot;6.8&quot;: 0.643278786034077,
+      &quot;6.9&quot;: 0.566517194704471,
+      &quot;7.0&quot;: 0.5408907767662698,
+      &quot;7.1&quot;: 0.6442279937048339,
+      &quot;7.2&quot;: 0.6145058902387224,
+      &quot;7.3&quot;: 0.5241701370749485,
+      &quot;7.4&quot;: 0.6248740382238294,
+      &quot;7.5&quot;: 0.6412147053224511,
+      &quot;7.6&quot;: 0.5582558973353523,
+      &quot;7.7&quot;: 0.5510433321386478,
+      &quot;7.8&quot;: 0.6453404603471767,
+      &quot;7.9&quot;: 0.6075778630029609,
+      &quot;8.0&quot;: 0.5226235859663488,
+      &quot;8.1&quot;: 0.6300498022570412,
+      &quot;8.2&quot;: 0.6385231819577427,
+      &quot;8.3&quot;: 0.550427302908408,
+      &quot;8.4&quot;: 0.5640235249554444,
+      &quot;8.5&quot;: 0.6459564609830033,
+      &quot;8.6&quot;: 0.6000423442709328,
+      &quot;8.7&quot;: 0.522620579971162,
+      &quot;8.8&quot;: 0.6342487787648626,
+      &quot;8.9&quot;: 0.6351686111371047,
+      &quot;9.0&quot;: 0.5432316703703013,
+      &quot;9.1&quot;: 0.5800679004249126,
+      &quot;9.2&quot;: 0.6460750114016434,
+      &quot;9.3&quot;: 0.5920233522742906,
+      &quot;9.4&quot;: 0.5242780733944576,
+      &quot;9.5&quot;: 0.6376616971514192,
+      &quot;9.6&quot;: 0.6311195943565452,
+      &quot;9.7&quot;: 0.5368527162738391,
+      &quot;9.8&quot;: 0.5976419086364997,
+      &quot;9.9&quot;: 0.645686802902655,
+      &quot;10.0&quot;: 0.5836617131521665
+    },
+    &quot;Pyruvate&quot;: {
+      &quot;0.0&quot;: 8.0,
+      &quot;0.1&quot;: 8.22038092754599,
+      &quot;0.2&quot;: 8.202222827760298,
+      &quot;0.3&quot;: 8.401651395756886,
+      &quot;0.4&quot;: 8.475770233931865,
+      &quot;0.5&quot;: 7.995647663664819,
+      &quot;0.6&quot;: 8.152072061195826,
+      &quot;0.7&quot;: 8.56449828469361,
+      &quot;0.8&quot;: 8.238678700121714,
+      &quot;0.9&quot;: 8.018595470778711,
+      &quot;1.0&quot;: 8.415965371391602,
+      &quot;1.1&quot;: 8.57659838739659,
+      &quot;1.2&quot;: 8.043066743709408,
+      &quot;1.3&quot;: 8.181798894769324,
+      &quot;1.4&quot;: 8.606524836845308,
+      &quot;1.5&quot;: 8.234127773562955,
+      &quot;1.6&quot;: 8.036793434430283,
+      &quot;1.7&quot;: 8.455463390017467,
+      &quot;1.8&quot;: 8.574526242182635,
+      &quot;1.9&quot;: 8.036885681653393,
+      &quot;2.0&quot;: 8.217470215629112,
+      &quot;2.1&quot;: 8.618582075844595,
+      &quot;2.2&quot;: 8.189036570449177,
+      &quot;2.3&quot;: 8.051663664666716,
+      &quot;2.4&quot;: 8.491501569774924,
+      &quot;2.5&quot;: 8.556877000249612,
+      &quot;2.6&quot;: 8.02775279271869,
+      &quot;2.7&quot;: 8.255622301354133,
+      &quot;2.8&quot;: 8.622548110752163,
+      &quot;2.9&quot;: 8.149965824673691,
+      &quot;3.0&quot;: 8.069952239468456,
+      &quot;3.1&quot;: 8.524086292713543,
+      &quot;3.2&quot;: 8.53247484187598,
+      &quot;3.3&quot;: 8.021823115720075,
+      &quot;3.4&quot;: 8.295422573318294,
+      &quot;3.5&quot;: 8.621232025078216,
+      &quot;3.6&quot;: 8.117822937611002,
+      &quot;3.7&quot;: 8.092201680062344,
+      &quot;3.8&quot;: 8.552698129099813,
+      &quot;3.9&quot;: 8.495092500229308,
+      &quot;4.0&quot;: 8.019723059450504,
+      &quot;4.1&quot;: 8.336132642341845,
+      &quot;4.2&quot;: 8.615362572458467,
+      &quot;4.3&quot;: 8.091230063025575,
+      &quot;4.4&quot;: 8.118315758875672,
+      &quot;4.5&quot;: 8.576823157199005,
+      &quot;4.6&quot;: 8.426262687255493,
+      &quot;4.7&quot;: 8.02157772711893,
+      &quot;4.8&quot;: 8.37690802753548,
+      &quot;4.9&quot;: 8.605550735421755,
+      &quot;5.0&quot;: 8.06931894202619,
+      &quot;5.1&quot;: 8.14804581254219,
+      &quot;5.2&quot;: 8.596044337263814,
+      &quot;5.3&quot;: 8.316839372485628,
+      &quot;5.4&quot;: 8.027458828475414,
+      &quot;5.5&quot;: 8.416900291250274,
+      &quot;5.6&quot;: 8.592423345983839,
+      &quot;5.7&quot;: 8.051595044198265,
+      &quot;5.8&quot;: 8.181074765327514,
+      &quot;5.9&quot;: 8.610120675424174,
+      &quot;6.0&quot;: 8.241443876636458,
+      &quot;6.1&quot;: 8.03742787412837,
+      &quot;6.2&quot;: 8.455236186439015,
+      &quot;6.3&quot;: 8.576448204686537,
+      &quot;6.4&quot;: 8.037836969415755,
+      &quot;6.5&quot;: 8.216930361448492,
+      &quot;6.6&quot;: 8.618942035982982,
+      &quot;6.7&quot;: 8.19022313087537,
+      &quot;6.8&quot;: 8.051504406430762,
+      &quot;6.9&quot;: 8.491073992281187,
+      &quot;7.0&quot;: 8.557356558614751,
+      &quot;7.1&quot;: 8.027937743209183,
+      &quot;7.2&quot;: 8.255069125598087,
+      &quot;7.3&quot;: 8.622584120667582,
+      &quot;7.4&quot;: 8.150515312926453,
+      &quot;7.5&quot;: 8.069673110829378,
+      &quot;7.6&quot;: 8.523667075468277,
+      &quot;7.7&quot;: 8.532893430969512,
+      &quot;7.8&quot;: 8.021885203800943,
+      &quot;7.9&quot;: 8.294873266419756,
+      &quot;8.0&quot;: 8.621286461058178,
+      &quot;8.1&quot;: 8.118218834755204,
+      &quot;8.2&quot;: 8.091877980289071,
+      &quot;8.3&quot;: 8.55234508543245,
+      &quot;8.4&quot;: 8.495740678035082,
+      &quot;8.5&quot;: 8.019724662069324,
+      &quot;8.6&quot;: 8.33558887300516,
+      &quot;8.7&quot;: 8.61546820205268,
+      &quot;8.8&quot;: 8.091551210575668,
+      &quot;8.9&quot;: 8.117945262335894,
+      &quot;9.0&quot;: 8.576531937164688,
+      &quot;9.1&quot;: 8.427530470305637,
+      &quot;9.2&quot;: 8.021525864604767,
+      &quot;9.3&quot;: 8.376352238220946,
+      &quot;9.4&quot;: 8.605708730158405,
+      &quot;9.5&quot;: 8.069590468801758,
+      &quot;9.6&quot;: 8.147608485634118,
+      &quot;9.7&quot;: 8.595810360303597,
+      &quot;9.8&quot;: 8.318231878458075,
+      &quot;9.9&quot;: 8.027348572967947,
+      &quot;10.0&quot;: 8.416344609026744
+    },
+    &quot;Glucose&quot;: {
+      &quot;0.0&quot;: 1.0,
+      &quot;0.1&quot;: 1.0399455773272563,
+      &quot;0.2&quot;: 1.168487754760449,
+      &quot;0.3&quot;: 0.667881528656125,
+      &quot;0.4&quot;: 0.21847972602824378,
+      &quot;0.5&quot;: 1.844958599701539,
+      &quot;0.6&quot;: 1.3191759564520322,
+      &quot;0.7&quot;: 0.34627151276967433,
+      &quot;0.8&quot;: 1.3336447302379681,
+      &quot;0.9&quot;: 1.741994686965402,
+      &quot;1.0&quot;: 0.8565951907817072,
+      &quot;1.1&quot;: 0.19094335820287905,
+      &quot;1.2&quot;: 1.9041670193321774,
+      &quot;1.3&quot;: 1.3527717445913676,
+      &quot;1.4&quot;: 0.3337013160778387,
+      &quot;1.5&quot;: 1.4759185005092859,
+      &quot;1.6&quot;: 1.7284832675480848,
+      &quot;1.7&quot;: 0.8020174418946303,
+      &quot;1.8&quot;: 0.2199035380822737,
+      &quot;1.9&quot;: 1.9085892176012325,
+      &quot;2.0&quot;: 1.290129015404896,
+      &quot;2.1&quot;: 0.27968772642571466,
+      &quot;2.2&quot;: 1.6487170376083475,
+      &quot;2.3&quot;: 1.681478734898221,
+      &quot;2.4&quot;: 0.721540849066343,
+      &quot;2.5&quot;: 0.26999710549291367,
+      &quot;2.6&quot;: 1.8983577601620882,
+      &quot;2.7&quot;: 1.2149139131743525,
+      &quot;2.8&quot;: 0.23100853775089986,
+      &quot;2.9&quot;: 1.7587155257143559,
+      &quot;3.0&quot;: 1.6267068989973146,
+      &quot;3.1&quot;: 0.6393399285226243,
+      &quot;3.2&quot;: 0.33752441665684874,
+      &quot;3.3&quot;: 1.8789357736771441,
+      &quot;3.4&quot;: 1.136331506765013,
+      &quot;3.5&quot;: 0.1946894001945629,
+      &quot;3.6&quot;: 1.8292485690002838,
+      &quot;3.7&quot;: 1.567265292821477,
+      &quot;3.8&quot;: 0.5587631851811303,
+      &quot;3.9&quot;: 0.4257878998876644,
+      &quot;4.0&quot;: 1.8519183542569775,
+      &quot;4.1&quot;: 1.055636537076885,
+      &quot;4.2&quot;: 0.17369243787983935,
+      &quot;4.3&quot;: 1.8737485512203655,
+      &quot;4.4&quot;: 1.503774844140844,
+      &quot;4.5&quot;: 0.48112908686006906,
+      &quot;4.6&quot;: 0.566914986076056,
+      &quot;4.7&quot;: 1.8181735110985737,
+      &quot;4.8&quot;: 0.9734212955873723,
+      &quot;4.9&quot;: 0.1701449721949273,
+      &quot;5.0&quot;: 1.8993617900231654,
+      &quot;5.1&quot;: 1.4366073079675457,
+      &quot;5.2&quot;: 0.40783182058415485,
+      &quot;5.3&quot;: 1.052659595644593,
+      &quot;5.4&quot;: 1.7783668603477611,
+      &quot;5.5&quot;: 0.8901737032006026,
+      &quot;5.6&quot;: 0.18511815476659202,
+      &quot;5.7&quot;: 1.9103638669146679,
+      &quot;5.8&quot;: 1.366035953861277,
+      &quot;5.9&quot;: 0.34043888529317007,
+      &quot;6.0&quot;: 1.4590612966141856,
+      &quot;6.1&quot;: 1.7330330468321908,
+      &quot;6.2&quot;: 0.8064862226620961,
+      &quot;6.3&quot;: 0.2184254128973017,
+      &quot;6.4&quot;: 1.9094947371300188,
+      &quot;6.5&quot;: 1.2924397676117745,
+      &quot;6.6&quot;: 0.28095115870333087,
+      &quot;6.7&quot;: 1.6461084739964895,
+      &quot;6.8&quot;: 1.6826386436479024,
+      &quot;6.9&quot;: 0.7230244621604758,
+      &quot;7.0&quot;: 0.2690452519441989,
+      &quot;7.1&quot;: 1.8986738781835324,
+      &quot;7.2&quot;: 1.2161402211965402,
+      &quot;7.3&quot;: 0.23165834059898432,
+      &quot;7.4&quot;: 1.7574562765643569,
+      &quot;7.5&quot;: 1.627557222626702,
+      &quot;7.6&quot;: 0.6405084797622279,
+      &quot;7.7&quot;: 0.3364585442084326,
+      &quot;7.8&quot;: 1.8792711451391193,
+      &quot;7.9&quot;: 1.137428499297339,
+      &quot;8.0&quot;: 0.19508286472924138,
+      &quot;8.1&quot;: 1.8284975865042046,
+      &quot;8.2&quot;: 1.5680948605274174,
+      &quot;8.3&quot;: 0.5598278525088174,
+      &quot;8.4&quot;: 0.42441445437654796,
+      &quot;8.5&quot;: 1.8523266744393774,
+      &quot;8.6&quot;: 1.0567216412926337,
+      &quot;8.7&quot;: 0.17386046660628388,
+      &quot;8.8&quot;: 1.8732935493230043,
+      &quot;8.9&quot;: 1.5046421959160068,
+      &quot;9.0&quot;: 0.4821456053739834,
+      &quot;9.1&quot;: 0.5640627658954195,
+      &quot;9.2&quot;: 1.8186725870244438,
+      &quot;9.3&quot;: 0.9745571887541327,
+      &quot;9.4&quot;: 0.17006922666711108,
+      &quot;9.5&quot;: 1.89911489658367,
+      &quot;9.6&quot;: 1.437566395101655,
+      &quot;9.7&quot;: 0.4088188134339355,
+      &quot;9.8&quot;: 1.0434021693261473,
+      &quot;9.9&quot;: 1.7789669158584347,
+      &quot;10.0&quot;: 0.8913545544415027
+    },
+    &quot;extracellular acetaldehyde&quot;: {
+      &quot;0.0&quot;: 0.02,
+      &quot;0.1&quot;: 0.02340894918162757,
+      &quot;0.2&quot;: 0.023635093876594834,
+      &quot;0.3&quot;: 0.022569984291074475,
+      &quot;0.4&quot;: 0.02323832226929542,
+      &quot;0.5&quot;: 0.025309463627755924,
+      &quot;0.6&quot;: 0.02423541721331875,
+      &quot;0.7&quot;: 0.022156467374431728,
+      &quot;0.8&quot;: 0.0249871816138747,
+      &quot;0.9&quot;: 0.025393970869790068,
+      &quot;1.0&quot;: 0.02306888926025898,
+      &quot;1.1&quot;: 0.023123541882126893,
+      &quot;1.2&quot;: 0.02564011411890177,
+      &quot;1.3&quot;: 0.02451216086722967,
+      &quot;1.4&quot;: 0.02226252428746988,
+      &quot;1.5&quot;: 0.025190012650106612,
+      &quot;1.6&quot;: 0.025455731030864258,
+      &quot;1.7&quot;: 0.022980734743260914,
+      &quot;1.8&quot;: 0.02341131986279362,
+      &quot;1.9&quot;: 0.025694953121075653,
+      &quot;2.0&quot;: 0.024351131203357603,
+      &quot;2.1&quot;: 0.022285727008464897,
+      &quot;2.2&quot;: 0.025333190964527814,
+      &quot;2.3&quot;: 0.02537142923858039,
+      &quot;2.4&quot;: 0.02280118799518281,
+      &quot;2.5&quot;: 0.023759336521076917,
+      &quot;2.6&quot;: 0.02570189260748734,
+      &quot;2.7&quot;: 0.02413137339186792,
+      &quot;2.8&quot;: 0.022343438095065397,
+      &quot;2.9&quot;: 0.02544374890743,
+      &quot;3.0&quot;: 0.02525315355458324,
+      &quot;3.1&quot;: 0.022633923397615455,
+      &quot;3.2&quot;: 0.024126453084907944,
+      &quot;3.3&quot;: 0.025689880742343588,
+      &quot;3.4&quot;: 0.023899307192412053,
+      &quot;3.5&quot;: 0.02245014641197604,
+      &quot;3.6&quot;: 0.025530714794400843,
+      &quot;3.7&quot;: 0.025112884056473037,
+      &quot;3.8&quot;: 0.0224932708052482,
+      &quot;3.9&quot;: 0.024479465614463965,
+      &quot;4.0&quot;: 0.025661709656027036,
+      &quot;4.1&quot;: 0.023664097505552765,
+      &quot;4.2&quot;: 0.022609388148961712,
+      &quot;4.3&quot;: 0.02559797732626436,
+      &quot;4.4&quot;: 0.024952096125735113,
+      &quot;4.5&quot;: 0.0223842534370123,
+      &quot;4.6&quot;: 0.024783302047641297,
+      &quot;4.7&quot;: 0.025617019646262028,
+      &quot;4.8&quot;: 0.02343170239443524,
+      &quot;4.9&quot;: 0.022822502274738653,
+      &quot;5.0&quot;: 0.02564771525068061,
+      &quot;5.1&quot;: 0.024771832868368253,
+      &quot;5.2&quot;: 0.022310927046765235,
+      &quot;5.3&quot;: 0.02501736390404718,
+      &quot;5.4&quot;: 0.02555497062170423,
+      &quot;5.5&quot;: 0.02320752075414665,
+      &quot;5.6&quot;: 0.023088667201954228,
+      &quot;5.7&quot;: 0.025681303556434623,
+      &quot;5.8&quot;: 0.0245736587827326,
+      &quot;5.9&quot;: 0.022277063690638536,
+      &quot;6.0&quot;: 0.02519390985427186,
+      &quot;6.1&quot;: 0.025474549106922068,
+      &quot;6.2&quot;: 0.022996935251199557,
+      &quot;6.3&quot;: 0.023402865960987188,
+      &quot;6.4&quot;: 0.02569946355122585,
+      &quot;6.5&quot;: 0.024360316584667054,
+      &quot;6.6&quot;: 0.022286376296114786,
+      &quot;6.7&quot;: 0.025332361772263338,
+      &quot;6.8&quot;: 0.02537489559746561,
+      &quot;6.9&quot;: 0.022804970971378558,
+      &quot;7.0&quot;: 0.023753829010854505,
+      &quot;7.1&quot;: 0.025702475095333972,
+      &quot;7.2&quot;: 0.02413525310844804,
+      &quot;7.3&quot;: 0.022342369841165957,
+      &quot;7.4&quot;: 0.02544249095767177,
+      &quot;7.5&quot;: 0.025255187938802284,
+      &quot;7.6&quot;: 0.022636198440422018,
+      &quot;7.7&quot;: 0.024121379197688926,
+      &quot;7.8&quot;: 0.025690216243644107,
+      &quot;7.9&quot;: 0.023902557957082675,
+      &quot;8.0&quot;: 0.022448369534897743,
+      &quot;8.1&quot;: 0.025529697728872158,
+      &quot;8.2&quot;: 0.02511492431117615,
+      &quot;8.3&quot;: 0.02249496601300486,
+      &quot;8.4&quot;: 0.024475021752466592,
+      &quot;8.5&quot;: 0.025662205305913805,
+      &quot;8.6&quot;: 0.023667224437982876,
+      &quot;8.7&quot;: 0.02260692427281905,
+      &quot;8.8&quot;: 0.02559720636862101,
+      &quot;8.9&quot;: 0.02495436108600112,
+      &quot;9.0&quot;: 0.022385496539904275,
+      &quot;9.1&quot;: 0.024779644566080852,
+      &quot;9.2&quot;: 0.025617743635572034,
+      &quot;9.3&quot;: 0.023434849155255778,
+      &quot;9.4&quot;: 0.022819206072353798,
+      &quot;9.5&quot;: 0.025647138208905466,
+      &quot;9.6&quot;: 0.024774471829605797,
+      &quot;9.7&quot;: 0.022311687283623056,
+      &quot;9.8&quot;: 0.02501452501889148,
+      &quot;9.9&quot;: 0.02555596352034249,
+      &quot;10.0&quot;: 0.02321060647867949
+    },
+    &quot;3PG&quot;: {
+      &quot;0.0&quot;: 0.7,
+      &quot;0.1&quot;: 0.5591927821087233,
+      &quot;0.2&quot;: 0.6434716381770167,
+      &quot;0.3&quot;: 0.5765348207262407,
+      &quot;0.4&quot;: 0.3229221832966827,
+      &quot;0.5&quot;: 0.7993558184280616,
+      &quot;0.6&quot;: 0.8426705667256397,
+      &quot;0.7&quot;: 0.45276986050922535,
+      &quot;0.8&quot;: 0.5291625789676381,
+      &quot;0.9&quot;: 0.9198435026292869,
+      &quot;1.0&quot;: 0.6722336739136063,
+      &quot;1.1&quot;: 0.3326755978269862,
+      &quot;1.2&quot;: 0.8118826945669835,
+      &quot;1.3&quot;: 0.8679669299078464,
+      &quot;1.4&quot;: 0.4494132410402783,
+      &quot;1.5&quot;: 0.5605265567302581,
+      &quot;1.6&quot;: 0.9321217335480046,
+      &quot;1.7&quot;: 0.6505996548574314,
+      &quot;1.8&quot;: 0.3255700467066537,
+      &quot;1.9&quot;: 0.8387104685270417,
+      &quot;2.0&quot;: 0.8488015459803226,
+      &quot;2.1&quot;: 0.4255598670040648,
+      &quot;2.2&quot;: 0.612596286883778,
+      &quot;2.3&quot;: 0.9340650283093574,
+      &quot;2.4&quot;: 0.6158858702273307,
+      &quot;2.5&quot;: 0.3199794225281236,
+      &quot;2.6&quot;: 0.8639738374534617,
+      &quot;2.7&quot;: 0.8218780124972478,
+      &quot;2.8&quot;: 0.40210407072319204,
+      &quot;2.9&quot;: 0.6599416139644368,
+      &quot;3.0&quot;: 0.9307909839496952,
+      &quot;3.1&quot;: 0.5803722164288545,
+      &quot;3.2&quot;: 0.32092815388636303,
+      &quot;3.3&quot;: 0.8857459174084601,
+      &quot;3.4&quot;: 0.7916304711653896,
+      &quot;3.5&quot;: 0.3812513226392574,
+      &quot;3.6&quot;: 0.7026476019667361,
+      &quot;3.7&quot;: 0.9229709327678851,
+      &quot;3.8&quot;: 0.5457856345850933,
+      &quot;3.9&quot;: 0.3367597950838123,
+      &quot;4.0&quot;: 0.9037241831097593,
+      &quot;4.1&quot;: 0.7589837087594272,
+      &quot;4.2&quot;: 0.3632197273688077,
+      &quot;4.3&quot;: 0.7415661533879592,
+      &quot;4.4&quot;: 0.9107612243548754,
+      &quot;4.5&quot;: 0.5126949004160095,
+      &quot;4.6&quot;: 0.3870208422805289,
+      &quot;4.7&quot;: 0.9177140820016906,
+      &quot;4.8&quot;: 0.7245634523947384,
+      &quot;4.9&quot;: 0.34798713219865574,
+      &quot;5.0&quot;: 0.7770729331810432,
+      &quot;5.1&quot;: 0.8943271931392075,
+      &quot;5.2&quot;: 0.48152486201680883,
+      &quot;5.3&quot;: 0.48328144898380243,
+      &quot;5.4&quot;: 0.9275471208920598,
+      &quot;5.5&quot;: 0.6889514699387274,
+      &quot;5.6&quot;: 0.3354895453260684,
+      &quot;5.7&quot;: 0.8093073801433671,
+      &quot;5.8&quot;: 0.8738877976347987,
+      &quot;5.9&quot;: 0.45258562057622265,
+      &quot;6.0&quot;: 0.5562300376380018,
+      &quot;6.1&quot;: 0.9330782568791173,
+      &quot;6.2&quot;: 0.6527506725434706,
+      &quot;6.3&quot;: 0.32588234941190225,
+      &quot;6.4&quot;: 0.8381984469746026,
+      &quot;6.5&quot;: 0.8497681757961356,
+      &quot;6.6&quot;: 0.42616168787274267,
+      &quot;6.7&quot;: 0.6116154773632239,
+      &quot;6.8&quot;: 0.9342068426541197,
+      &quot;6.9&quot;: 0.6165483025796152,
+      &quot;7.0&quot;: 0.3200335929572266,
+      &quot;7.1&quot;: 0.8636384601579553,
+      &quot;7.2&quot;: 0.8223513771145817,
+      &quot;7.3&quot;: 0.4024411806179548,
+      &quot;7.4&quot;: 0.6592875592689292,
+      &quot;7.5&quot;: 0.930884879290607,
+      &quot;7.6&quot;: 0.5808770192260342,
+      &quot;7.7&quot;: 0.32084073853365086,
+      &quot;7.8&quot;: 0.8854736496000675,
+      &quot;7.9&quot;: 0.7920663028747622,
+      &quot;8.0&quot;: 0.3815140087510711,
+      &quot;8.1&quot;: 0.7021003481624474,
+      &quot;8.2&quot;: 0.9231070999332471,
+      &quot;8.3&quot;: 0.5462411603543424,
+      &quot;8.4&quot;: 0.3363832592574198,
+      &quot;8.5&quot;: 0.9035120317475656,
+      &quot;8.6&quot;: 0.7594314940411054,
+      &quot;8.7&quot;: 0.36344048608109214,
+      &quot;8.8&quot;: 0.7410725473031623,
+      &quot;8.9&quot;: 0.9109513889468962,
+      &quot;9.0&quot;: 0.5131270993398335,
+      &quot;9.1&quot;: 0.38598173215865744,
+      &quot;9.2&quot;: 0.9175515562508525,
+      &quot;9.3&quot;: 0.7250446089389525,
+      &quot;9.4&quot;: 0.3481778944562728,
+      &quot;9.5&quot;: 0.7766070569595719,
+      &quot;9.6&quot;: 0.8945835160709176,
+      &quot;9.7&quot;: 0.4819453141194912,
+      &quot;9.8&quot;: 0.48199842211895555,
+      &quot;9.9&quot;: 0.9274361331700914,
+      &quot;10.0&quot;: 0.6894600530748461
+    },
+    &quot;F16P&quot;: {
+      &quot;0.0&quot;: 5.0,
+      &quot;0.1&quot;: 5.017062153819352,
+      &quot;0.2&quot;: 4.865760578533512,
+      &quot;0.3&quot;: 5.2681588892840905,
+      &quot;0.4&quot;: 5.988570548953137,
+      &quot;0.5&quot;: 4.3973225671600105,
+      &quot;0.6&quot;: 4.706280533010144,
+      &quot;0.7&quot;: 5.724641737550106,
+      &quot;0.8&quot;: 5.054259359062078,
+      &quot;0.9&quot;: 4.418756142854513,
+      &quot;1.0&quot;: 5.160414338012576,
+      &quot;1.1&quot;: 6.0639913275640955,
+      &quot;1.2&quot;: 4.402661504309437,
+      &quot;1.3&quot;: 4.704005867635496,
+      &quot;1.4&quot;: 5.764901243589827,
+      &quot;1.5&quot;: 4.932745668872918,
+      &quot;1.6&quot;: 4.43271231410379,
+      &quot;1.7&quot;: 5.224910845099842,
+      &quot;1.8&quot;: 6.06585578437433,
+      &quot;1.9&quot;: 4.385410984776753,
+      &quot;2.0&quot;: 4.759702626476708,
+      &quot;2.1&quot;: 5.8410628419189505,
+      &quot;2.2&quot;: 4.7546173939281,
+      &quot;2.3&quot;: 4.461851990787727,
+      &quot;2.4&quot;: 5.311136295794974,
+      &quot;2.5&quot;: 6.045117113120746,
+      &quot;2.6&quot;: 4.374469181828703,
+      &quot;2.7&quot;: 4.8258872155496455,
+      &quot;2.8&quot;: 5.913519680343595,
+      &quot;2.9&quot;: 4.63232964005587,
+      &quot;3.0&quot;: 4.497816285168977,
+      &quot;3.1&quot;: 5.401164194361213,
+      &quot;3.2&quot;: 6.005876541017852,
+      &quot;3.3&quot;: 4.371690889187027,
+      &quot;3.4&quot;: 4.897151727600034,
+      &quot;3.5&quot;: 5.975621698760286,
+      &quot;3.6&quot;: 4.546088489835262,
+      &quot;3.7&quot;: 4.539437955102754,
+      &quot;3.8&quot;: 5.492279164248459,
+      &quot;3.9&quot;: 5.944370843955166,
+      &quot;4.0&quot;: 4.376453019075773,
+      &quot;4.1&quot;: 4.972733947756055,
+      &quot;4.2&quot;: 6.024100750140995,
+      &quot;4.3&quot;: 4.483594044748755,
+      &quot;4.4&quot;: 4.586440014866742,
+      &quot;4.5&quot;: 5.5832338196712605,
+      &quot;4.6&quot;: 5.8274670170318705,
+      &quot;4.7&quot;: 4.388184698125948,
+      &quot;4.8&quot;: 5.052202355844586,
+      &quot;4.9&quot;: 6.056360083077651,
+      &quot;5.0&quot;: 4.438352917979983,
+      &quot;5.1&quot;: 4.638636379517046,
+      &quot;5.2&quot;: 5.672604890467257,
+      &quot;5.3&quot;: 5.3583057536196765,
+      &quot;5.4&quot;: 4.406436516453395,
+      &quot;5.5&quot;: 5.135186778861287,
+      &quot;5.6&quot;: 6.070828385185927,
+      &quot;5.7&quot;: 4.40654675196949,
+      &quot;5.8&quot;: 4.695905020536002,
+      &quot;5.9&quot;: 5.75876462770044,
+      &quot;6.0&quot;: 4.952562424282947,
+      &quot;6.1&quot;: 4.430871301850408,
+      &quot;6.2&quot;: 5.221193743507301,
+      &quot;6.3&quot;: 6.067109294965957,
+      &quot;6.4&quot;: 4.385822655838699,
+      &quot;6.5&quot;: 4.758028481799233,
+      &quot;6.6&quot;: 5.839568932106656,
+      &quot;6.7&quot;: 4.757705877502736,
+      &quot;6.8&quot;: 4.461210537202124,
+      &quot;6.9&quot;: 5.309640510446583,
+      &quot;7.0&quot;: 6.045689408524014,
+      &quot;7.1&quot;: 4.3745686483592845,
+      &quot;7.2&quot;: 4.8248276294061245,
+      &quot;7.3&quot;: 5.912528174952531,
+      &quot;7.4&quot;: 4.6338281092426445,
+      &quot;7.5&quot;: 4.49724994438625,
+      &quot;7.6&quot;: 5.39987593142885,
+      &quot;7.7&quot;: 6.006566271272302,
+      &quot;7.8&quot;: 4.371672352904106,
+      &quot;7.9&quot;: 4.896144985328977,
+      &quot;8.0&quot;: 5.974872668835764,
+      &quot;8.1&quot;: 4.547071444563071,
+      &quot;8.2&quot;: 4.538841687108773,
+      &quot;8.3&quot;: 5.4910559145081805,
+      &quot;8.4&quot;: 5.945401850306946,
+      &quot;8.5&quot;: 4.376340666779227,
+      &quot;8.6&quot;: 4.971702257243453,
+      &quot;8.7&quot;: 6.023559523241829,
+      &quot;8.8&quot;: 4.484300196836375,
+      &quot;8.9&quot;: 4.58578205871961,
+      &quot;9.0&quot;: 5.582019472072625,
+      &quot;9.1&quot;: 5.830015249117312,
+      &quot;9.2&quot;: 4.387980444546794,
+      &quot;9.3&quot;: 5.051086068480603,
+      &quot;9.4&quot;: 6.056034191754177,
+      &quot;9.5&quot;: 4.438877964183642,
+      &quot;9.6&quot;: 4.637873602086222,
+      &quot;9.7&quot;: 5.671373918148743,
+      &quot;9.8&quot;: 5.367450325620678,
+      &quot;9.9&quot;: 4.406137231782196,
+      &quot;10.0&quot;: 5.133991488829662
+    }
+  }
+}
+</code></pre></div>
+</details>
+<hr />
+<p><a href="../../">← All examples</a></p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+  <script>var tabs=__md_get("__tabs");if(Array.isArray(tabs))e:for(var set of document.querySelectorAll(".tabbed-set")){var labels=set.querySelector(".tabbed-labels");for(var tab of tabs)for(var label of labels.getElementsByTagName("label"))if(label.innerText.trim()===tab){var input=document.getElementById(label.htmlFor);input.checked=!0;continue e}}</script>
+
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../04-validate-sbml/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 04 — Validate SBML">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                04 — Validate SBML
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../06-perturb/" class="md-footer__link md-footer__link--next" aria-label="Next: 06 — Perturb">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                06 — Perturb
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+</div>
+      
+        
+<div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://github.com/MervinPraison/PraisonAIBio" target="_blank" rel="noopener" title="github.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M173.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6m-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3m44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9M252.8 8C114.1 8 8 113.3 8 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C436.2 457.8 504 362.9 504 252 504 113.3 391.5 8 252.8 8M105.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1m-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7m32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1m-11.4-14.7c-1.6 1-1.6 3.6 0 5.9s4.3 3.3 5.6 2.3c1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.biomodels.org" target="_blank" rel="noopener" title="www.biomodels.org" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Free 7.1.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M352 0c17.7 0 32 14.3 32 32 0 57.8-24.4 104.8-57.4 144.5-24.1 28.9-53.8 55.1-83.6 79.5 29.8 24.5 59.5 50.6 83.6 79.5 33 39.6 57.4 86.7 57.4 144.5 0 17.7-14.3 32-32 32s-32-14.3-32-32H64c0 17.7-14.3 32-32 32S0 497.7 0 480c0-57.8 24.4-104.8 57.4-144.5 24.1-28.9 53.8-55 83.6-79.5-29.8-24.5-59.5-50.6-83.6-79.5C24.4 136.8 0 89.8 0 32 0 14.3 14.3 0 32 0s32 14.3 32 32h256c0-17.7 14.3-32 32-32m-68.5 384H100.6c-8.2 10.5-15.1 21.1-20.6 32h224.2c-5.6-10.9-12.5-21.5-20.6-32zM238 336c-14.3-13-29.8-25.8-46-39-16.2 13.1-31.7 26-46 39zM100.5 128h182.9c8.2-10.5 15.1-21.1 20.6-32H79.9c5.6 10.9 12.5 21.5 20.6 32m45.5 48c14.3 13 29.8 25.8 46 39 16.2-13.1 31.7-26 46-39z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.tabs", "navigation.tabs.sticky", "navigation.sections", "navigation.expand", "navigation.path", "navigation.indexes", "navigation.top", "navigation.footer", "toc.follow", "search.suggest", "search.highlight", "search.share", "content.code.copy", "content.code.annotate", "content.tabs.link", "header.autohide"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      
+        <script src="../../../javascript/extra.js"></script>
+      
+    
+  </body>
+</html>

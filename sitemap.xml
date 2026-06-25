@@ -29,11 +29,11 @@
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://bio.praison.ai/get-started/</loc>
+         <loc>https://bio.praison.ai/install/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
-         <loc>https://bio.praison.ai/install/</loc>
+         <loc>https://bio.praison.ai/interactive-guide/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
@@ -85,6 +85,10 @@
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
+         <loc>https://bio.praison.ai/examples/big/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
          <loc>https://bio.praison.ai/examples/big/01-find-models/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
@@ -101,6 +105,18 @@
          <lastmod>2026-06-25</lastmod>
     </url>
     <url>
+         <loc>https://bio.praison.ai/examples/minimal/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/notebooks/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
          <loc>https://bio.praison.ai/examples/small/01-search/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
@@ -114,6 +130,34 @@
     </url>
     <url>
          <loc>https://bio.praison.ai/examples/small/04-validate-sbml/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/05-simulate/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/06-perturb/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/07-compare-models/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/08-compare-sims/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/09-repro-export/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/small/10-sbml-graph/</loc>
+         <lastmod>2026-06-25</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/get-started/</loc>
          <lastmod>2026-06-25</lastmod>
     </url>
 </urlset>
