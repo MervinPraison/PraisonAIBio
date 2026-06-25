@@ -1,6 +1,6 @@
 site_name: PraisonAIBio
 site_description: AI agents for systems biology — BioModels.org discovery, simulation, and comparison
-site_url: https://mervinpraison.github.io/PraisonAIBio/
+site_url: https://bio.praison.ai/
 repo_url: https://github.com/MervinPraison/PraisonAIBio
 repo_name: MervinPraison/PraisonAIBio
 edit_uri: edit/main/docs/
@@ -69,6 +69,7 @@ nav:
       - vs ClawBio: concepts/vs-clawbio.md
   - Development:
       - Testing: development.md
+      - Custom domain: custom-domain.md
 
 extra:
   social:
