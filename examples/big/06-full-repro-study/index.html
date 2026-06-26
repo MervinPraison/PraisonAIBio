@@ -10,13 +10,13 @@
       
       
       
-        <link rel="canonical" href="https://bio.praison.ai/examples/small/08-compare-sims/">
+        <link rel="canonical" href="https://bio.praison.ai/examples/big/06-full-repro-study/">
       
       
-        <link rel="prev" href="../07-compare-models/">
+        <link rel="prev" href="../05-perturb-compare/">
       
       
-        <link rel="next" href="../09-repro-export/">
+        <link rel="next" href="../07-agent-with-configs/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>08 — Compare sims - PraisonAIBio</title>
+        <title>06 — Full repro - PraisonAIBio</title>
       
     
     
@@ -80,7 +80,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#example-compare-simulations" class="md-skip">
+        <a href="#full-repro-study-agent" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +115,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              08 — Compare sims
+              06 — Full repro
             
           </span>
         </div>
@@ -811,8 +811,6 @@
                 
   
   
-    
-  
   
   
     
@@ -826,447 +824,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-        
-          
-          
-        
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
-        
-          
-          <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
-              
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Small examples
-  
-
-    
-  </span>
-  
-  
-
-            </a>
-            
-              
-              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
-                <span class="md-nav__icon md-icon"></span>
-              </label>
-            
-          </div>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_3_3">
-            <span class="md-nav__icon md-icon"></span>
-            
-  
-    Small examples
-  
-
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../01-search/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    01 — Search
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../02-model-info/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    02 — Model info
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../03-trust-score/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    03 — Trust score
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../04-validate-sbml/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    04 — Validate SBML
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../05-simulate/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    05 — Simulate
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../06-perturb/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    06 — Perturb
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../07-compare-models/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    07 — Compare models
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 — Compare sims
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    08 — Compare sims
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to run
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tested-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tested output
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../09-repro-export/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    09 — Repro export
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../10-sbml-graph/" class="md-nav__link">
-        
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    10 — SBML graph
-  
-
-    
-  </span>
-  
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    
-    
-      
-        
-          
         
       
         
@@ -1301,11 +858,385 @@
         
           
         
-        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle md-toggle--indeterminate" type="checkbox" id="__nav_3_3" >
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../big/" class="md-nav__link ">
+            <a href="../../small/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Small examples
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_3" id="__nav_3_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Small examples
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/01-search/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    01 — Search
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/02-model-info/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    02 — Model info
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/03-trust-score/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    03 — Trust score
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/04-validate-sbml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    04 — Validate SBML
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/05-simulate/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    05 — Simulate
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/06-perturb/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    06 — Perturb
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/07-compare-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    07 — Compare models
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/08-compare-sims/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    08 — Compare sims
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/09-repro-export/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    09 — Repro export
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../small/10-sbml-graph/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    10 — SBML graph
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+        
+          
+          
+        
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
               
   
   
@@ -1329,7 +1260,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -1349,7 +1280,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../big/01-find-models/" class="md-nav__link">
+      <a href="../01-find-models/" class="md-nav__link">
         
   
   
@@ -1377,7 +1308,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../big/02-summarise-model/" class="md-nav__link">
+      <a href="../02-summarise-model/" class="md-nav__link">
         
   
   
@@ -1405,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../big/03-discovery-study/" class="md-nav__link">
+      <a href="../03-discovery-study/" class="md-nav__link">
         
   
   
@@ -1433,7 +1364,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../big/04-glycolysis-demo/" class="md-nav__link">
+      <a href="../04-glycolysis-demo/" class="md-nav__link">
         
   
   
@@ -1461,7 +1392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../big/05-perturb-compare/" class="md-nav__link">
+      <a href="../05-perturb-compare/" class="md-nav__link">
         
   
   
@@ -1486,10 +1417,19 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../big/06-full-repro-study/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -1505,6 +1445,7 @@
   
 
       </a>
+      
     </li>
   
 
@@ -1517,7 +1458,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../big/07-agent-with-configs/" class="md-nav__link">
+      <a href="../07-agent-with-configs/" class="md-nav__link">
         
   
   
@@ -2516,36 +2457,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#how-to-run" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        How to run
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tested-output" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tested output
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -2608,7 +2519,7 @@
         <a href="../" class="md-path__link">
           
   <span class="md-ellipsis">
-    Small examples
+    Agent examples
   </span>
 
         </a>
@@ -2630,44 +2541,13 @@
   
 
 
-<h1 id="example-compare-simulations">Example — Compare simulations<a class="headerlink" href="#example-compare-simulations" title="Permanent link">&para;</a></h1>
-<p><strong>Category:</strong> Small (no AI) · <strong>Script:</strong> <a href="https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/small/08_compare_sims.py"><code>examples/small/08_compare_sims.py</code></a>
-<strong>Minimal (2 lines):</strong> <a href="https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/minimal/compare_runs.py"><code>examples/minimal/compare_runs.py</code></a></p>
-<p>Compare two simulation outputs (RMSE, AUC). <strong>Works offline.</strong></p>
-<hr />
-<h2 id="how-to-run">How to run<a class="headerlink" href="#how-to-run" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;src/praisonai-bio&quot;</span>
-python<span class="w"> </span>examples/small/08_compare_sims.py
+<h1 id="full-repro-study-agent">Full repro study (agent)<a class="headerlink" href="#full-repro-study-agent" title="Permanent link">&para;</a></h1>
+<p><span class="bio-badge bio-badge--agent">AI agent</span></p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-...
+python<span class="w"> </span>examples/big/06_full_repro_study.py
 </code></pre></div>
-<p><strong>Needs:</strong> None — offline.</p>
-<hr />
-<h2 id="tested-output">Tested output<a class="headerlink" href="#tested-output" title="Permanent link">&para;</a></h2>
-<p>Live capture from <code>./scripts/capture_example_outputs.sh</code>.</p>
-<details>
-<summary>Click to view full output</summary>
-<div class="highlight"><pre><span></span><code>{
-  &quot;baseline_keys&quot;: [
-    &quot;ATP&quot;
-  ],
-  &quot;perturbation_keys&quot;: [
-    &quot;ATP&quot;
-  ],
-  &quot;parameter_changed&quot;: null,
-  &quot;metrics&quot;: {
-    &quot;ATP&quot;: {
-      &quot;rmse&quot;: 0.04082482904638634,
-      &quot;peak_time_baseline&quot;: 0.0,
-      &quot;peak_time_variant&quot;: 0.0,
-      &quot;auc_baseline&quot;: 1.8,
-      &quot;auc_variant&quot;: 1.725
-    }
-  },
-  &quot;status&quot;: &quot;compared&quot;
-}
-</code></pre></div>
-</details>
-<hr />
-<p><a href="../../">← All examples</a></p>
+<p>Agent exports a repro bundle via <code>repro_export</code>.</p>
+<p><a href="../">← Agent examples</a></p>
 
 
 
@@ -2705,7 +2585,7 @@ python<span class="w"> </span>examples/small/08_compare_sims.py
       <nav class="md-footer__inner md-grid" aria-label="Footer" >
         
           
-          <a href="../07-compare-models/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 07 — Compare models">
+          <a href="../05-perturb-compare/" class="md-footer__link md-footer__link--prev" aria-label="Previous: 05 — Perturb compare">
             <div class="md-footer__button md-icon">
               
               <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
@@ -2715,20 +2595,20 @@ python<span class="w"> </span>examples/small/08_compare_sims.py
                 Previous
               </span>
               <div class="md-ellipsis">
-                07 — Compare models
+                05 — Perturb compare
               </div>
             </div>
           </a>
         
         
           
-          <a href="../09-repro-export/" class="md-footer__link md-footer__link--next" aria-label="Next: 09 — Repro export">
+          <a href="../07-agent-with-configs/" class="md-footer__link md-footer__link--next" aria-label="Next: 07 — Agent configs">
             <div class="md-footer__title">
               <span class="md-footer__direction">
                 Next
               </span>
               <div class="md-ellipsis">
-                09 — Repro export
+                07 — Agent configs
               </div>
             </div>
             <div class="md-footer__button md-icon">

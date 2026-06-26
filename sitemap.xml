@@ -29,6 +29,10 @@
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
+         <loc>https://bio.praison.ai/get-started/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
          <loc>https://bio.praison.ai/install/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
@@ -65,7 +69,31 @@
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
+         <loc>https://bio.praison.ai/concepts/graph/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/concepts/hitl/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
          <loc>https://bio.praison.ai/concepts/mcp/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/concepts/policy/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/concepts/praisonai-backbone/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/concepts/scientist-workflow/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/concepts/session/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
@@ -102,6 +130,18 @@
     </url>
     <url>
          <loc>https://bio.praison.ai/examples/big/04-glycolysis-demo/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/05-perturb-compare/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/06-full-repro-study/</loc>
+         <lastmod>2026-06-26</lastmod>
+    </url>
+    <url>
+         <loc>https://bio.praison.ai/examples/big/07-agent-with-configs/</loc>
          <lastmod>2026-06-26</lastmod>
     </url>
     <url>
