@@ -13,35 +13,102 @@ theme:
   icon:
     repo: fontawesome/brands/github
   font:
-    text: IBM Plex Sans
-    code: JetBrains Mono
+    text: Roboto
+    code: Roboto Mono
   palette:
+    # Auto: match OS light/dark (Praison colours)
     - media: "(prefers-color-scheme: light)"
-      scheme: bio-light
-      primary: custom
-      accent: custom
+      scheme: default
+      primary: red
+      accent: teal
       toggle:
         icon: material/brightness-4
         name: Switch to dark mode
     - media: "(prefers-color-scheme: dark)"
-      scheme: bio-dark
-      primary: custom
-      accent: custom
+      scheme: slate
+      primary: red
+      accent: teal
       toggle:
         icon: material/brightness-7
         name: Switch to light mode
-    - scheme: bio-light
-      primary: custom
-      accent: custom
+    # 1 — Praison (red header, teal links)
+    - scheme: default
+      primary: red
+      accent: teal
       toggle:
-        icon: material/brightness-4
-        name: Switch to dark mode
-    - scheme: bio-dark
-      primary: custom
-      accent: custom
+        icon: material/palette
+        name: "Theme: Indigo"
+    - scheme: slate
+      primary: red
+      accent: teal
       toggle:
-        icon: material/brightness-7
-        name: Switch to light mode
+        icon: material/palette
+        name: "Theme: Indigo (dark)"
+    # 2 — Indigo (Material classic)
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/palette
+        name: "Theme: Forest"
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/palette
+        name: "Theme: Forest (dark)"
+    # 3 — Forest (biology / green)
+    - scheme: default
+      primary: green
+      accent: light-green
+      toggle:
+        icon: material/palette
+        name: "Theme: Midnight"
+    - scheme: slate
+      primary: green
+      accent: light-green
+      toggle:
+        icon: material/palette
+        name: "Theme: Midnight (dark)"
+    # 4 — Midnight (minimal black)
+    - scheme: default
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/palette
+        name: "Theme: Deep purple"
+    - scheme: slate
+      primary: black
+      accent: teal
+      toggle:
+        icon: material/palette
+        name: "Theme: Deep purple (dark)"
+    # 5 — Deep purple (docs / enterprise)
+    - scheme: default
+      primary: deep-purple
+      accent: amber
+      toggle:
+        icon: material/palette
+        name: "Theme: Cyan"
+    - scheme: slate
+      primary: deep-purple
+      accent: amber
+      toggle:
+        icon: material/palette
+        name: "Theme: Cyan (dark)"
+    # 6 — Cyan (tech / API docs)
+    - scheme: default
+      primary: cyan
+      accent: cyan
+      toggle:
+        icon: material/palette
+        name: "Theme: Praison"
+    - scheme: slate
+      primary: cyan
+      accent: cyan
+      toggle:
+        icon: material/palette
+        name: "Theme: Praison (dark)"
   features:
     - navigation.tabs
     - navigation.tabs.sticky
@@ -157,5 +224,6 @@ nav:
       - concepts/vs-clawbio.md
   - Development:
       - development.md
+      - Theme options: theme-options.md
       - plan-validation.md
       - custom-domain.md

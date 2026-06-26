@@ -1,6 +1,6 @@
 # Agent examples
 
-<span class="bio-badge bio-badge--agent">AI agent</span> · Uses `gpt-4o-mini` · Needs `OPENAI_API_KEY`
+:material-robot: **AI agent** · Uses `gpt-4o-mini` · Needs `OPENAI_API_KEY`
 
 PraisonAI agents call BioModels tools on your behalf.
 

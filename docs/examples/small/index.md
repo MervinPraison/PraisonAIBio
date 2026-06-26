@@ -1,6 +1,6 @@
 # Small examples
 
-<span class="bio-badge">No AI</span> · One BioModels call per script · No API key
+:material-flash: **No AI** · One BioModels call per script · No API key
 
 Direct tool calls — fastest way to learn PraisonAIBio.
 
