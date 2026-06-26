@@ -1,4 +1,3 @@
-/* PraisonAIBio docs — layout helpers and theme-aware Mermaid */
 document.addEventListener("DOMContentLoaded", function () {
   var path = document.location.pathname;
   if (path === "/" || path.endsWith("/index.html") || path.endsWith("/")) {
@@ -6,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   function mermaidTheme() {
-    return document.body.dataset.mdColorScheme === "bio-dark" ? "dark" : "default";
+    return document.body.dataset.mdColorScheme === "slate" ? "dark" : "default";
   }
 
   if (typeof mermaid !== "undefined") {
