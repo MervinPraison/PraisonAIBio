@@ -1,0 +1,2 @@
+To compare the baseline simulation with a perturbed simulation for the model BIOMD0000000206, I'll first run a baseline simulation to obtain the normal behavior of the model, and then I’ll perform a perturbed simulation by changing one of the model parameters. After that, I will compare the results of both simulations.
+Let's start with the baseline simulation. I'll set a duration for this simulation. How long would you like the simulation to run? A duration of 100 time units is common, but please specify if you have any preferences.

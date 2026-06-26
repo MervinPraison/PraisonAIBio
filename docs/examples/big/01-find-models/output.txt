@@ -1,22 +1,22 @@
-Here are some curated models related to yeast glycolysis:
+Here are some curated models related to yeast glycolysis available in the BioModels database:
 1. **[Smallbone2013 - Yeast metabolic model with linlog rate law](https://www.biomodels.org/BIOMD0000000471)**
-   - **ID**: BIOMD0000000471
-   - **Submitter**: Kieran Smallbone
-   - **Submission Date**: 2013-02-14
+   - Submission Date: February 14, 2013
+   - Submitter: Kieran Smallbone
+   - Format: SBML
 2. **[Smallbone2013 - Yeast metabolic model with modular rate law](https://www.biomodels.org/BIOMD0000000472)**
-   - **ID**: BIOMD0000000472
-   - **Submitter**: Kieran Smallbone
-   - **Submission Date**: 2013-02-14
+   - Submission Date: February 14, 2013
+   - Submitter: Kieran Smallbone
+   - Format: SBML
 3. **[Smallbone2013 - Yeast metabolic model with modular rate law, merged with Pritchard 2002](https://www.biomodels.org/BIOMD0000000473)**
-   - **ID**: BIOMD0000000473
-   - **Submitter**: Kieran Smallbone
-   - **Submission Date**: 2013-02-14
+   - Submission Date: February 14, 2013
+   - Submitter: Kieran Smallbone
+   - Format: SBML
 4. **[Wolf2000 - Cellular interaction on glycolytic oscillations in yeast](https://www.biomodels.org/BIOMD0000000691)**
-   - **ID**: BIOMD0000000691
-   - **Submitter**: Camille Laibe
-   - **Submission Date**: 2010-06-23
+   - Submission Date: June 23, 2010
+   - Submitter: Camille Laibe
+   - Format: SBML
 5. **[Teusink2000_Glycolysis](https://www.biomodels.org/BIOMD0000000064)**
-   - **ID**: BIOMD0000000064
-   - **Submitter**: Nicolas Le Novère
-   - **Submission Date**: 2006-08-14
-These models focus on different aspects of glycolysis in yeast and can be accessed through the provided links. Feel free to ask if you need more information!
+   - Submission Date: August 14, 2006
+   - Submitter: Nicolas Le Nôtre
+   - Format: SBML
+These models are manually curated, which ensures a higher level of reliability and accuracy. Let me know if you need more information on any specific model!

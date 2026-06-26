@@ -2,7 +2,7 @@
 
 Runnable scripts with **recorded sample output** (captured from live runs against BioModels.org).
 
-<div class="grid cards" markdown="1">
+<div class="grid cards bio-cards bio-cards--4" markdown="1">
 
 -   :material-lightning-bolt:{ .lg .middle } **Minimal — 2 lines**
 

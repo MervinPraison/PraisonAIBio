@@ -159,6 +159,36 @@ PAGES = [
         "needs": "Internet + OpenAI API key + BASICO for simulation.",
         "out": "docs/examples/big/04-glycolysis-demo/output.txt",
     },
+    {
+        "md": "docs/examples/big/05-perturb-compare.md",
+        "title": "Perturb and compare",
+        "cat": "Big (AI agent)",
+        "script": "examples/big/05_perturb_compare.py",
+        "desc": "Agent compares baseline vs perturbed simulation for **BIOMD0000000206**.",
+        "run": "export OPENAI_API_KEY=sk-...\npython examples/big/05_perturb_compare.py",
+        "needs": "Internet + OpenAI API key + BASICO.",
+        "out": "docs/examples/big/05-perturb-compare/output.txt",
+    },
+    {
+        "md": "docs/examples/big/06-full-repro-study.md",
+        "title": "Full repro study",
+        "cat": "Big (AI agent)",
+        "script": "examples/big/06_full_repro_study.py",
+        "desc": "Agent exports a reproducibility bundle for **BIOMD0000000206**.",
+        "run": "export OPENAI_API_KEY=sk-...\npython examples/big/06_full_repro_study.py",
+        "needs": "Internet + OpenAI API key.",
+        "out": "docs/examples/big/06-full-repro-study/output.txt",
+    },
+    {
+        "md": "docs/examples/big/07-agent-with-configs.md",
+        "title": "Agent with presets + skills",
+        "cat": "Big (AI agent)",
+        "script": "examples/big/07_agent_with_configs.py",
+        "desc": "Discovery preset, policy guardrails, and bio skills on one agent.",
+        "run": "export OPENAI_API_KEY=sk-...\npython examples/big/07_agent_with_configs.py",
+        "needs": "Internet + OpenAI API key.",
+        "out": "docs/examples/big/07-agent-with-configs/output.txt",
+    },
 ]
 
 

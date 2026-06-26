@@ -24,6 +24,9 @@ DIRS=(
   docs/examples/big/02-summarise-model
   docs/examples/big/03-discovery-study
   docs/examples/big/04-glycolysis-demo
+  docs/examples/big/05-perturb-compare
+  docs/examples/big/06-full-repro-study
+  docs/examples/big/07-agent-with-configs
 )
 
 for d in "${DIRS[@]}"; do mkdir -p "$d"; done
@@ -61,15 +64,16 @@ capture docs/examples/minimal/compare-runs/output.txt python examples/minimal/co
 
 if [[ -z "${OPENAI_API_KEY:-}" ]]; then
   echo "Skipping big examples (set OPENAI_API_KEY to capture agent output)" >&2
-  echo "Done (small + minimal only)."
-  exit 0
+else
+  echo "Big examples:"
+  capture docs/examples/big/01-find-models/output.txt python examples/big/01_find_models.py
+  capture docs/examples/big/02-summarise-model/output.txt python examples/big/02_summarise_model.py
+  capture docs/examples/big/03-discovery-study/output.txt python examples/big/03_discovery_study.py
+  capture docs/examples/big/04-glycolysis-demo/output.txt python examples/big/04_glycolysis_demo.py
+  capture docs/examples/big/05-perturb-compare/output.txt python examples/big/05_perturb_compare.py
+  capture docs/examples/big/06-full-repro-study/output.txt python examples/big/06_full_repro_study.py
+  capture docs/examples/big/07-agent-with-configs/output.txt python examples/big/07_agent_with_configs.py
 fi
-
-echo "Big examples:"
-capture docs/examples/big/01-find-models/output.txt python examples/big/01_find_models.py
-capture docs/examples/big/02-summarise-model/output.txt python examples/big/02_summarise_model.py
-capture docs/examples/big/03-discovery-study/output.txt python examples/big/03_discovery_study.py
-capture docs/examples/big/04-glycolysis-demo/output.txt python examples/big/04_glycolysis_demo.py
 
 echo "Done."
 python scripts/generate_example_docs.py

@@ -1,0 +1,12 @@
+The reproducibility bundle for model **BIOMD0000000206** has been successfully exported. Here are the details:
+- **Bundle Directory:** `/Users/praison/PraisonAIBio`
+- **Files Included:**
+  - `BIOMD0000000206_combine.zip`
+  - `README.md`
+  - `checksums.sha256`
+  - `combine_manifest.json`
+  - `commands.sh`
+  - `metadata.json`
+  - `model.sbml`
+- **Session Directory:** `/Users/praison/.praisonai/biomodels-runs/demo-repro-study`
+If you need further assistance or additional tasks, feel free to ask!

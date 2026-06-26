@@ -13,6 +13,26 @@ BIOMD*_model.sbml
 grant/
 .env
 .DS_Store
+
+# Repro export / local run artefacts (committed fixtures live under demo_data/)
+/repro_bundle/
+/model.sbml
+/metadata.json
+/commands.sh
+/checksums.sha256
+/combine_manifest.json
+/BIOMD*
+
+# PraisonAI runtime (agents + config under .praisonai/ are tracked)
+.praisonai/memory/
+
+# Notebooks and test coverage
+.ipynb_checkpoints/
+.coverage
+htmlcov/
+
 benchmarks/reports/*
 !benchmarks/reports/.gitkeep
+benchmarks/repro_bundle/*
+!benchmarks/repro_bundle/manifest.json
 site/

@@ -13,16 +13,30 @@ theme:
   icon:
     repo: fontawesome/brands/github
   font:
-    text: Inter
+    text: IBM Plex Sans
     code: JetBrains Mono
   palette:
-    - scheme: mint-light
+    - media: "(prefers-color-scheme: light)"
+      scheme: bio-light
       primary: custom
       accent: custom
       toggle:
         icon: material/brightness-4
         name: Switch to dark mode
-    - scheme: mint-dark
+    - media: "(prefers-color-scheme: dark)"
+      scheme: bio-dark
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-7
+        name: Switch to light mode
+    - scheme: bio-light
+      primary: custom
+      accent: custom
+      toggle:
+        icon: material/brightness-4
+        name: Switch to dark mode
+    - scheme: bio-dark
       primary: custom
       accent: custom
       toggle:

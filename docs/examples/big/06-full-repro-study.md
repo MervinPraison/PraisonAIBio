@@ -1,12 +1,32 @@
-# Full repro study (agent)
+# Example — Full repro study
 
-<span class="bio-badge bio-badge--agent">AI agent</span>
+**Category:** Big (AI agent) · **Script:** [`examples/big/06_full_repro_study.py`](https://github.com/MervinPraison/PraisonAIBio/blob/main/examples/big/06_full_repro_study.py)
+
+Agent exports a reproducibility bundle for **BIOMD0000000206**.
+
+---
+
+## How to run
 
 ```bash
+pip install -e "src/praisonai-bio"
 export OPENAI_API_KEY=sk-...
 python examples/big/06_full_repro_study.py
 ```
 
-Agent exports a repro bundle via `repro_export`.
+**Needs:** Internet + OpenAI API key.
 
-[← Agent examples](index.md)
+---
+
+## Tested output
+
+Live capture from `./scripts/capture_example_outputs.sh`.
+
+??? "Click to view full output"
+    ```text
+    --8<-- "docs/examples/big/06-full-repro-study/output.txt"
+    ```
+
+---
+
+[← All examples](../index.md)

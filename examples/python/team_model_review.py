@@ -4,9 +4,9 @@ from praisonaiagents import Agent, AgentTeam, Task
 
 from praisonai_bio.config.presets import DISCOVERY_AGENT, SIMULATION_AGENT
 
-scout = Agent(name="scout", instructions="Search and rank BioModels.", **DISCOVERY_AGENT)
+scout = Agent(**{**DISCOVERY_AGENT, "name": "scout", "instructions": "Search and rank BioModels."})
 analyst = Agent(name="analyst", instructions="Summarise SBML structure.", toolsets=["sbml_analysis"])
-engineer = Agent(name="engineer", instructions="Run baseline simulation.", **SIMULATION_AGENT)
+engineer = Agent(**{**SIMULATION_AGENT, "name": "engineer", "instructions": "Run baseline simulation."})
 
 tasks = [
     Task(name="search", description="Find curated glycolysis models", agent=scout),
