@@ -169,6 +169,7 @@ PLAN_PATHS: dict[str, list[str]] = {
     "docs": [
         "docs/index.md",
         "docs/get-started.md",
+        "docs/get-started/index.md",
         "docs/quick-tasks.md",
         "docs/for-researchers.md",
         "docs/tools-at-a-glance.md",
@@ -177,6 +178,12 @@ PLAN_PATHS: dict[str, list[str]] = {
         "docs/concepts/vs-t2b.md",
         "docs/concepts/workflows.md",
         "docs/concepts/mcp.md",
+        "docs/concepts/hitl.md",
+        "docs/concepts/policy.md",
+        "docs/concepts/session.md",
+        "docs/concepts/graph.md",
+        "docs/concepts/praisonai-backbone.md",
+        "docs/concepts/scientist-workflow.md",
     ],
     "examples": [
         "examples/README.md",
@@ -188,6 +195,10 @@ PLAN_PATHS: dict[str, list[str]] = {
         "examples/big/02_summarise_model.py",
         "examples/big/03_discovery_study.py",
         "examples/big/04_glycolysis_demo.py",
+        "examples/big/05_perturb_compare.py",
+        "examples/big/06_full_repro_study.py",
+        "examples/big/07_agent_with_configs.py",
+        "examples/mcp/sysbio_client.py",
     ],
     "docs_hub": [
         "docs/index.md",

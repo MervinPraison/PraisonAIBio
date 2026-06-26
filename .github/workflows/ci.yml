@@ -36,6 +36,9 @@ jobs:
       - name: Unit tests
         run: pytest tests/unit -q
 
+      - name: Integration tests
+        run: SKIP_NETWORK=1 pytest tests/integration -q
+
       - name: Benchmark suite
         run: |
           python benchmarks/t2b_parity/eval_suite_runner.py

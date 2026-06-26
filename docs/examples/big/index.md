@@ -23,6 +23,9 @@ export OPENAI_API_KEY=sk-...
 | 02 | Summarise one model | [02 — Summarise](02-summarise-model.md) |
 | 03 | Mini discovery study | [03 — Discovery](03-discovery-study.md) |
 | 04 | Glycolysis walkthrough | [04 — Glycolysis](04-glycolysis-demo.md) |
+| 05 | Perturb + compare | [05 — Perturb compare](05-perturb-compare.md) |
+| 06 | Full repro export | [06 — Full repro](06-full-repro-study.md) |
+| 07 | Presets + skills | [07 — Agent configs](07-agent-with-configs.md) |
 
 !!! note "Output varies"
     LLM text differs each run. Saved output on each page is a real capture.

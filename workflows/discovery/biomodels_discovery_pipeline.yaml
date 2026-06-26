@@ -76,12 +76,8 @@ steps:
       drug: [general_scout]
       general: [general_scout]
 
-  - name: parallel_search
-    parallel:
-      - agent: biomodels_scout
-        action: "Search BioModels with primary query from decomposition"
-      - agent: biomodels_scout
-        action: "Search BioModels with alternate pathway keywords"
+  - agent: biomodels_scout
+    action: "Broaden shortlist with one consolidated search after domain routing."
 
   - agent: curation_reviewer
     action: Trust scorecards for top 3 shortlisted models

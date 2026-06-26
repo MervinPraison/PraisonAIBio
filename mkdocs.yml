@@ -116,6 +116,9 @@ nav:
           - "02 — Summarise": examples/big/02-summarise-model.md
           - "03 — Discovery": examples/big/03-discovery-study.md
           - "04 — Glycolysis": examples/big/04-glycolysis-demo.md
+          - "05 — Perturb compare": examples/big/05-perturb-compare.md
+          - "06 — Full repro": examples/big/06-full-repro-study.md
+          - "07 — Agent configs": examples/big/07-agent-with-configs.md
       - Notebooks: examples/notebooks/index.md
   - Tools:
       - tools-at-a-glance.md
@@ -126,7 +129,15 @@ nav:
       - MCP: concepts/mcp.md
   - Workflows:
       - concepts/workflows.md
+      - concepts/scientist-workflow.md
       - recipes.md
+  - Concepts:
+      - Backbone: concepts/praisonai-backbone.md
+      - Policy: concepts/policy.md
+      - HITL: concepts/hitl.md
+      - Session: concepts/session.md
+      - Graph: concepts/graph.md
+      - MCP: concepts/mcp.md
   - Compare:
       - concepts/vs-t2b.md
       - concepts/vs-clawbio.md

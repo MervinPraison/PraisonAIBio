@@ -62,14 +62,20 @@ def cmd_tools_validate() -> int:
 
 def cmd_doctor_mcp() -> int:
     from praisonai_bio.adapters.basico_adapter import check_basico_available
+    from praisonaiagents.toolsets import resolve_toolset
 
     ok, msg = check_basico_available()
     print(f"BASICO: {'OK' if ok else 'MISSING — ' + msg}")
-    print("MCP servers:")
-    print("  - mcp/sysbio-server/server.py (11 T2B tools)")
-    print("  - mcp/biomodels-server/server.py (read-only)")
-    print("  - praisonai-bio-mcp (console script)")
-    return 0 if ok else 0  # BASICO optional for doctor
+    full = resolve_toolset("sysbio-full")
+    print(f"MCP sysbio-full: {len(full)} tools via praisonai-bio-mcp")
+    return 0
+
+
+def cmd_bench_run() -> int:
+    root = _repo_root()
+    import subprocess
+
+    return subprocess.call([sys.executable, str(root / "benchmarks/run_all.py")])
 
 
 def main(argv: list[str] | None = None) -> int:
@@ -84,6 +90,9 @@ def main(argv: list[str] | None = None) -> int:
     tools_sub.add_parser("validate", help="Verify pip entry points")
     doctor = sub.add_parser("doctor", help="Health checks")
     doctor.add_argument("target", nargs="?", default="mcp", choices=["mcp"])
+    bench = sub.add_parser("bench", help="Run deterministic benchmarks")
+    bench_sub = bench.add_subparsers(dest="bench_cmd")
+    bench_sub.add_parser("run", help="Run benchmarks/run_all.py")
 
     args = parser.parse_args(argv)
     if args.command == "init":
@@ -98,6 +107,8 @@ def main(argv: list[str] | None = None) -> int:
         return cmd_tools_validate()
     if args.command == "doctor":
         return cmd_doctor_mcp()
+    if args.command == "bench" and args.bench_cmd == "run":
+        return cmd_bench_run()
     parser.print_help()
     return 0
 

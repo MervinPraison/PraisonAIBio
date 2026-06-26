@@ -1,17 +1,19 @@
-type: job
-name: eval-regression-gate
-description: Run T2B parity scorer and pass/fail gate
+framework: praisonai
+process: workflow
+input: "T2B parity regression gate"
+
+config:
+  llm: gpt-4o-mini
+
+agents:
+  evaluator:
+    role: Benchmark Evaluator
+    instructions: Validate deterministic T2B tool-routing parity.
+    toolsets: [sysbio-safe]
 
 steps:
-  - name: Run scorer
-    run: python benchmarks/t2b_parity/scorer.py
-
-  - name: Judge results
-    judge:
-      input_file: benchmarks/t2b_parity/manifest.json
-      criteria: |
-        - All 10 T2B tool cases defined
-        - Scorer runs without error
-      threshold: 7.0
-      on_fail: warn
-      model: gpt-4o-mini
+  - agent: evaluator
+    action: |
+      CI must run: python benchmarks/t2b_parity/eval_suite_runner.py
+      Pass criteria: mean_score >= 0.9 across all T2B parity cases.
+      Also run: python benchmarks/run_all.py for simulation RMSE check.

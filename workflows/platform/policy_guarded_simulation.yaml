@@ -6,6 +6,9 @@ variables:
   model_id: BIOMD0000000206
   policy: bio-lab
 
+env:
+  PRAISONAI_POLICY_PACK: bio-lab
+
 config:
   llm: gpt-4o-mini
 

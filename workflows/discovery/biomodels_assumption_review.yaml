@@ -1,22 +1,28 @@
-type: job
-name: assumption-review-hitl
-description: Phase 3 — assumption review with HITL gate
+framework: praisonai
+process: workflow
+input: "Assumption review with HITL gate for BIOMD0000000206"
+
+variables:
+  model_id: BIOMD0000000206
+
+config:
+  llm: gpt-4o-mini
+
+agents:
+  analyst:
+    role: SBML Analyst
+    instructions: Review assumptions, units, and boundary conditions.
+    toolsets: [sbml_analysis]
 
 steps:
-  - name: SBML assumption review
-    agent:
-      role: SBML Analyst
-      instructions: Review assumptions, units, boundary conditions.
-      prompt: Review assumptions for BIOMD0000000206 using sbml_summarise and sbml_validate.
-      model: gpt-4o-mini
-      toolsets: [sbml_analysis]
-    output_file: assumption_review.md
+  - agent: analyst
+    action: "Review assumptions for {{ model_id }} using sbml_summarise and sbml_validate."
 
-  - name: HITL approve assumptions
+  - name: hitl_approve_assumptions
     approve:
       description: Human approval required before simulation
       risk_level: high
       auto_approve: false
 
-  - name: Post-approval note
-    run: echo "Assumptions approved — proceed to baseline simulation"
+  - agent: analyst
+    action: "Confirm assumptions approved — hand off to baseline simulation workflow."

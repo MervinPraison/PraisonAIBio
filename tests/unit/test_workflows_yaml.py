@@ -34,6 +34,12 @@ def test_discovery_pipeline_has_domain_route():
     assert not scouts_after_route, "duplicate scout steps after route"
 
 
+def test_no_legacy_type_job_schema():
+    for path in _collect_yaml_paths():
+        text = path.read_text(encoding="utf-8")
+        assert not text.startswith("type: job"), f"{path.name} still uses legacy type: job"
+
+
 def test_full_platform_pipeline_exists():
     path = WORKFLOWS / "cookbooks" / "full_platform_pipeline.yaml"
     assert path.exists()
