@@ -48,8 +48,8 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
-        <style>:root{--md-text-font:"Inter";--md-code-font:"JetBrains Mono"}</style>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM+Plex+Sans:300,300i,400,400i,700,700i%7CJetBrains+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"IBM Plex Sans";--md-code-font:"JetBrains Mono"}</style>
       
     
     
@@ -71,7 +71,7 @@
     
     
     
-    <body dir="ltr" data-md-color-scheme="mint-light" data-md-color-primary="custom" data-md-color-accent="custom">
+    <body dir="ltr" data-md-color-scheme="bio-light" data-md-color-primary="custom" data-md-color-accent="custom">
   
     
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
@@ -128,7 +128,7 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="mint-light" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="bio-light" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -138,7 +138,27 @@
     
     
     
-    <input class="md-option" data-md-color-media="" data-md-color-scheme="mint-dark" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="bio-dark" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="bio-light" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_3" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="" data-md-color-scheme="bio-dark" data-md-color-primary="custom" data-md-color-accent="custom"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_3">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
@@ -2653,111 +2673,111 @@ python<span class="w"> </span>examples/small/06_perturb.py
   &quot;result_preview&quot;: {
     &quot;ATP&quot;: {
       &quot;0.0&quot;: 2.0,
-      &quot;0.1&quot;: 2.1983739245776053,
-      &quot;0.2&quot;: 2.5363620776553457,
-      &quot;0.3&quot;: 2.436711607907062,
-      &quot;0.4&quot;: 0.5914803251551113,
-      &quot;0.5&quot;: 2.7266290388337096,
-      &quot;0.6&quot;: 2.987058472364314,
-      &quot;0.7&quot;: 1.8067991275688344,
-      &quot;0.8&quot;: 1.5971999223221482,
-      &quot;0.9&quot;: 2.985848941987662
+      &quot;0.1&quot;: 2.1983739245764577,
+      &quot;0.2&quot;: 2.5363620776927105,
+      &quot;0.3&quot;: 2.4367116079296784,
+      &quot;0.4&quot;: 0.5914803244888495,
+      &quot;0.5&quot;: 2.726633800009045,
+      &quot;0.6&quot;: 2.9870503571215083,
+      &quot;0.7&quot;: 1.8067572077670315,
+      &quot;0.8&quot;: 1.5973452814223046,
+      &quot;0.9&quot;: 2.9858575167310293
     },
     &quot;Triose_Gly3Phos_DHAP&quot;: {
       &quot;0.0&quot;: 0.6,
-      &quot;0.1&quot;: 0.5221595437236503,
-      &quot;0.2&quot;: 0.5297061170551594,
-      &quot;0.3&quot;: 0.586191211668952,
-      &quot;0.4&quot;: 0.5755015626388646,
-      &quot;0.5&quot;: 0.4833763014349227,
-      &quot;0.6&quot;: 0.565367877850768,
-      &quot;0.7&quot;: 0.6135455630209389,
-      &quot;0.8&quot;: 0.47388555669794036,
-      &quot;0.9&quot;: 0.525587237789623
+      &quot;0.1&quot;: 0.5221595437231071,
+      &quot;0.2&quot;: 0.5297061170548311,
+      &quot;0.3&quot;: 0.5861912116682712,
+      &quot;0.4&quot;: 0.5755015606499059,
+      &quot;0.5&quot;: 0.4833764214719952,
+      &quot;0.6&quot;: 0.5653686461246638,
+      &quot;0.7&quot;: 0.6135462912051038,
+      &quot;0.8&quot;: 0.4738832484958793,
+      &quot;0.9&quot;: 0.5255895092546194
     },
     &quot;Acetaldehyde&quot;: {
       &quot;0.0&quot;: 0.08,
-      &quot;0.1&quot;: 0.07335847757466098,
-      &quot;0.2&quot;: 0.07469875170415624,
-      &quot;0.3&quot;: 0.0718619640542132,
-      &quot;0.4&quot;: 0.0699820855465387,
-      &quot;0.5&quot;: 0.07923362091922818,
-      &quot;0.6&quot;: 0.07769833084599177,
-      &quot;0.7&quot;: 0.06956725055726136,
-      &quot;0.8&quot;: 0.07687768428416844,
-      &quot;0.9&quot;: 0.08026836210155419
+      &quot;0.1&quot;: 0.07335847757468154,
+      &quot;0.2&quot;: 0.07469875170436602,
+      &quot;0.3&quot;: 0.07186196405450508,
+      &quot;0.4&quot;: 0.06998208567838875,
+      &quot;0.5&quot;: 0.07923364277040648,
+      &quot;0.6&quot;: 0.07769822637043043,
+      &quot;0.7&quot;: 0.0695671215227605,
+      &quot;0.8&quot;: 0.07687791668388505,
+      &quot;0.9&quot;: 0.08026827520190408
     },
     &quot;NAD&quot;: {
       &quot;0.0&quot;: 0.6,
-      &quot;0.1&quot;: 0.5841409532180413,
-      &quot;0.2&quot;: 0.5961091936765491,
-      &quot;0.3&quot;: 0.5630255561918883,
-      &quot;0.4&quot;: 0.5360152926370225,
-      &quot;0.5&quot;: 0.6378600617678998,
-      &quot;0.6&quot;: 0.6212565709804302,
-      &quot;0.7&quot;: 0.5316464759827021,
-      &quot;0.8&quot;: 0.6049708921917137,
-      &quot;0.9&quot;: 0.6438720638670604
+      &quot;0.1&quot;: 0.5841409532182759,
+      &quot;0.2&quot;: 0.5961091936788686,
+      &quot;0.3&quot;: 0.5630255561924847,
+      &quot;0.4&quot;: 0.5360152936469499,
+      &quot;0.5&quot;: 0.6378602291420262,
+      &quot;0.6&quot;: 0.6212554883068715,
+      &quot;0.7&quot;: 0.5316452142573425,
+      &quot;0.8&quot;: 0.6049738666933683,
+      &quot;0.9&quot;: 0.6438720680210522
     },
     &quot;Pyruvate&quot;: {
       &quot;0.0&quot;: 8.0,
-      &quot;0.1&quot;: 8.220380927546886,
-      &quot;0.2&quot;: 8.202222827767606,
-      &quot;0.3&quot;: 8.40165139576141,
-      &quot;0.4&quot;: 8.475770238504433,
-      &quot;0.5&quot;: 7.9956483200558255,
-      &quot;0.6&quot;: 8.152066919039898,
-      &quot;0.7&quot;: 8.564495552842915,
-      &quot;0.8&quot;: 8.23869522841845,
-      &quot;0.9&quot;: 8.018591712244719
+      &quot;0.1&quot;: 8.220380927545433,
+      &quot;0.2&quot;: 8.202222827755952,
+      &quot;0.3&quot;: 8.401651395753671,
+      &quot;0.4&quot;: 8.475770234600862,
+      &quot;0.5&quot;: 7.99564713658697,
+      &quot;0.6&quot;: 8.152072447098028,
+      &quot;0.7&quot;: 8.56449825054115,
+      &quot;0.8&quot;: 8.238676686097142,
+      &quot;0.9&quot;: 8.018593974688102
     },
     &quot;Glucose&quot;: {
       &quot;0.0&quot;: 1.0,
-      &quot;0.1&quot;: 1.0399455773245339,
-      &quot;0.2&quot;: 1.1684877547443853,
-      &quot;0.3&quot;: 0.6678815286462901,
-      &quot;0.4&quot;: 0.21847971663407992,
-      &quot;0.5&quot;: 1.8449579543584138,
-      &quot;0.6&quot;: 1.3191883172507624,
-      &quot;0.7&quot;: 0.3462838529717516,
-      &quot;0.8&quot;: 1.333567494642774,
-      &quot;0.9&quot;: 1.7420046195814674
+      &quot;0.1&quot;: 1.0399455773288608,
+      &quot;0.2&quot;: 1.1684877547702,
+      &quot;0.3&quot;: 0.6678815286632379,
+      &quot;0.4&quot;: 0.21847972482757524,
+      &quot;0.5&quot;: 1.8449597348080846,
+      &quot;0.6&quot;: 1.319175133938899,
+      &quot;0.7&quot;: 0.3462687950895955,
+      &quot;0.8&quot;: 1.3336584028648553,
+      &quot;0.9&quot;: 1.741993424672797
     },
     &quot;extracellular acetaldehyde&quot;: {
       &quot;0.0&quot;: 0.02,
-      &quot;0.1&quot;: 0.023408949181621806,
-      &quot;0.2&quot;: 0.023635093876566832,
-      &quot;0.3&quot;: 0.022569984291069062,
-      &quot;0.4&quot;: 0.02323832224267983,
-      &quot;0.5&quot;: 0.025309460567749815,
-      &quot;0.6&quot;: 0.024235445604066312,
-      &quot;0.7&quot;: 0.022156469648342586,
-      &quot;0.8&quot;: 0.024987140563799033,
-      &quot;0.9&quot;: 0.025394027997884906
+      &quot;0.1&quot;: 0.023408949181630556,
+      &quot;0.2&quot;: 0.02363509387661248,
+      &quot;0.3&quot;: 0.02256998429108233,
+      &quot;0.4&quot;: 0.023238322263884312,
+      &quot;0.5&quot;: 0.025309465070672662,
+      &quot;0.6&quot;: 0.024235416302239368,
+      &quot;0.7&quot;: 0.022156458867653953,
+      &quot;0.8&quot;: 0.0249871834859801,
+      &quot;0.9&quot;: 0.025394005811056438
     },
     &quot;3PG&quot;: {
       &quot;0.0&quot;: 0.7,
-      &quot;0.1&quot;: 0.5591927821086572,
-      &quot;0.2&quot;: 0.6434716381691741,
-      &quot;0.3&quot;: 0.5765348207216172,
-      &quot;0.4&quot;: 0.32292218151007246,
-      &quot;0.5&quot;: 0.7993548500057278,
-      &quot;0.6&quot;: 0.8426743908710579,
-      &quot;0.7&quot;: 0.4527754365586398,
-      &quot;0.8&quot;: 0.5291474310062764,
-      &quot;0.9&quot;: 0.9198436470742718
+      &quot;0.1&quot;: 0.559192782108747,
+      &quot;0.2&quot;: 0.6434716381814118,
+      &quot;0.3&quot;: 0.5765348207296078,
+      &quot;0.4&quot;: 0.3229221834459059,
+      &quot;0.5&quot;: 0.7993564671352608,
+      &quot;0.6&quot;: 0.8426703354577103,
+      &quot;0.7&quot;: 0.45276874627339964,
+      &quot;0.8&quot;: 0.5291648655530613,
+      &quot;0.9&quot;: 0.9198459980969327
     },
     &quot;F16P&quot;: {
       &quot;0.0&quot;: 5.0,
-      &quot;0.1&quot;: 5.017062153821076,
-      &quot;0.2&quot;: 4.865760578551081,
-      &quot;0.3&quot;: 5.268158889293346,
-      &quot;0.4&quot;: 5.988570555350355,
-      &quot;0.5&quot;: 4.397323795385167,
-      &quot;0.6&quot;: 4.706268893633944,
-      &quot;0.7&quot;: 5.724625579020039,
-      &quot;0.8&quot;: 5.054335437521564,
-      &quot;0.9&quot;: 4.418749805556875
+      &quot;0.1&quot;: 5.0170621538183635,
+      &quot;0.2&quot;: 4.865760578523175,
+      &quot;0.3&quot;: 5.268158889277177,
+      &quot;0.4&quot;: 5.9885705491710945,
+      &quot;0.5&quot;: 4.397321214243571,
+      &quot;0.6&quot;: 4.706281113636682,
+      &quot;0.7&quot;: 5.724646234514172,
+      &quot;0.8&quot;: 5.054246049414715,
+      &quot;0.9&quot;: 4.41875569738944
     }
   }
 }

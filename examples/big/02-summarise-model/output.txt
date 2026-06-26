@@ -1,6 +1,6 @@
-The model **BIOMD0000000206**, titled **Wolf2000_Glycolytic_Oscillations**, has the following structure:
-- **Species:** 9
-- **Reactions:** 11
-- **Compartments:** 1
-- **Parameters:** 18
-This model explores glycolytic oscillations. If you need more detailed information or specific aspects, let me know!
+The model **BIOMD0000000206**, titled **Wolf2000_Glycolytic_Oscillations**, has the following key details:
+- **Species**: 9
+- **Reactions**: 11
+- **Compartments**: 1
+- **Parameters**: 18
+If you need further details or specific aspects of this model, let me know!

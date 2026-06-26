@@ -1,23 +1,25 @@
-/* Add home-page class for full-width layout */
+/* PraisonAIBio docs — layout helpers and theme-aware Mermaid */
 document.addEventListener("DOMContentLoaded", function () {
-  if (document.location.pathname === "/" || document.location.pathname.endsWith("/index.html")) {
+  var path = document.location.pathname;
+  if (path === "/" || path.endsWith("/index.html") || path.endsWith("/")) {
     document.body.classList.add("bio-home");
+  }
+
+  function mermaidTheme() {
+    return document.body.dataset.mdColorScheme === "bio-dark" ? "dark" : "default";
   }
 
   if (typeof mermaid !== "undefined") {
     mermaid.initialize({
       startOnLoad: true,
-      theme: document.body.dataset.mdColorScheme === "mint-dark" ? "dark" : "default",
+      theme: mermaidTheme(),
       securityLevel: "loose",
     });
   }
 
   var observer = new MutationObserver(function () {
-    var scheme = document.body.dataset.mdColorScheme;
-    if (typeof mermaid !== "undefined" && scheme) {
-      mermaid.initialize({
-        theme: scheme === "mint-dark" ? "dark" : "default",
-      });
+    if (typeof mermaid !== "undefined" && document.body.dataset.mdColorScheme) {
+      mermaid.initialize({ theme: mermaidTheme() });
     }
   });
   observer.observe(document.body, { attributes: true, attributeFilter: ["data-md-color-scheme"] });
