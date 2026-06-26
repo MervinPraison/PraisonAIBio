@@ -6,11 +6,13 @@ hide:
 
 <div class="bio-hero" markdown="1">
 
+<span class="bio-eyebrow">Open source · Systems biology</span>
+
 # PraisonAIBio
 
-Open-source AI agents for **systems biology** — discover, simulate, and compare curated models from [BioModels.org](https://www.biomodels.org) using [PraisonAI](https://github.com/MervinPraison/PraisonAI).
+Discover, simulate, and compare curated models from [BioModels.org](https://www.biomodels.org) with AI agents powered by [PraisonAI](https://github.com/MervinPraison/PraisonAI).
 
-For biologists and lab scientists. No heavy coding required.
+Built for biologists and lab scientists — no heavy coding required.
 
 <div class="bio-hero-actions">
   <a class="bio-btn-primary" href="get-started/index.md">Get started</a>
@@ -20,43 +22,45 @@ For biologists and lab scientists. No heavy coding required.
 
 </div>
 
+<div class="bio-section" markdown="1">
+
 ## Start here
 
-<div class="grid cards" markdown="1">
+<div class="grid cards bio-cards" markdown="1">
 
--   :material-rocket-launch:{ .lg .middle } **Get started**
+-   :material-rocket-launch:{ .bio-card-icon } **Get started**
 
     ---
 
-    Install, first search, optional AI agent — three steps.
+    Install, run your first search, optionally try an AI agent.
 
     [:octicons-arrow-right-24: Get started](get-started/index.md)
 
--   :material-flask:{ .lg .middle } **Examples**
+-   :material-flask:{ .bio-card-icon } **Examples**
 
     ---
 
-    Minimal (2 lines), small tools, agent demos — all with tested output.
+    Minimal scripts, tool demos, and agent walkthroughs with tested output.
 
     [:octicons-arrow-right-24: Examples](examples/index.md)
 
--   :material-map:{ .lg .middle } **Interactive guide**
+-   :material-map:{ .bio-card-icon } **Interactive guide**
 
     ---
 
-    Pick your path: discovery, simulation, or repro — with self-checks.
+    Choose a path: discovery, simulation, or reproducibility.
 
     [:octicons-arrow-right-24: Interactive guide](interactive-guide.md)
 
--   :material-wrench:{ .lg .middle } **Tools**
+-   :material-wrench:{ .bio-card-icon } **Tools**
 
     ---
 
-    28 BioModels tools — search, simulate, compare, export.
+    28 BioModels tools for search, simulation, comparison, and export.
 
     [:octicons-arrow-right-24: Tools at a glance](tools-at-a-glance.md)
 
--   :material-sitemap:{ .lg .middle } **Workflows**
+-   :material-sitemap:{ .bio-card-icon } **Workflows**
 
     ---
 
@@ -64,7 +68,7 @@ For biologists and lab scientists. No heavy coding required.
 
     [:octicons-arrow-right-24: Workflows](concepts/workflows.md)
 
--   :material-help-circle:{ .lg .middle } **For researchers**
+-   :material-account-school:{ .bio-card-icon } **For researchers**
 
     ---
 
@@ -74,27 +78,35 @@ For biologists and lab scientists. No heavy coding required.
 
 </div>
 
----
+</div>
+
+<div class="bio-section bio-section--muted" markdown="1">
 
 ## How it works
 
-```mermaid
-graph LR
-    Q[Your question] --> A[AI agent]
-    A --> B[(BioModels.org)]
-    A --> R[Report or simulation]
+<div class="bio-diagram" markdown="1">
 
-    classDef agent fill:#8B0000,color:#fff
-    classDef tool fill:#06b6d4,color:#fff
-    class Q,A,R agent
-    class B tool
+```mermaid
+flowchart LR
+    Q(["Your question"]) --> A["AI agent"]
+    A --> B[("BioModels.org")]
+    A --> R["Report or simulation"]
+
+    style Q fill:#1e293b,stroke:#475569,color:#f8fafc
+    style A fill:#7f1d1d,stroke:#991b1b,color:#fef2f2
+    style R fill:#1e293b,stroke:#475569,color:#f8fafc
+    style B fill:#0c4a6e,stroke:#0369a1,color:#e0f2fe
 ```
+
+</div>
 
 1. Ask a question in plain English.
 2. The agent searches **BioModels.org**.
-3. You get a shortlist, summary, or simulation preview.
+3. You receive a shortlist, summary, or simulation preview.
 
----
+</div>
+
+<div class="bio-section" markdown="1">
 
 ## Try in 30 seconds
 
@@ -103,7 +115,9 @@ pip install -e "src/praisonai-bio"
 python examples/minimal/search.py
 ```
 
-=== "No AI (fastest)"
+<div class="bio-tabs" markdown="1">
+
+=== "No AI"
 
     ```bash
     pip install -e "src/praisonai-bio"
@@ -123,16 +137,32 @@ python examples/minimal/search.py
     praisonai workflow run workflows/cookbooks/glycolysis_demo.yaml
     ```
 
----
+</div>
 
-## Demo model
+</div>
 
-**BIOMD0000000206** — Teusink yeast glycolysis (used in cookbooks and benchmarks).
+<div class="bio-section bio-section--inline" markdown="1">
 
----
+<div class="bio-inline-grid" markdown="1">
 
-## Links
+<div class="bio-inline-card" markdown="1">
+
+### Demo model
+
+**BIOMD0000000206** — Teusink yeast glycolysis. Used in cookbooks and benchmarks.
+
+</div>
+
+<div class="bio-inline-card" markdown="1">
+
+### Links
 
 - [GitHub](https://github.com/MervinPraison/PraisonAIBio)
 - [BioModels.org](https://www.biomodels.org)
 - [PraisonAI](https://github.com/MervinPraison/PraisonAI)
+
+</div>
+
+</div>
+
+</div>
