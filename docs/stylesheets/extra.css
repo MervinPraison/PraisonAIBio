@@ -46,7 +46,7 @@
 }
 
 .md-tabs__link {
-  font-size: 0.875rem;
+
   font-weight: 500;
   letter-spacing: 0.01em;
   opacity: 1 !important;
@@ -81,7 +81,7 @@
 
   .md-tabs__link {
     padding: 0.7rem 1rem !important;
-    font-size: 0.8125rem;
+
   }
 }
 

@@ -12,9 +12,6 @@ theme:
   favicon: assets/favicon.svg
   icon:
     repo: fontawesome/brands/github
-  font:
-    text: Roboto
-    code: Roboto Mono
   palette:
     # Auto: match OS light/dark (Praison colours)
     - media: "(prefers-color-scheme: light)"
