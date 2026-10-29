@@ -6,7 +6,7 @@ repo_name: MervinPraison/PraisonAIBio
 edit_uri: edit/main/docs/
 
 theme:
-  name: material
+  name: !ENV [PRAISONAI_THEME, material]
   language: en
   logo: assets/favicon.svg
   favicon: assets/favicon.svg
